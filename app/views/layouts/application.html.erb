@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Feedex</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+	<head>
+	  <title>Feedex</title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="header">
+			<% [:notice, :error].each do |msg| %>
+				<% if flash[msg].present? %>
+					<div class="flash <%= msg.to_s %>">
+						<%= flash[msg] %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<%= yield %>
+	</body>
 </html>
