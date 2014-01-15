@@ -15,7 +15,10 @@ Feedex::Application.routes.draw do
 
   namespace :admin do
     root "items#index"
+
+    resources :items
     resources :sessions, only: [:new, :create, :destroy]
+
   end
 
 end

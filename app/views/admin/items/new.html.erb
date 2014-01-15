@@ -1,0 +1,32 @@
+<%= link_to "< Back", admin_items_path %>
+
+<h1>Add New</h1>
+<%= form_for [:admin, @item], multipart: true do |f| %>
+	<div>
+		<%= f.label "Item Name" %>
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<%= f.label :price %>
+		<%= f.text_field :price %>
+	</div>
+	<div>
+		<%= f.label :vendor %>
+		<%= f.select :vendor, Vendor.all %>
+	</div>
+	<div>
+		<%= f.label "SKU" %>
+		<%= f.text_field :sku %>
+	</div>
+	<div>
+		<%= f.label :category %>
+		<%= f.select :category, Category.all %>
+	</div>
+	<div>
+		<%= f.label :image %>
+		<%= f.file_field :image %>
+	</div>
+	<div>
+		<%= f.submit "Add New" %>
+	</div>
+<% end %>
