@@ -1,0 +1,25 @@
+<div>
+	<%= f.label "User Name" %>
+	<%= f.text_field :name %>
+	<%= inline_errors(user, :name) %>
+</div>
+<div>
+	<%= f.label :email %>
+	<%= f.text_field :email %>
+	<%= inline_errors(user, :email) %>
+</div>
+<div>
+	<%= f.label :colony %>
+	<%= f.text_field :location_name, :value => user.location.try(:name) %>
+	<%= inline_errors(user, :location_name) %>
+</div>
+<div>
+	<%= f.label "Password" %>
+	<%= f.password_field :password %>
+	<%= inline_errors(user, :password) %>
+</div>
+<div>
+	<%= f.label "Confirm Password" %>
+	<%= f.password_field :password_confirmation %>
+	<%= inline_errors(user, :password_confirmation) %>
+</div>

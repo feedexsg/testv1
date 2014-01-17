@@ -1,0 +1,8 @@
+<%= link_to "< Back", admin_users_path %>
+
+<%= form_for [:admin, @user], multipart: true do |f| %>
+	<%= render :partial => "form", locals: { user: @user, f: f } %>
+	<div>
+		<%= f.submit "Update" %>
+	</div>
+<% end %>

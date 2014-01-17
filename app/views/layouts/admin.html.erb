@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Feedex Admin</title>
+	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="header">
+			<nav>
+				<ul>
+					<li><%= link_to "All Items", admin_items_path %></li>
+					<li><%= link_to "All Users", admin_users_path %></li>
+				</ul>
+			</nav>
+			<% [:notice, :error].each do |msg| %>
+				<% if flash[msg].present? %>
+					<div class="flash <%= msg.to_s %>">
+						<%= flash[msg] %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+		<%= yield %>
+	</body>
+</html>

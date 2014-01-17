@@ -17,6 +17,7 @@ Feedex::Application.routes.draw do
     root "items#index"
 
     resources :items
+    resources :users
     resources :sessions, only: [:new, :create, :destroy]
 
   end

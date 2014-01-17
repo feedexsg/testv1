@@ -1,5 +1,6 @@
 class Admin::BaseController < ApplicationController
 
+  layout 'admin'
   before_filter :current_admin
   before_filter :require_authentication
 

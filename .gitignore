@@ -17,4 +17,4 @@
 /test
 /log
 config/database.yml
-
+public/system

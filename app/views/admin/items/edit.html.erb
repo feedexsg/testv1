@@ -1,9 +1,8 @@
 <%= link_to "< Back", admin_items_path %>
 
-<h1>Add New</h1>
 <%= form_for [:admin, @item], multipart: true do |f| %>
 	<%= render :partial => "form", locals: { item: @item, f: f } %>
 	<div>
-		<%= f.submit "Add New" %>
+		<%= f.submit "Update" %>
 	</div>
 <% end %>
