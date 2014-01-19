@@ -42,6 +42,8 @@ gem 'bcrypt-ruby'
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano'
+  gem 'capistrano-ext'
+  gem 'rvm-capistrano'
 end
 
 # Use debugger
