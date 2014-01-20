@@ -42,7 +42,7 @@ class Admin::UsersController < Admin::BaseController
   private
 
   def user_params
-    params.require(:user).permit(:credits)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :location_name)
   end
 
   def load_user
