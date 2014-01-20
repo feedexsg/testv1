@@ -7,7 +7,7 @@ class Admin::SessionsController < Admin::BaseController
 
   def create
     user = User.where(:email => params[:email]).first
-    if user && user.authenticate(params[:password])
+    if user && user.is_admin? && user.authenticate(params[:password])
       session[:admin_id] = user.id
       redirect_to admin_root_path
     else
