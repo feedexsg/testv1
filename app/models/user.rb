@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 
   ## VALIDATIONS ##
-  validates :name, :email, :password_digest, :mobile, presence: true
+  validates :name, :email, :password_digest, presence: true
   validates :email, uniqueness: { allow_blank: true }
   validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, allow_blank: true }
   validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }
@@ -27,9 +27,11 @@ class User < ActiveRecord::Base
 
   ## PRIVATE METHODS ##
   def assign_location
-    self.location = Location.find_or_create_by_name(location_name)
-    if location.new_record?
-      errors.add(:location_name, "can't be blank")
+    if location_name.present?
+      self.location = Location.find_or_create_by_name(location_name)
+      if location.new_record?
+        errors.add(:location_name, "can't be blank")
+      end
     end
   end
 
