@@ -9,6 +9,7 @@ class Admin::BaseController < ApplicationController
   def current_admin
     @current_admin = User.find_by_id(session[:admin_id])
   end
+  helper_method :current_admin
 
   def require_authentication
     unless @current_admin

@@ -16,4 +16,9 @@ class Admin::SessionsController < Admin::BaseController
     end
   end
 
+  def destroy
+    reset_session
+    redirect_to admin_root_path
+  end
+
 end
