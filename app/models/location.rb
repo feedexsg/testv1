@@ -7,7 +7,7 @@ class Location < ActiveRecord::Base
   validates :name, presence: true
 
   ## ASSOCIATIONS ##
-  has_many :users
+
 
   ## CALLBACKS ##
 

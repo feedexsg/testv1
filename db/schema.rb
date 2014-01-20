@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117164129) do
+ActiveRecord::Schema.define(version: 20140120130714) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140117164129) do
   create_table "items", force: true do |t|
     t.string   "name"
     t.string   "sku"
-    t.decimal  "price",              User: 10, scale: 2
+    t.decimal  "price",              precision: 10, scale: 2
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -43,14 +43,14 @@ ActiveRecord::Schema.define(version: 20140117164129) do
     t.string   "name"
     t.string   "email"
     t.string   "mobile"
-    t.sUserpassword_digest"
-    t.boolean  "is_admin",                   User     default: false
+    t.string   "password_digest"
+    t.boolean  "is_admin",                                 default: false
     t.decimal  "total_credits",   precision: 10, scale: 2, default: 0.0
     t.decimal  "availed_credits", precision: 10, scale: 2, default: 0.0
     t.string   "auth_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "location_id"
+    t.string   "colony"
   end
 
   create_table "vendors", force: true do |t|

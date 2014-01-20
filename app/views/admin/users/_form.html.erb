@@ -10,16 +10,26 @@
 </div>
 <div>
 	<%= f.label :colony %>
-	<%= f.text_field :location_name, :value => user.location.try(:name) %>
-	<%= inline_errors(user, :location_name) %>
+	<%= f.text_field :colony %>
+	<%= inline_errors(user, :colony) %>
 </div>
-<div>
-	<%= f.label "Password" %>
-	<%= f.password_field :password %>
-	<%= inline_errors(user, :password) %>
-</div>
-<div>
-	<%= f.label "Confirm Password" %>
-	<%= f.password_field :password_confirmation %>
-	<%= inline_errors(user, :password_confirmation) %>
-</div>
+<% if user.new_record? %>
+	<div>
+		<%= f.label "Password" %>
+		<%= f.password_field :password %>
+		<%= inline_errors(user, :password) %>
+	</div>
+	<div>
+		<%= f.label "Confirm Password" %>
+		<%= f.password_field :password_confirmation %>
+		<%= inline_errors(user, :password_confirmation) %>
+	</div>
+<% else %>
+	<div>
+		<%= f.label "Credits YTD" %>
+		<%= user.total_credits %>
+	</div>
+	<div>
+		<%= f.label "Credits History" %>
+	</div>
+<% end %>
