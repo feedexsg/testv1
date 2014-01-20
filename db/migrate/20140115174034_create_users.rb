@@ -6,8 +6,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :mobile
       t.string :password_digest
       t.boolean :is_admin, :default => 0
-      t.decimal :total_credits, :default => 0.00, :User => 10, :scale => 2
-      t.decimal :availed_credits, :default => 0.00, Usern => 10, :scale => 2
+      t.decimal :total_credits, :default => 0.00, :precision => 10, :scale => 2
+      t.decimal :availed_credits, :default => 0.00, :precision => 10, :scale => 2
       t.string :auth_key
       t.timestamps
     end
