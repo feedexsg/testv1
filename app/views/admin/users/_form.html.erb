@@ -31,5 +31,17 @@
 	</div>
 	<div>
 		<%= f.label "Credits History" %>
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>Amount</th>
+			</tr>
+			<% user.credits.each do |cr| %>
+				<tr>
+					<td><%= cr.created_at.strftime("%d %b, %Y") %></td>
+					<td><%= number_to_currency(cr.amount) %></td>
+				</tr>
+				<% end %>
+		</table>
 	</div>
 <% end %>
