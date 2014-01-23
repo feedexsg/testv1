@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 
   ## CONSTANTS ##
 
-
   ## VALIDATIONS ##
   validates :name, :email, :password_digest, presence: true
   validates :email, uniqueness: { allow_blank: true }
@@ -13,6 +12,8 @@ class User < ActiveRecord::Base
   validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }
 
   ## ASSOCIATIONS ##
+  has_many :credits, dependent: :destroy
+  accepts_nested_attributes_for :credits
 
   ## CALLBACKS ##
 

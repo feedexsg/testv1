@@ -34,15 +34,34 @@ class Admin::UsersController < Admin::BaseController
     end
   end
 
+  def credits
+  end
+
+  def add_credits
+    if @user.update_attributes(user_params)
+      flash[:notice] = "Credits added successfully"
+      redirect_to admin_users_path
+    else
+      flash[:error] = "Please fix the errors below"
+      render :credits
+    end
+  end
+
   def destroy
-    @user.destroy
-    flash[:notice] = "User has been deleted successfully"
+    unless @user.is_admin?
+      @user.destroy
+      flash[:notice] = "User has been deleted successfully"
+    else
+      flash[:error] = "User cannot be deleted"
+    end
+    redirect_to admin_users_path
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :colony)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,
+                                 :colony, credits_attributes: [:amount, :source])
   end
 
   def load_user

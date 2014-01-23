@@ -13,9 +13,9 @@
 		<tr>
 			<td><%= link_to user.name, edit_admin_user_path(user) %></td>
 			<td><%= user.email %></td>
-			<td><%= user.location.try(:name) %></td>
-			<td><%= user.availed_credits %></td>
-			<td><%= link_to 'Edit Credits', edit_admin_user_path(user) %></td>
+			<td><%= user.colony %></td>
+			<td><%= user.total_credits %></td>
+			<td><%= link_to 'Edit Credits', credits_admin_user_path(user) %></td>
 		</tr>
 	<% end %>
 </table>

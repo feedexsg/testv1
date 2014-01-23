@@ -1,0 +1,15 @@
+<%= link_to "< Back", admin_users_path %>
+
+<%= form_for @user, url: add_credits_admin_user_path(@user) do |f| %>
+	<div>
+		<%= f.label "Add Credits" %>
+		<%= f.fields_for :credits, @user.credits.build do |cr| %>
+			<%= cr.text_field :amount %><br/>
+			<%= custom_error("Please enter a valid amount") unless @user.errors.blank? %>
+			<%= cr.hidden_field :source, value: Credit::Sources[:admin] %>
+		<% end %>
+	</div>
+	<div>
+		<%= f.submit "Update" %>
+	</div>
+<% end %>
