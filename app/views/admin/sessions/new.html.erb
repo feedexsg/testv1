@@ -1,19 +1,11 @@
-<h1>Feedex Admin Panel</h1>
-
-<%= form_tag admin_sessions_path do |f| %>
-
-	<div>
-		<%= label_tag "Username" %>
-		<%= text_field_tag :email %>
-	</div>
-
-	<div>
-		<%= label_tag "Password" %>
-		<%= password_field_tag :password %>
-	</div>
-
-	<div>
-		<%= submit_tag "Log In" %>
-	</div>
-
-<% end %>
+<div id="loginbox">
+	<%= image_tag 'logo.png', id: 'feedexlogo'%>
+	<h1>Feedex Admin Panel</h1><hr />
+	<%= form_tag admin_sessions_path, id: 'loginform' do |f| %>
+		<%= label_tag "Username" %><br>
+		<%= text_field_tag :email, "", id: 'username' %><br>
+		<%= label_tag "Password" %><br>
+		<%= password_field_tag :password, "", id: 'password' %><br><br>
+		<%= submit_tag "Submit", class: 'loginbutton' %>
+	<% end %>
+</div>

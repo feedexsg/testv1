@@ -1,5 +1,6 @@
 class Admin::SessionsController < Admin::BaseController
 
+  layout 'login'
   skip_before_filter :require_authentication, except: :destroy
 
   def new

@@ -1,23 +1,24 @@
-<h1>All Items</h1>
-<%= link_to "Add New", new_admin_item_path %>
-
-<table>
-	<tr>
-		<th>Item Name</th>
-		<th>Image</th>
-		<th>Vendor</th>
-		<th>Price</th>
-		<th>Category</th>
-		<th></th>
-	</tr>
-	<% @items.each do |item| %>
+<div id="allitems">
+	<h1>All Items</h1><hr />
+	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_item_path, class: 'addnew' %>
+	<table width="100%">
 		<tr>
-			<td><%= link_to item.name, edit_admin_item_path(item) %></td>
-			<td><%= image_tag(item.image) %></td>
-			<td><%= item.vendor_name %></td>
-			<td><%= number_to_currency(item.price) %></td>
-			<td><%= item.category_name %></td>
-			<td><%= link_to 'X', [:admin, item], method: :delete, confirm: "Are you sure?" %></td>
+			<th>Item Name</th>
+			<th>Image</th>
+			<th>Description</th>	
+			<th>Price</th>
+			<th>Category</th>
+			<th>Dlt</th>
 		</tr>
-	<% end %>
-</table>
+		<% @items.each do |item| %>
+			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td class='itemtitle'><%= item.name %></td>
+				<td class='itemimg'><%= image_tag(item.image) %></td>
+				<td class='itemdescription'><%= item.description %></td>
+				<td><%= number_to_currency(item.price) %></td>
+				<td><%= item.category_name %></td>
+				<td><%= link_to raw('dltbutton.png'), [:admin, item], method: :delete, confirm: "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

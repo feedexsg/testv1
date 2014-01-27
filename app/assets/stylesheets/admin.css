@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url("reset.css");
+
+/*--------------- MAIN BODY ---------------*/
+ 
+body {
+    font-family: 'proxima_nova_rgbold', Verdana, Arial, Helvetica, sans-serif;
+    font-size: 62.5%;
+    color: #000000;	
+	background-color:#ff7109;
+	background-repeat:repeat;
+	background-position:0px 0px;
+	height:100%;
+	width:100%;
+	min-width:868px;
+}
+
+@font-face {
+    font-family: 'proxima_nova_rgbold';
+    src: url('../fonts/proximanova-bold-webfont.eot');
+    src: url('../fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('../fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+@font-face {
+    font-family: 'proxima_nova_rgregular';
+    src: url('../fonts/proximanova-regular-webfont.eot');
+    src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('../fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('../fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'didot_lt_stdregular';
+    src: url('../fonts/didotltstd-roman-webfont.eot');
+    src: url('../fonts/didotltstd-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/didotltstd-roman-webfont.woff') format('woff'),
+         url('../fonts/didotltstd-roman-webfont.ttf') format('truetype'),
+         url('../fonts/didotltstd-roman-webfont.svg#didot_lt_stdregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*--------------- CONTAINER HEADER---------------*/
+
+#container {
+	position:relative;
+	margin: 0 auto;
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	z-index:9999;
+	height:auto;
+}
+
+
+#loginbox {
+	width:450px;
+	margin:200px auto;
+	background-color: #ffffff;
+	border:3px solid #ea6809;
+	padding:20px;
+	font-size: 2em;
+}
+
+#loginbox h1 {
+	text-align:center;
+	margin:10px auto;
+}
+
+#loginform {
+	margin:30px auto auto 24%;
+
+}
+
+input[type="text"], input[type="password"] {
+	background-color:#ffffff;
+	border:solid 1px #d7d7d7;
+	border-radius: 20px; 
+	-moz-border-radius: 20px; 
+	-webkit-border-radius: 20px;
+	width:220px;
+	height:28px;
+	font-size:16px;
+	margin-right:50px;
+	margin-bottom:15px;
+	padding-right:10px;
+	color:#000000;
+	text-indent:1em;
+	outline:none;
+}  
+
+input[type="submit"] {
+	border:0px;
+	background: url('loginbutton.png');
+	background-repeat: no-repeat;
+	width:136px;
+	height:42px;
+	text-indent:-9999px;
+	cursor:pointer;
+	margin-left:40px;
+	color:#FFFFFF;
+
+}
+
+hr {
+	border: 0;
+    height: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#feedexlogo {
+	position: absolute;
+	margin-top:-180px;
+	margin-left:100px;
+}
+
+
+/*--------------- TOP MENU---------------*/
+
+ul li {
+display: inline-block;
+}
+
+ul.creditmanagement, ul.ordermanagement, ul.usermanagement {
+	display:none;
+}
+
+ul.feedextopmenu {
+	width:100%;
+	margin:0 auto;
+	z-index:10;
+	margin-top:-35px;
+}
+
+ul.feedextopmenu li {
+	width:24.5%;
+	height:auto;
+	/*margin-left:-2px;*/
+	text-align: center;
+	padding:5px 0px;
+}
+
+li a {
+	text-decoration: none;
+	color:#000000;
+	font-size: 2em;
+	padding:20px 5px;
+}
+
+ul.feedextopmenu li >ul {
+	position: absolute;
+}
+
+.feedextopmenubg {
+	background-color:#ffffff;
+	width:100%;
+	height:40px;
+	top:0px;
+	z-index:0;
+}
+
+.feedexsecmenubg {
+	background-color:#282828;
+	width:100%;
+	height:50px;
+	top:40px;
+	z-index:0;
+}
+
+ul.secmenu li a{
+	color:#F4f4f4;
+}
+
+ul.secmenu {
+	margin-top:-45px;
+}
+
+ul.secmenu li {
+	width:24.5%;
+	height:auto;
+	text-align: center;
+	padding:7px 0px;
+}
+
+.activemenu {
+position:absolute;
+width:24.5%;
+height:5px;
+background-color:#ff7109;
+margin-top:0px;
+}
+
+/*--------------- ALL ITEMS---------------*/
+
+#allitems {
+	padding-top:50px;
+	width:90%;
+	height:100%;
+	overflow-x:hidden;
+	z-index:9999;
+	height:auto;
+	margin:0 auto;
+	font-size:2.0em;
+}
+
+#allitems h1 {
+	margin-top:0px;
+	font-size:30px;
+}
+
+a.addnew {	
+	border:0;
+	text-indent:-9999px;
+	cursor:pointer;	
+	color:#FFFFFF;
+}
+
+a.addnew img {
+	float:right;
+	margin-top:-50px;
+}
+table {
+	margin-top: 30px;
+	font-family: 'proxima_nova_rgregular';
+
+}
+
+th {
+	background-color: #282828;
+	color:#f4f4f4;
+	padding:5px;
+}
+img.itemthumbnail {
+	width:200px;
+	height:auto;
+}
+td {
+	padding:10px auto 5px auto;
+	text-align: center;
+}
+
+td.itemdescription {
+	overflow:ellipsis;
+	word-wrap:break-word;
+	width:40%;
+	padding:0px 10px;
+	text-align: left;
+}
+
+td.itemimg {
+	text-align: left;
+	width:200px;
+}
+
+td.itemtitle{
+width:22%;
+text-align: left;
+padding:0px 10px;
+}
+
+tr.oddrow {
+	background-color: #ffffff;
+}
+
+tr.evenrow {
+	background-color: #f4f4f4;
+}

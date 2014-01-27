@@ -1,22 +1,41 @@
 <!DOCTYPE html>
-<html>
 	<head>
-	  <title>Feedex Admin</title>
-	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	  <%= csrf_meta_tags %>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+		<title>Feedex Admin CMS</title>
+		<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+		<%= csrf_meta_tags %>
 	</head>
+
 	<body>
-		<div class="header">
-			<nav>
-				<% if current_admin %>
-					<%= link_to "Logout", admin_session_path(current_admin.id), method: :delete %>
-					<% end %>
-				<ul>
-					<li><%= link_to "All Items", admin_items_path %></li>
-					<li><%= link_to "All Users", admin_users_path %></li>
+		<div id="container">
+			<div id="mainmenu">
+				<div class="feedextopmenubg"></div>
+				<ul class="feedextopmenu">
+					<li><%= link_to "Content Management", '#' %><div class="activemenu"></li>
+					<li><%= link_to "Credit Management", '#' %></li>
+					<li><%= link_to "Order Management", '#' %></li>
+					<li><%= link_to "User Management", '#' %></li>
 				</ul>
-			</nav>
+				<div class="feedexsecmenubg"></div>
+				<ul class="secmenu contentmanagement">
+					<li><%= link_to "Today's Menu" %></li>
+					<li><%= link_to "All Items", admin_items_path %></li>
+				</ul>	
+				<ul class="secmenu creditmanagement">
+					<li><%= link_to "Dashboard" %></li>
+				</ul>
+				<ul class="secmenu ordermanagement">
+					<li><%= link_to "Today's Orders" %></li>
+					<li><%= link_to "Orders History" %></li>
+					<li><%= link_to "Colonies" %></li>
+					<li><%= link_to "Delivery Locations" %></li>
+				</ul>
+				<ul class="secmenu usermanagement">
+					<li><%= link_to "All Users" %></li>
+				</ul>
+			</div>
 			<% [:notice, :error].each do |msg| %>
 				<% if flash[msg].present? %>
 					<div class="flash <%= msg.to_s %>">
@@ -24,7 +43,7 @@
 					</div>
 				<% end %>
 			<% end %>
+			<%= yield %>
 		</div>
-		<%= yield %>
 	</body>
 </html>
