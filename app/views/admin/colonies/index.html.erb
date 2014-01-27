@@ -1,0 +1,16 @@
+<div id="allitems">
+	<h1>Colonies</h1><hr />
+	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_colony_path, class: 'addnew' %>
+	<table width="100%">
+		<tr>
+			<th>Colony Name</th>
+			<th></th>
+		</tr>
+		<% @colonies.each do |colony| %>
+			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td><%= link_to colony.name, edit_admin_colony_path(colony) %></td>
+				<td><%= link_to raw(image_tag('dltbutton.png')), [:admin, colony], method: :delete, confirm: "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

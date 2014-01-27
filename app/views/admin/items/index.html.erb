@@ -5,7 +5,7 @@
 		<tr>
 			<th>Item Name</th>
 			<th>Image</th>
-			<th>Description</th>	
+			<th>Vendor</th>	
 			<th>Price</th>
 			<th>Category</th>
 			<th>Dlt</th>
@@ -14,10 +14,10 @@
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
 				<td class='itemtitle'><%= item.name %></td>
 				<td class='itemimg'><%= image_tag(item.image) %></td>
-				<td class='itemdescription'><%= item.description %></td>
+				<td class='itemdescription'><%= item.vendor_name %></td>
 				<td><%= number_to_currency(item.price) %></td>
 				<td><%= item.category_name %></td>
-				<td><%= link_to raw('dltbutton.png'), [:admin, item], method: :delete, confirm: "Are you sure?" %></td>
+				<td><%= link_to raw(image_tag('dltbutton.png')), [:admin, item], method: :delete, confirm: "Are you sure?" %></td>
 			</tr>
 		<% end %>
 	</table>

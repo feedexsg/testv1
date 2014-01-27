@@ -24,6 +24,8 @@ Feedex::Application.routes.draw do
       end
     end
     resources :sessions, only: [:new, :create, :destroy]
+    resources :orders
+    resources :colonies
 
   end
 

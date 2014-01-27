@@ -144,7 +144,7 @@ ul.feedextopmenu {
 	width:100%;
 	margin:0 auto;
 	z-index:10;
-	margin-top:-35px;
+	margin-top:-40px;
 }
 
 ul.feedextopmenu li {
@@ -188,6 +188,7 @@ ul.secmenu li a{
 
 ul.secmenu {
 	margin-top:-45px;
+	display:none;
 }
 
 ul.secmenu li {
@@ -197,12 +198,11 @@ ul.secmenu li {
 	padding:7px 0px;
 }
 
-.activemenu {
-position:absolute;
-width:24.5%;
-height:5px;
-background-color:#ff7109;
-margin-top:0px;
+ul.feedextopmenu li.activemenu {
+	border-bottom:5px solid #ff7109;
+}
+ul.secmenu li.activemenu{
+	background-color: #ff7109;
 }
 
 /*--------------- ALL ITEMS---------------*/

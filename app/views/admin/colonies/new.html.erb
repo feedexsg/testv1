@@ -1,0 +1,9 @@
+<%= link_to "< Back", admin_colonies_path %>
+
+<h1>Add New</h1>
+<%= form_for [:admin, @colony], multipart: true do |f| %>
+	<%= render :partial => "form", locals: { colony: @colony, f: f } %>
+	<div>
+		<%= f.submit "Add New" %>
+	</div>
+<% end %>
