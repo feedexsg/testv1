@@ -11,6 +11,9 @@ class Item < ActiveRecord::Base
   ## ASSOCIATIONS ##
   belongs_to :vendor
   belongs_to :category
+  has_many :items_menus
+  has_many :items, through: :items_menus
+
   has_attached_file :image,
         :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
         :url => "/system/:attachment/:id/:style/:filename"
