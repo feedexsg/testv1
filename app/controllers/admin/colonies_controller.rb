@@ -37,7 +37,7 @@ class Admin::ColoniesController < Admin::BaseController
   def destroy
     @colony.destroy
     flash[:notice] = "Colony has been deleted successfully"
-    redirect_to admin_items_path
+    redirect_to admin_colonies_path
   end
 
   private

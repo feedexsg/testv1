@@ -1,0 +1,11 @@
+<%= f.label "Delivery Location" %>
+<%= f.text_field :name %>
+<%= inline_errors(delivery_location, :name) %>
+<br/><br/>
+<%= f.label "Timing" %>
+<%= f.datetime_select :delivery_timing %>
+<%= inline_errors(delivery_location, :delivery_timing) %>
+<br/><br/>
+<%= f.label "Colony" %>
+<%= f.select :colony_id, Colony.all.collect{|c| [c.name, c.id]}, prompt: 'Select a colony' %><br/>
+<%= inline_errors(delivery_location, :colony) %>

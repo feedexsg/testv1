@@ -1,0 +1,20 @@
+<div id="allitems">
+	<h1>Delivery Locations</h1><hr />
+	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_delivery_location_path, class: 'addnew' %>
+	<table width="100%">
+		<tr>
+			<th>Delivery Locations</th>
+			<th>Delivery Timing</th>
+			<th>Colony</th>
+			<th></th>
+		</tr>
+		<% @delivery_locations.each do |delivery_location| %>
+			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td><%= link_to delivery_location.name, edit_admin_delivery_location_path(delivery_location) %></td>
+				<td><%= delivery_location.delivery_timing %></td>
+				<td><%= delivery_location.colony_name %></td>
+				<td><%= link_to raw(image_tag('dltbutton.png')), [:admin, delivery_location], method: :delete, confirm: "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

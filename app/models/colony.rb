@@ -4,10 +4,10 @@ class Colony < ActiveRecord::Base
 
 
   ## VALIDATIONS ##
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { allow_blank: true }
 
   ## ASSOCIATIONS ##
-
+  has_many :delivery_locations
 
   ## CALLBACKS ##
 

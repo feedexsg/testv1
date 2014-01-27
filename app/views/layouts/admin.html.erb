@@ -15,7 +15,7 @@
 				<ul class="feedextopmenu">
 					<li class="<%= active_class(['admin/items']) %>"><%= link_to "Content Management", admin_items_path %></li>
 					<li><%= link_to "Credit Management", '#' %></li>
-					<li class="<%= active_class(['admin/orders', 'admin/colonies']) %>"><%= link_to "Order Management", admin_orders_path %></li>
+					<li class="<%= active_class(['admin/orders', 'admin/colonies', 'admin/delivery_locations']) %>"><%= link_to "Order Management", admin_orders_path %></li>
 					<li class="<%= active_class(['admin/users']) %>"><%= link_to "User Management", admin_users_path %></li>
 				</ul>
 				<div class="feedexsecmenubg"></div>
@@ -26,11 +26,11 @@
 				<ul class="secmenu creditmanagement credits">
 					<li><%= link_to "Dashboard" %></li>
 				</ul>
-				<ul class="secmenu ordermanagement orders colonies">
+				<ul class="secmenu ordermanagement orders colonies delivery_locations">
 					<li><%= link_to "Today's Orders" %></li>
 					<li class="<%= active_class(['admin/orders']) %>"><%= link_to "Orders History", admin_orders_path %></li>
 					<li class="<%= active_class(['admin/colonies']) %>"><%= link_to "Colonies", admin_colonies_path %></li>
-					<li><%= link_to "Delivery Locations" %></li>
+					<li class="<%= active_class(['admin/delivery_locations']) %>"><%= link_to "Delivery Locations", admin_delivery_locations_path %></li>
 				</ul>
 				<ul class="secmenu usermanagement users">
 					<li><%= link_to "All Users" %></li>
