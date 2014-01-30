@@ -3,7 +3,8 @@ class Item < ActiveRecord::Base
   attr_accessor :vendor_name
 
   ## CONSTANTS ##
-
+  scope :main, where(category_id: Category.main_id)
+  scope :side, where(category_id: Category.side_id)
 
   ## VALIDATIONS ##
   validates :name, :price, :sku, :category, :vendor, presence: true

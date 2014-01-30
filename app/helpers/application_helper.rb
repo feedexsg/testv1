@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def setup_obj(obj, assoc)
-    @user.send(assoc).presence || @user.send(assoc).build
+    obj.send(assoc).presence || obj.send(assoc).build
   end
 
   def custom_error(msg)

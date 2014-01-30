@@ -12,7 +12,7 @@
 		</tr>
 		<% @items.each do |item| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
-				<td class='itemtitle'><%= item.name %></td>
+				<td class='itemtitle'><%= link_to item.name, edit_admin_item_path(item) %></td>
 				<td class='itemimg'><%= image_tag(item.image) %></td>
 				<td class='itemdescription'><%= item.vendor_name %></td>
 				<td><%= number_to_currency(item.price) %></td>

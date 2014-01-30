@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127144621) do
+ActiveRecord::Schema.define(version: 20140129092628) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140127144621) do
     t.datetime "availability_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity"
   end
 
   create_table "locations", force: true do |t|
@@ -74,6 +75,9 @@ ActiveRecord::Schema.define(version: 20140127144621) do
     t.date     "available_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "status",       default: false
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   create_table "users", force: true do |t|

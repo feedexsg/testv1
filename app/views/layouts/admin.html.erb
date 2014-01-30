@@ -13,14 +13,14 @@
 			<div id="mainmenu">
 				<div class="feedextopmenubg"></div>
 				<ul class="feedextopmenu">
-					<li class="<%= active_class(['admin/items']) %>"><%= link_to "Content Management", admin_items_path %></li>
+					<li class="<%= active_class(['admin/items', 'admin/menus']) %>"><%= link_to "Content Management", admin_items_path %></li>
 					<li><%= link_to "Credit Management", '#' %></li>
 					<li class="<%= active_class(['admin/orders', 'admin/colonies', 'admin/delivery_locations']) %>"><%= link_to "Order Management", admin_orders_path %></li>
 					<li class="<%= active_class(['admin/users']) %>"><%= link_to "User Management", admin_users_path %></li>
 				</ul>
 				<div class="feedexsecmenubg"></div>
-				<ul class="secmenu contentmanagement items">
-					<li><%= link_to "Today's Menu" %></li>
+				<ul class="secmenu contentmanagement items menus">
+					<li><%= link_to "Today's Menu", admin_menus_path %></li>
 					<li><%= link_to "All Items", admin_items_path %></li>
 				</ul>	
 				<ul class="secmenu creditmanagement credits">

@@ -14,7 +14,7 @@ Feedex::Application.routes.draw do
   #   resources :photos, concerns: :toggleable
 
   namespace :admin do
-    root "items#index"
+    root "menus#index"
 
     resources :items
     resources :users do
@@ -27,6 +27,7 @@ Feedex::Application.routes.draw do
     resources :orders
     resources :colonies
     resources :delivery_locations
+    resources :menus
 
   end
 
