@@ -9,8 +9,10 @@ class Menu < ActiveRecord::Base
 
   ## ASSOCIATIONS ##
   has_many :items_menus
+  has_many :main_items_menus
+  has_many :side_items_menus
   has_many :items, through: :items_menus
-  accepts_nested_attributes_for :items_menus
+  accepts_nested_attributes_for :items_menus, allow_destroy: true
 
   ## CALLBACKS ##
 
