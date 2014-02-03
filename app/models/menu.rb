@@ -5,14 +5,18 @@ class Menu < ActiveRecord::Base
   Operation = {"Open" => 1, "Closed" => 0}
 
   ## VALIDATIONS ##
-  validates :title, :available_on, presence: true, uniqueness: { allow_blank: true }
+  validates :available_on, presence: true, uniqueness: { allow_blank: true }
+  validate :assign_time
 
   ## ASSOCIATIONS ##
   has_many :items_menus
-  has_many :main_items_menus
-  has_many :side_items_menus
+  has_many :main_items_menus, -> {where("items_menus.item_type = ?", 'Main')}, class_name: 'ItemsMenu'
+  has_many :side_items_menus, -> {where("items_menus.item_type = ?", 'Side')}, class_name: 'ItemsMenu'
   has_many :items, through: :items_menus
+
   accepts_nested_attributes_for :items_menus, allow_destroy: true
+  accepts_nested_attributes_for :main_items_menus, allow_destroy: true
+  accepts_nested_attributes_for :side_items_menus, allow_destroy: true
 
   ## CALLBACKS ##
 
@@ -27,9 +31,8 @@ class Menu < ActiveRecord::Base
 
   ## PRIVATE METHODS ##
   def assign_time
-    [:start_timeselect, :end_timeselect].each do |timeselect|
-      self.write_attribute(timeselect.gsub("select"), Time.parse(available_on.to_s + timeselect))
-    end
+    self.start_time = Time.parse(available_on.to_s + " " + self.start_timeselect)
+    self.end_time = Time.parse(available_on.to_s + " " + self.end_timeselect)
     return true
   end
 

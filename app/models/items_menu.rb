@@ -4,8 +4,9 @@ class ItemsMenu < ActiveRecord::Base
   attr_accessor :availability_time_select
 
   ## VALIDATIONS ##
-  validates :item, :menu, presence: true
+  validates :item, presence: true
   validates :item, uniqueness: { allow_blank: true, scope: :menu_id }
+  validate :assign_availablity_time
 
   ## ASSOCIATIONS ##
   belongs_to :item
@@ -22,9 +23,7 @@ class ItemsMenu < ActiveRecord::Base
 
   ## PRIVATE METHODS ##
   def assign_availablity_time
-    [:availability_time_select].each do |timeselect|
-      self.write_attribute(timeselect.gsub("_select"), Time.parse(available_on.to_s + timeselect))
-    end
+    self.availability_time = Time.parse((menu.try(:available_on).try(:to_s) || Date.today.to_s) + " " + self.availability_time_select)
     return true
   end
 
