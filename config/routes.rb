@@ -12,7 +12,13 @@ Feedex::Application.routes.draw do
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
-
+  namespace :api, defaults: {format: 'json'} do
+    resources :users
+    resources :menus
+    resources :sessions, only: [:create, :destroy]
+    match "*path", :to => "base#route_not_found", :via => :all
+  end
+  
   namespace :admin do
     root "menus#index"
 
@@ -30,5 +36,6 @@ Feedex::Application.routes.draw do
     resources :menus
 
   end
+  
 
 end
