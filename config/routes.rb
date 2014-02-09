@@ -30,7 +30,11 @@ Feedex::Application.routes.draw do
       end
     end
     resources :sessions, only: [:new, :create, :destroy]
-    resources :orders
+    resources :orders do
+      collection do
+        get :current
+      end
+    end
     resources :colonies
     resources :delivery_locations
     resources :menus

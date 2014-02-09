@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :credits
 
   ## CALLBACKS ##
+  after_create :send_welcome_notification
 
   ## INSTANCE METHODS ##
 
@@ -24,5 +25,10 @@ class User < ActiveRecord::Base
 
 
   ## PRIVATE METHODS ##
+  private
+
+  def send_welcome_notification
+    Notifier.welcome_notification(self)
+  end
 
 end

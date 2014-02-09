@@ -27,8 +27,8 @@
 					<li><%= link_to "Dashboard" %></li>
 				</ul>
 				<ul class="secmenu ordermanagement orders colonies delivery_locations">
-					<li><%= link_to "Today's Orders" %></li>
-					<li class="<%= active_class(['admin/orders']) %>"><%= link_to "Orders History", admin_orders_path %></li>
+					<li class="<%= active_class(['admin/orders'], 'current') %>"><%= link_to "Today's Orders", current_admin_orders_path %></li>
+					<li class="<%= active_class(['admin/orders'], 'index') %>"><%= link_to "Orders History", admin_orders_path %></li>
 					<li class="<%= active_class(['admin/colonies']) %>"><%= link_to "Colonies", admin_colonies_path %></li>
 					<li class="<%= active_class(['admin/delivery_locations']) %>"><%= link_to "Delivery Locations", admin_delivery_locations_path %></li>
 				</ul>
