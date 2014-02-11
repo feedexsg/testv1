@@ -1,30 +1,30 @@
 <div>
 	<%= f.label "Item Name" %>
-	<%= f.text_field :name %>
+	<%= f.text_field :name, :id => "itemname" %>
 	<%= inline_errors(item, :name) %>
-</div>
+</div><br>
 <div>
 	<%= f.label :price %>
-	<%= f.text_field :price %>
+	<%= f.text_field :price, :id => "itemprice" %>
 	<%= inline_errors(item, :price) %>
-</div>
+</div><br>
 <div>
 	<%= f.label :vendor %>
 	<%= f.text_field :vendor_name, :value => item.vendor.try(:name) %>
 	<%= inline_errors(item, :vendor_name) %>
-</div>
+</div><br>
 <div>
 	<%= f.label "SKU" %>
-	<%= f.text_field :sku %>
+	<%= f.text_field :sku , :id => "itemsku"%>
 	<%= inline_errors(item, :sku) %>
-</div>
+</div><br>
 <div>
 	<%= f.label :category %>
-	<%= f.select :category_id, Category.all.collect{|c| [c.name, c.id]} %>
+	<%= f.select :category_id, Category.all.collect{|c| [c.name, c.id]}, :id => "itemcategory" %>
 	<%= inline_errors(item, :category) %>
-</div>
+</div><br><br>
 <div>
 	<%= f.label :image %>
 	<%= f.file_field :image %>
 	<%= inline_errors(item, :image) %>
-</div>
+</div><br><br>
