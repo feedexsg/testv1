@@ -291,8 +291,14 @@ td a {
 	color:#000000;
 }
 
-a.addnewlineitem {
+.addnewlineitem {
 	
+	color:#232323;
+	font-size:14px;
+}
+
+.dltlineitem {
+	text-decoration: none;
 	color:#232323;
 	font-size:14px;
 }
