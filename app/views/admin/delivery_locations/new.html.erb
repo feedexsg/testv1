@@ -1,9 +1,21 @@
-<%= link_to "< Back", admin_delivery_locations_path %>
+<div id="newitem">
 
-<h1>Add New</h1>
+
+
+<%= link_to "< Back", admin_delivery_locations_path, :class => "backbutton" %>
+
+<h1>Add New Location</h1><hr />
+
+<div id="newitembox">
+
 <%= form_for [:admin, @delivery_location], multipart: true do |f| %>
 	<%= render :partial => "form", locals: { delivery_location: @delivery_location, f: f } %>
 	<div>
-		<%= f.submit "Add New" %>
+		<%= f.submit "Add New", :class =>"submitnewitem" %>
 	</div>
 <% end %>
+
+
+</div><!--end of newitembox-->
+
+</div><!--end of newitem-->	

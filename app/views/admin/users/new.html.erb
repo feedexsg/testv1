@@ -1,9 +1,21 @@
-<%= link_to "< Back", admin_users_path %>
+<div id="newitem">
 
-<h1>Add New</h1>
+
+<%= link_to "< Back", admin_users_path, :class =>"backbutton" %>
+
+<h1>Add New User</h1><hr />
+	
+	<div id="newitembox">
+
+
 <%= form_for [:admin, @user], multipart: true do |f| %>
 	<%= render :partial => "form", locals: { user: @user, f: f } %>
 	<div>
-		<%= f.submit "Add New" %>
+		<%= f.submit "Add New", :class=>"submitnewitem" %>
 	</div>
 <% end %>
+
+</div><!--end of newitembox-->
+
+
+</div><!--end of newitem-->	

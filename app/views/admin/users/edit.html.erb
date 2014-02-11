@@ -1,11 +1,23 @@
-<%= link_to "< Back", admin_users_path %>
+<div id="edititem">
+
+	<%= link_to "< Back", admin_users_path, :class => "backbutton" %>
+
+	<h1>Edit User Details</h1><hr />
+	
+	<div id="newitembox">
 
 <%= form_for [:admin, @user], multipart: true do |f| %>
 	<%= render :partial => "form", locals: { user: @user, f: f } %>
 	<div>
-		<%= f.submit "Update" %>
+		<%= f.submit "Update", :class => "submitedititem" %>
 		<% unless @user.is_admin? %>
 		 | <%= link_to 'Delete User', admin_user_path(@user), method: :delete, confirm: "Are you sure?" %>
 		 <% end %>
 	</div>
 <% end %>
+
+</div><!--end of newitembox-->
+
+
+</div><!--end of edititem-->	
+

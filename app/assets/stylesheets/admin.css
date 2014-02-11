@@ -13,7 +13,7 @@ body {
 	background-position:0px 0px;
 	height:100%;
 	width:100%;
-	min-width:868px;
+	min-width:940px;
 }
 
 @font-face {
@@ -86,7 +86,7 @@ body {
 
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], select {
 	background-color:#ffffff;
 	border:solid 1px #d7d7d7;
 	border-radius: 20px; 
@@ -255,7 +255,7 @@ img.itemthumbnail {
 	height:auto;
 }
 td {
-	padding:10px auto 5px auto;
+	padding:10px !important;
 	text-align: center;
 }
 
@@ -289,6 +289,12 @@ tr.evenrow {
 td a {
 	text-decoration:none;
 	color:#000000;
+}
+
+a.addnewlineitem {
+	
+	color:#232323;
+	font-size:14px;
 }
 
 /*--------------- NEW ITEM / EDIT ITEM---------------*/
@@ -330,6 +336,11 @@ a.backbutton {
 
 .submitedititem {
 	background:url('updatebutton.png');
+}
+
+.submitteditem {
+	background:url('updatebutton_black.png');
+	margin-top: 60px;
 }
 
 /*--------------ALL USERS --------------------*/

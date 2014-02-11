@@ -1,9 +1,22 @@
-<%= link_to "< Back", admin_colonies_path %>
 
-<h1>Add New</h1>
+<div id="newitem">
+
+<%= link_to "< Back", admin_colonies_path, :class => "backbutton" %>
+
+<h1>Add New Colony</h1><hr />
+
+	<div id="newitembox">
+
+
 <%= form_for [:admin, @colony], multipart: true do |f| %>
 	<%= render :partial => "form", locals: { colony: @colony, f: f } %>
 	<div>
-		<%= f.submit "Add New" %>
+		<%= f.submit "Add New", :class => "submitnewitem" %>
 	</div>
 <% end %>
+
+	</div><!--end of newitembox-->
+
+
+
+</div><!--end of newitem-->	

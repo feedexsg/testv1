@@ -1,4 +1,10 @@
-<%= link_to "< Back", admin_users_path %>
+<div id="newitem">
+
+<%= link_to "< Back", admin_users_path, :class => "backbutton" %>
+
+<h1>Add New Credits</h1><hr />
+	
+	<div id="newitembox">
 
 <%= form_for @user, url: add_credits_admin_user_path(@user) do |f| %>
 	<div>
@@ -10,6 +16,12 @@
 		<% end %>
 	</div>
 	<div>
-		<%= f.submit "Update" %>
+		<%= f.submit "Update" , :class => "submitnewitem" %>
 	</div>
 <% end %>
+
+</div><!--end of newitembox-->
+
+
+
+</div><!--end of newitem-->	

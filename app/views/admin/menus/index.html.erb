@@ -1,14 +1,89 @@
+<script>
+
+$( document ).ready(function() {
+
+	$('.menusection').on('click','a', function (){
+
+  	
+  	/* Add new line item*/
+
+  });
+  
+
+});
+
+</script>
+
 <div id="allitems">
 	<%= form_for [:admin, @menu] do |f| %>
-		<h1>Today's Menu</h1><hr />
-		Date: <%= @menu.available_on.strftime("%d %B %Y") %><br/>
+		<h1>Today's Menu</h1><hr /><br>
+		Date: <%= @menu.available_on.strftime("%d %B %Y") %><br/><br>
 		Operation: <%= f.select :status, Menu::Operation %>
 		Operating Hours: <%= f.select :start_time, TimeSelect %> to <%= f.select :end_time, TimeSelect %>
 		<br/><br/>
-		<h1>Items for Sale</h1><hr />
-		<h3>Mains</h1>
+		<h1>Items for Sale</h1><hr /><br>
+
+		<div id="menumain" class="menusection">
+		<h3>Main</h3><br>
+
+		<div class="lineitem">
+			<span>Food Item 1:</span>
 			<%= f.fields_for :items_menus, setup_obj(@menu, :items_menus) do |im| %>
 				<%= im.select :item_id, @main_items.collect{|i| [i.name, i.id]} %>
+
+				<span>Qty: </span><input type="text" id="itemquantity" />
+
+				<span>Last Order: </span><select id="itemlastordertime"> 
+					<option>10 PM</option>
+					<option>11 PM</option>
+
+				</select>
+				
+			
 			<% end %>
+		</div><br><!--end of lineitem-->
+
+		
+
+		<a class="addnewlineitem" href="#">Add New Line Item </a>
+
+	</div><!--end of menumain--> 
+
+
+
+
+		<div id="menuside" class="menusection">
+		<br><br><h3>Side</h3><br>
+
+
+		<div class="lineitem">
+			<span>Food Item 1:</span>
+			<%= f.fields_for :items_menus, setup_obj(@menu, :items_menus) do |im| %>
+				<%= im.select :item_id, @side_items.collect{|i| [i.name, i.id]} %>
+
+				<span>Qty: </span><input type="text" id="itemquantity" />
+
+				<span>Last Order: </span><select id="itemlastordertime"> 
+					<option>10 PM</option>
+					<option>11 PM</option>
+
+				</select>
+				
+			
+			<% end %>
+		</div><br><!--end of lineitem-->
+
+
+		<a class="addnewlineitem" href="#">Add New Line Item </a>
+
+	</div><!--end of menuside--> 
+
+	<%= f.submit "Update", :class =>"submitteditem" %>
+
+
+
+			
 	<% end %>
 </div>
+
+
