@@ -21,6 +21,7 @@ Feedex::Application.routes.draw do
   
   namespace :admin do
     root "menus#index"
+    get 'dashboard' => 'pages#index'
 
     resources :items
     resources :users do

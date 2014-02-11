@@ -3,6 +3,8 @@ class Credit < ActiveRecord::Base
   ## CONSTANTS ##
   Sources = {:admin => "Admin", :direct => "Direct"}
 
+  scope :manual, -> {where(source: Sources[:admin])}
+
   ## VALIDATIONS ##
   validates :source, :amount, :user, presence: true
   validates :source, inclusion: {in: Sources.values, allow_blank: true}
