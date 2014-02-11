@@ -205,9 +205,9 @@ ul.secmenu li {
 ul.feedextopmenu li.activemenu {
 	border-bottom:5px solid #ff7109;
 }
-ul.secmenu li.activemenu{
+/*ul.secmenu li.activemenu{
 	background-color: #ff7109;
-}
+}*/
 
 /*--------------- ALL ITEMS---------------*/
 
@@ -240,14 +240,15 @@ a.addnew img {
 }
 table {
 	margin-top: 30px;
-	font-family: 'proxima_nova_rgregular';
+	/*font-family: 'proxima_nova_rgregular';*/
 
 }
 
 th {
 	background-color: #282828;
 	color:#f4f4f4;
-	padding:10px;
+	padding:5px !important;
+	text-align: center !important;
 }
 img.itemthumbnail {
 	width:200px;

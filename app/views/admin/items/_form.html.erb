@@ -10,7 +10,7 @@
 </div><br>
 <div>
 	<%= f.label :vendor %>
-	<%= f.text_field :vendor_name, :value => item.vendor.try(:name), :id => "itemdesc" %>
+	<%= f.text_field :vendor_name, :value => item.vendor.try(:name) %>
 	<%= inline_errors(item, :vendor_name) %>
 </div><br>
 <div>
