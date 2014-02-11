@@ -19,6 +19,8 @@ class Item < ActiveRecord::Base
         :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
         :url => "/system/:attachment/:id/:style/:filename"
 
+  validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
+
   delegate :name, to: :category, prefix: true
 
   ## CALLBACKS ##
