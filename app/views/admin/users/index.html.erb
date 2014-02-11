@@ -1,13 +1,21 @@
 <div id="allitems">
 	<h1>All Users</h1><hr />
 	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_user_path, class: 'addnew' %>
+	
+	<select class="sortusersdropdown">
+		<option>All</option>
+		<option>Name</option>
+		<option>Email</option>
+		<option>Colony</option>
+	</select>	
+
 	<table width="100%">
 		<tr>
 			<th>User Name</th>
 			<th>Email</th>
 			<th>Colony</th>	
 			<th>Credits YTD</th>
-			<th></th>
+			<th>Edit Credits</th>
 		</tr>
 		<% @users.each do |user| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
@@ -15,8 +23,10 @@
 				<td><%= user.email %></td>
 				<td><%= user.colony %></td>
 				<td><%= user.total_credits %></td>
-				<td><%= link_to 'Edit Credits', credits_admin_user_path(user) %></td>
+				<td><%= link_to raw(image_tag('editcreditbutton.png')), credits_admin_user_path(user) %></td>
 			</tr>
 		<% end %>
 	</table>
 </div>
+
+

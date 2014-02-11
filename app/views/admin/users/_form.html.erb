@@ -2,33 +2,33 @@
 	<%= f.label "User Name" %>
 	<%= f.text_field :name %>
 	<%= inline_errors(user, :name) %>
-</div>
+</div><br>
 <div>
 	<%= f.label :email %>
 	<%= f.text_field :email %>
 	<%= inline_errors(user, :email) %>
-</div>
+</div><br>
 <div>
 	<%= f.label :colony %>
 	<%= f.text_field :colony %>
 	<%= inline_errors(user, :colony) %>
-</div>
+</div><br>
 <% if user.new_record? %>
 	<div>
 		<%= f.label "Password" %>
 		<%= f.password_field :password %>
 		<%= inline_errors(user, :password) %>
-	</div>
+	</div><br>
 	<div>
-		<%= f.label "Confirm Password" %>
+		<%= f.label "Cfm Password" %>
 		<%= f.password_field :password_confirmation %>
 		<%= inline_errors(user, :password_confirmation) %>
-	</div>
+	</div><br>
 <% else %>
 	<div>
 		<%= f.label "Credits YTD" %>
 		<%= user.total_credits %>
-	</div>
+	</div><br><br>
 	<div>
 		<%= f.label "Credits History" %>
 		<table>
@@ -43,5 +43,5 @@
 				</tr>
 				<% end %>
 		</table>
-	</div>
+	</div><br><br>
 <% end %>
