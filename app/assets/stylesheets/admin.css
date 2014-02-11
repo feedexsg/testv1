@@ -18,11 +18,11 @@ body {
 
 @font-face {
     font-family: 'proxima_nova_rgbold';
-    src: url('../fonts/proximanova-bold-webfont.eot');
-    src: url('../fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/proximanova-bold-webfont.woff') format('woff'),
-         url('../fonts/proximanova-bold-webfont.ttf') format('truetype'),
-         url('../fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+    src: url('/assets/fonts/proximanova-bold-webfont.eot');
+    src: url('/assets/fonts/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/proximanova-bold-webfont.woff') format('woff'),
+         url('/assets/fonts/proximanova-bold-webfont.ttf') format('truetype'),
+         url('/assets/fonts/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -32,11 +32,11 @@ body {
 
 @font-face {
     font-family: 'proxima_nova_rgregular';
-    src: url('../fonts/proximanova-regular-webfont.eot');
-    src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/proximanova-regular-webfont.woff') format('woff'),
-         url('../fonts/proximanova-regular-webfont.ttf') format('truetype'),
-         url('../fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+    src: url('/assets/fonts/proximanova-regular-webfont.eot');
+    src: url('/assets/fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/proximanova-regular-webfont.woff') format('woff'),
+         url('/assets/fonts/proximanova-regular-webfont.ttf') format('truetype'),
+         url('/assets/fonts/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -44,11 +44,11 @@ body {
 
 @font-face {
     font-family: 'didot_lt_stdregular';
-    src: url('../fonts/didotltstd-roman-webfont.eot');
-    src: url('../fonts/didotltstd-roman-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/didotltstd-roman-webfont.woff') format('woff'),
-         url('../fonts/didotltstd-roman-webfont.ttf') format('truetype'),
-         url('../fonts/didotltstd-roman-webfont.svg#didot_lt_stdregular') format('svg');
+    src: url('/assets/fonts/didotltstd-roman-webfont.eot');
+    src: url('/assets/fonts/didotltstd-roman-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/didotltstd-roman-webfont.woff') format('woff'),
+         url('/assets/fonts/didotltstd-roman-webfont.ttf') format('truetype'),
+         url('/assets/fonts/didotltstd-roman-webfont.svg#didot_lt_stdregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -105,15 +105,19 @@ input[type="text"], input[type="password"] {
 
 input[type="submit"] {
 	border:0px;
-	background: url('loginbutton.png');
-	background-repeat: no-repeat;
 	width:136px;
 	height:42px;
 	text-indent:-9999px;
 	cursor:pointer;
-	margin-left:40px;
 	color:#FFFFFF;
 
+}
+
+.loginbutton {
+	background: url('loginbutton.png');
+	background-repeat:no-repeat;
+	margin-left:40px;
+	
 }
 
 hr {
@@ -201,9 +205,9 @@ ul.secmenu li {
 ul.feedextopmenu li.activemenu {
 	border-bottom:5px solid #ff7109;
 }
-ul.secmenu li.activemenu{
+/*ul.secmenu li.activemenu{
 	background-color: #ff7109;
-}
+}*/
 
 /*--------------- ALL ITEMS---------------*/
 
@@ -236,14 +240,15 @@ a.addnew img {
 }
 table {
 	margin-top: 30px;
-	font-family: 'proxima_nova_rgregular';
+	/*font-family: 'proxima_nova_rgregular';*/
 
 }
 
 th {
 	background-color: #282828;
 	color:#f4f4f4;
-	padding:5px;
+	padding:5px !important;
+	text-align: center !important;
 }
 img.itemthumbnail {
 	width:200px;
@@ -280,3 +285,86 @@ tr.oddrow {
 tr.evenrow {
 	background-color: #f4f4f4;
 }
+
+td a {
+	text-decoration:none;
+	color:#000000;
+}
+
+/*--------------- NEW ITEM / EDIT ITEM---------------*/
+
+#newitem, #edititem {
+	padding-top:30px;
+	width:90%;
+	height:100%;
+	overflow-x:hidden;
+	z-index:9999;
+	height:auto;
+	margin:0 auto;
+	font-size:2.0em;
+}
+
+#newitem h1, #edititem h1 {
+	margin-top:0px;
+	font-size:30px;
+}
+
+a.backbutton {
+	text-decoration:none;
+	color:#000000;
+	font-size:16px;
+	padding-bottom:20px;
+}
+
+#newitembox {
+	width:450px;
+	margin:30px 0px;
+	background-color: #ffffff;
+	border:3px solid #ea6809;
+	padding:20px;
+}
+
+.submitnewitem {
+	background:url('addnewbutton_orange.png');
+}
+
+.submitedititem {
+	background:url('updatebutton.png');
+}
+
+/*--------------ALL USERS --------------------*/
+
+td.username, td.useremail, td.usercolony, td.usercreditytd, td.usereditcredit {
+	padding:10px;
+	text-align:left;
+}
+
+td.usereditcredit {
+	width:12%;
+}
+
+select.sortusersdropdown {
+	float:right;
+	margin-top:30px;
+	margin-right: 0px;
+}
+
+
+/*------------- EDIT USER-------------------*/
+
+.usercreditshistorytable th, .usercreditshistorytable td {
+	padding:10px;
+	text-align: center;
+}
+
+.usercreditshistorytable {
+	width:80%;
+}
+
+#usercreditsytd {
+	background-color: #efefef;
+	padding:15px;
+}
+
+
+
