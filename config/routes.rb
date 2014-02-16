@@ -15,6 +15,12 @@ Feedex::Application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     resources :users
     resources :menus
+    resources :items do
+      collection do
+        get :available
+        get :sort
+      end
+    end
     resources :sessions, only: [:create, :destroy]
     match "*path", :to => "base#route_not_found", :via => :all
   end
