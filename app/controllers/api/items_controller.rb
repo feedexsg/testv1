@@ -8,6 +8,11 @@ module Api
       respond_with @items
     end
 
+    def show
+      @item = Item.where(id: params[:id]).first
+      respond_with @item
+    end
+
     def available
       @items = Item.available
       respond_with @items    
