@@ -11,15 +11,15 @@ module Api
         user = User.new(user_params)
         generate_auth_key user
         if user.save
-          response = {success: true, success_message: "User has been saved successfully", user: user}
+          @response = {success: true, success_message: "User has been saved successfully", user: user}
         else
-          response = {success: false, error_message: "Invalid user details", errors: user.errors}
+          @response = {success: false, error_message: "Invalid user details", errors: user.errors}
         end
       rescue Exception => e
-        response = {success: false, error_message: "error processing request, please try again later!"}
+        @response = {success: false, error_message: "error processing request, please try again later!"}
         Rails.logger.error "Stacktrace: \n\t#{e.backtrace.join("\n\t")}"
       end
-      respond_with response.to_json, location: ""
+      respond_with @response.to_json, location: ""
     end
     
     def update
@@ -27,20 +27,33 @@ module Api
         user = User.where(id: params[:id], auth_key: params[:auth_key]).first
         if user && params[:user].present?
           if user.update_attributes(user_params)
-            response = {success: true, success_message: "User has been updated successfully"}
+            @response = {success: true, success_message: "User has been updated successfully"}
           else 
-            response = {success: false, error_message: "Please fix the errors", errors: user.errors}
+            @response = {success: false, error_message: "Please fix the errors", errors: user.errors}
           end
         else
-          response = {success: false, error_message: "Either wrong combination of id and auth_token OR missing user parameters to update"}
+          @response = {success: false, error_message: "Either wrong combination of id and auth_token OR missing user parameters to update"}
         end
       rescue Exception => e
-        response = {success: false, error_message: "error processing request, please try again later!"}
+        @response = {success: false, error_message: "error processing request, please try again later!"}
         Rails.logger.error "Stacktrace: \n\t#{e.backtrace.join("\n\t")}"
       end
-      render json: response
+      render json: @response
     end
-    
+
+    def available_credits
+      begin
+        user = User.where(id: params[:id], auth_key: params[:auth_key]).first
+        if user
+          @response = {available_credits: user.available_credits}
+        else
+          @response = {success: false, error_message: "Invalid User", errors: "Invalid user or user not found"}
+        end
+      rescue Exception => e
+        @response = {success: false, error_message: "error processing request, please try again later!"}
+        Rails.logger.error "Stacktrace: \n\t#{e.backtrace.join("\n\t")}"
+      end
+    end
 
     private
 

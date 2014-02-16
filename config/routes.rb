@@ -13,7 +13,11 @@ Feedex::Application.routes.draw do
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
   namespace :api, defaults: {format: 'json'} do
-    resources :users
+    resources :users do
+      member do
+        get :available_credits
+      end
+    end
     resources :menus
     resources :items do
       collection do
