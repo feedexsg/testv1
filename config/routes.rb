@@ -29,6 +29,9 @@ Feedex::Application.routes.draw do
         get :credits
         patch :add_credits
       end
+      collection do
+        get :notify
+      end
     end
     resources :sessions, only: [:new, :create, :destroy]
     resources :orders do
