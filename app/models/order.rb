@@ -11,6 +11,7 @@ class Order < ActiveRecord::Base
 
   ## CALLBACKS ##
   after_create :send_order_notification
+  after_create :deduct_credits
 
   ## INSTANCE METHODS ##
   def description
@@ -21,6 +22,10 @@ class Order < ActiveRecord::Base
 
   ## PRIVATE METHODS ##
   private
+
+  def deduct_credits
+    user.update_attribute(total_credits: user.available_credits)
+  end
 
   def send_order_notification
     Notifier.order_notification(user)
