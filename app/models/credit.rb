@@ -27,7 +27,7 @@ class Credit < ActiveRecord::Base
   private
 
   def update_user_credits
-    user.update_attribute(:total_credits, user.credits.collect(&:amount).sum)
+    user.update_attribute(:total_credits, user.available_credits)
   end
 
   def send_credit_notification
