@@ -11,4 +11,10 @@ class Notifier < ActionMailer::Base
     mail(to: @user.email, subject: "Your order has been placed!")
   end
 
+  def credit_notification(user, credit)
+    @user = user
+    @credit = credit
+    mail(to: @user.email, subject: "Credits have been added to your account!")
+  end
+
 end
