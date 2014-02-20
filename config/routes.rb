@@ -12,9 +12,28 @@ Feedex::Application.routes.draw do
   #   end
   #   resources :posts, concerns: :toggleable
   #   resources :photos, concerns: :toggleable
-
+  namespace :api, defaults: {format: 'json'} do
+    resources :users do
+      member do
+        get :available_credits
+      end
+    end
+    resources :menus
+    resources :items do
+      collection do
+        get :available
+        get :sort
+      end
+    end
+    resources :orders
+    resources :credits
+    resources :sessions, only: [:create, :destroy]
+    match "*path", :to => "base#route_not_found", :via => :all
+  end
+  
   namespace :admin do
     root "menus#index"
+    get 'dashboard' => 'pages#index'
 
     resources :items
     resources :users do
@@ -22,13 +41,21 @@ Feedex::Application.routes.draw do
         get :credits
         patch :add_credits
       end
+      collection do
+        get :notify
+      end
     end
     resources :sessions, only: [:new, :create, :destroy]
-    resources :orders
+    resources :orders do
+      collection do
+        get :current
+      end
+    end
     resources :colonies
     resources :delivery_locations
     resources :menus
 
   end
+  
 
 end

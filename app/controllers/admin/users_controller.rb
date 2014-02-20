@@ -1,9 +1,9 @@
 class Admin::UsersController < Admin::BaseController
 
-  before_filter :load_user, :except => [:index, :new, :create]
+  before_filter :load_user, :except => [:index, :new, :create, :sort]
 
   def index
-    @users = User.all
+    @users = params[:sort].present? ? User.order(params[:sort].downcase) : User.all
   end
 
   def new
@@ -55,6 +55,9 @@ class Admin::UsersController < Admin::BaseController
       flash[:error] = "User cannot be deleted"
     end
     redirect_to admin_users_path
+  end
+
+  def notify
   end
 
   private

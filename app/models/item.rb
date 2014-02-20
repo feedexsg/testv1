@@ -30,6 +30,9 @@ class Item < ActiveRecord::Base
 
 
   ## CLASS METHODS ##
+  def self.available
+    joins(:items_menus).where("items_menus.availability_time > date(?)", Time.now)
+  end
 
 
   ## PRIVATE METHODS ##

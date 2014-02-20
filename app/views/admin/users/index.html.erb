@@ -1,13 +1,13 @@
 <div id="allitems">
 	<h1>All Users</h1><hr />
 	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_user_path, class: 'addnew' %>
-	
-	<select class="sortusersdropdown">
-		<option>All</option>
-		<option>Name</option>
-		<option>Email</option>
-		<option>Colony</option>
-	</select>	
+	<%= form_tag admin_users_path, method: :get, id: 'sort_users' do %>
+		<% if params[:sort].present? %>
+			<%= select_tag "sort", options_for_select(["Name", "Email", "Colony"]), selected: params[:sort], class: "sortusersdropdown" %>
+		<% else %>
+			<%= select_tag "sort", options_for_select(["Name", "Email", "Colony"]), prompt: "Sort By", class: "sortusersdropdown" %>
+		<% end %>
+	<% end %>
 
 	<table width="100%">
 		<tr>
@@ -28,5 +28,8 @@
 		<% end %>
 	</table>
 </div>
-
-
+<script>
+	$('select#sort').change(function(){
+		$('form#sort_users').submit();
+	});
+</script>

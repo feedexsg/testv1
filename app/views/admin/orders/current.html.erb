@@ -1,11 +1,15 @@
 <div id="allitems">
-	<h1>Order History</h1><hr />
+	<h1>Today's Orders</h1>
+	<%= link_to "Send Email", notify_admin_users_path %>
+	<hr />
+	<%= form_tag admin_users_path, method: :get do %>
+		<%= select_tag "location", options_for_select(location_set), selected: params[:location], class: "sortusersdropdown" %>
+		<% end %>
 	<table width="100%">
 		<tr>
 			<th>User</th>
 			<th>Order Description</th>
 			<th>Amount</th>
-			<th>Date</th>
 			<th>Time</th>
 		</tr>
 		<% @orders.each do |order| %>
@@ -13,7 +17,6 @@
 				<td><%= order.user.try(:name) %></td>
 				<td><%= order.description %></td>
 				<td><%= number_to_currency(order.amount) %></td>
-				<td><%= order.created_at %></td>
 				<td><%= order.delivery_time %></td>
 			</tr>
 		<% end %>
