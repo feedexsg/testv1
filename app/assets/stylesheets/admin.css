@@ -13,7 +13,7 @@ body {
 	background-position:0px 0px;
 	height:100%;
 	width:100%;
-	min-width:940px;
+	min-width:1165px;
 }
 
 @font-face {
@@ -152,7 +152,7 @@ ul.feedextopmenu {
 }
 
 ul.feedextopmenu li {
-	width:24.5%;
+	width:19.5%;
 	height:auto;
 	/*margin-left:-2px;*/
 	text-align: center;
@@ -383,5 +383,34 @@ select.sortusersdropdown {
 	padding:15px;
 }
 
+
+/*-----------------CREDIT DASHBOARD------------------*/
+
+ul.creditboxes {
+	display:block;
+	margin:0 auto;
+	margin-top: 50px;
+	width:840px;
+}
+
+ul.creditboxes li {
+	display:inline-block;
+	text-align: center;
+	width:200px;
+	height:180px;
+	background-color:white;
+	margin:auto 30px;
+}
+
+ul.creditboxes h3 {
+	background-color: #282828;
+	padding:10px 0px 10px 0px;
+	color:#efefef;
+
+}
+
+ul.creditboxes li span {
+	font-size:48px;
+}
 
 
