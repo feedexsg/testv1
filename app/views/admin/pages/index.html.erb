@@ -2,12 +2,15 @@
 	<h1>Credit Dashboard</h1><hr/>
 
 	<div class='totalCredits'>
-		Total Credits : <%= number_to_currency(@total_credits) %><br/>
-		Used Credits : <%= number_to_currency(@used_credits) %><br/>
-		Manually Issued : <%= number_to_currency(@manual_credits) %>
+		<ul class="creditboxes">
+		<li><h3>Total Credits</h3> <br><span><%= number_to_currency(@total_credits) %></span></li>
+		<li><h3>Used Credits</h3> <br><span><%= number_to_currency(@used_credits) %></span></li>
+		<li><h3>Manually Issued</h3> <br><span><%= number_to_currency(@manual_credits) %></span></li>
+		</ul>
 	</div>
+	<br><br>
 	<div class='topUp'>
-		<table>
+		<table width="100%">
 			<tr>
 				<th>User</th>
 				<th>Amount</th>
@@ -15,10 +18,12 @@
 				<th>Time</th>
 			</tr>
 			<% @credits.each do |credit| %>
-				<td><%= credit.user.name %></td>
-				<td><%= number_to_currency(credit.amount) %></td>
-				<td><%= credit.created_at.strftime("%d %B, %Y") %></td>
-				<td><%= credit.created_at.strftime("%H : %M") %></td>
+			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td class='creditdashtable'><%= credit.user.name %></td>
+				<td class='creditdashtable'><%= number_to_currency(credit.amount) %></td>
+				<td class='creditdashtable'><%= credit.created_at.strftime("%d %B, %Y") %></td>
+				<td class='creditdashtable'><%= credit.created_at.strftime("%H : %M") %></td>
+			</tr>
 			<% end %>
 		</table>
 	</div>
