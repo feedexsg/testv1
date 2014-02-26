@@ -24,7 +24,8 @@ module Api
     
     def update
       begin
-        user = User.where(id: params[:id], auth_key: params[:auth_key]).first
+        auth_key = request.headers["X-Auth"]
+        user = User.where(id: params[:id], auth_key: auth_key).first
         if user && params[:user].present?
           if user.update_attributes(user_params)
             @response = {success: true, success_message: "User has been updated successfully"}
@@ -43,7 +44,8 @@ module Api
 
     def available_credits
       begin
-        user = User.where(id: params[:id], auth_key: params[:auth_key]).first
+        auth_key = request.headers["X-Auth"]
+        user = User.where(id: params[:id], auth_key: auth_key).first
         if user
           @response = {available_credits: user.available_credits}
         else

@@ -28,7 +28,8 @@ module Api
 
     def destroy
       begin
-        user = User.where(id: params[:id], auth_key: params[:auth_key]).first
+        auth_key = request.headers["X-Auth"]
+        user = User.where(id: params[:id], auth_key: auth_key).first
         if user
           if user.update_attributes(auth_key: nil)
             response = {success: true, success_message: "#{user.name} logged out successfully!"}

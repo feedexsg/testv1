@@ -10,8 +10,10 @@ class Api::BaseController < ApplicationController
   private
   
   def restrict_access
-    user = User.find_by_auth_key(params[:auth_key]) unless params[:auth_key].blank?
+    auth_key = request.headers["X-Auth"]
+    user = User.find_by_auth_key(auth_key) unless auth_key.blank?
     response = {success: false, error_message: "Invalid Key!"} unless user
+    @current_user = user
     render json: response.to_json if response
   end
   
