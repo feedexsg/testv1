@@ -21,7 +21,8 @@ module Api
     private
     def credit_params
       if params[:credit].present?
-        params[:credit].merge!({user_id: @current_user.id})
+        user_id = params[:source] == Credit::Sources[:admin] ? params["user_id"] : @current_user.id
+        params[:credit].merge!({ user_id: user_id })
         return params[:credit].permit(:amount, :user_id, :source)
       end
     end

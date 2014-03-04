@@ -15,7 +15,7 @@ module Api
 
     def available
       @items = Item.available
-      respond_with @items    
+      respond_with @items
     end
 
     # sort by categories

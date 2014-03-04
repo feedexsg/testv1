@@ -47,7 +47,7 @@ module Api
         auth_key = request.headers["X-Auth"]
         user = User.where(id: params[:id], auth_key: auth_key).first
         if user
-          @response = {available_credits: user.available_credits}
+          @response = {success: true, available_credits: user.available_credits}
         else
           @response = {success: false, error_message: "Invalid User", errors: "Invalid user or user not found"}
         end
@@ -55,6 +55,7 @@ module Api
         @response = {success: false, error_message: "error processing request, please try again later!"}
         Rails.logger.error "Stacktrace: \n\t#{e.backtrace.join("\n\t")}"
       end
+      render json: @response
     end
 
     private
