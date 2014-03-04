@@ -20,7 +20,7 @@ module Api
 
     # sort by categories
     def sort
-      category = Category.where(:name => params[:category])
+      category = Category.where(:name => params[:category]).first
       @items = category.present? ? Item.where(category_id: category.id) : []
       respond_with @items    
     end

@@ -5,7 +5,7 @@ module Api
     
     def create
       begin
-        credit = Credit.new(params[:credit])
+        credit = Credit.new(credit_params)
         if credit.save
           @response = {success: true, success_message: "Credit record created", credit: credit}
         else
@@ -18,14 +18,14 @@ module Api
       render json: @response.to_json
     end
 
-  end
-
-  private
-  def credit_params
-    if params[:credit].present?
-      params[:credit].merge!({user_id: @current_user.id})
-      return params[:credit].permit(:amount, :user_id, :source)
+    private
+    def credit_params
+      if params[:credit].present?
+        params[:credit].merge!({user_id: @current_user.id})
+        return params[:credit].permit(:amount, :user_id, :source)
+      end
     end
+
   end
     
 end
