@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
   def description
     desc = ""
     items.each do |item|
-      li = item_list.select{|i| i["id"] == i.id}.first
+      li = item_list.select{|i| item["id"].to_i == i.id}.first
       desc += "#{li.name}, Qty : #{item['quantity']}<br/>" if li
     end
     desc
