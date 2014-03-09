@@ -15,8 +15,10 @@ class Menu < ActiveRecord::Base
   has_many :items, through: :items_menus
 
   accepts_nested_attributes_for :items_menus, allow_destroy: true
-  accepts_nested_attributes_for :main_items_menus, allow_destroy: true
-  accepts_nested_attributes_for :side_items_menus, allow_destroy: true
+  accepts_nested_attributes_for :main_items_menus, allow_destroy: true,
+                                reject_if: proc { |attributes| attributes['item_id'].blank? }
+  accepts_nested_attributes_for :side_items_menus, allow_destroy: true,
+                                reject_if: proc { |attributes| attributes['item_id'].blank? }
 
   ## CALLBACKS ##
 
@@ -31,8 +33,8 @@ class Menu < ActiveRecord::Base
 
   ## PRIVATE METHODS ##
   def assign_time
-    self.start_time = Time.parse(available_on.to_s + " " + self.start_timeselect)
-    self.end_time = Time.parse(available_on.to_s + " " + self.end_timeselect)
+    self.start_time = Time.parse(available_on.to_s + " " + start_timeselect) if start_timeselect
+    self.end_time = Time.parse(available_on.to_s + " " + end_timeselect) if end_timeselect
     return true
   end
 

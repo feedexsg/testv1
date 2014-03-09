@@ -56,6 +56,6 @@ Feedex::Application.routes.draw do
     resources :menus
 
   end
-  
+  root "admin/menus#index"
 
 end

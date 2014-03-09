@@ -25,6 +25,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'paperclip'
 gem 'nested_form'
+gem 'aws-sdk'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
