@@ -77,6 +77,4 @@ Feedex::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
-  S3_URL = "http://ec2-54-201-48-117.us-west-2.compute.amazonaws.com"
 end
