@@ -38,5 +38,6 @@ Feedex::Application.configure do
     authentication:       'plain',
     enable_starttls_auto: true
   }
+  S3_URL = "http://localhost:3000"
 
 end
