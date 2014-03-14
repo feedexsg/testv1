@@ -19,6 +19,7 @@ Feedex::Application.routes.draw do
       end
     end
     resources :menus
+    resources :colonies
     resources :items do
       collection do
         get :available

@@ -2,6 +2,8 @@ module Api
   
   class MenusController < Api::BaseController
     respond_to :json
+
+    skip_before_filter :restrict_access
     
     def index
       @menu = Menu.current
