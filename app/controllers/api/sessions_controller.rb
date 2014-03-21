@@ -11,7 +11,7 @@ module Api
         if user && user.authenticate(params[:password])
           generate_auth_key(user)
           if user.save!
-            response = {success: true, success_message:"#{user.name} logged in successfully!", auth_key: user.auth_key, user_id: user.id}
+            response = {success: true, success_message:"#{user.name} logged in successfully!", auth_key: user.auth_key, user_id: user.id, user: user}
           else
             response = {success: false, error_message: "error processing request, please try again later!"}
           end
