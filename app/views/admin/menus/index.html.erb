@@ -1,31 +1,38 @@
 <div id="allitems">
 	<%= nested_form_for [:admin, @menu] do |f| %>
+
 		<h1>Today's Menu</h1><hr /><br>
 		Date: <%= @menu.available_on.strftime("%d %B %Y") %><br/><br>
 		Operation: <%= f.select :status, Menu::Operation %>
-		Operating Hours: <%= f.select :start_timeselect, TimeSelect %> to <%= f.select :end_timeselect, TimeSelect %>
+		Operating Hours: <%= f.time_select :start_time, {:ampm => true, :time_separator => ""} %> to <%= f.time_select :end_time, {:ampm => true, :time_separator => ""} %>
 		<br/><br/>
+
 		<h1>Items for Sale</h1><hr /><br>
 		<h3>Mains</h1><br>
+
 		<%= f.fields_for :main_items_menus, setup_obj(@menu, :main_items_menus) do |im| %>
 			Food Item <%= im.select :item_id, @main_items.collect{|i| [i.name, i.id]}, prompt: "Select an Item" %>
 			Qty: <%= im.text_field :quantity %>
-			Last Order: <%= im.select :availability_time_select, TimeSelect %>
+			Last Order: <span class="hideMins"><%= im.time_select :availability_time, {:ampm => true, :time_separator => ""} %></span>
 			<%= im.hidden_field :item_type, value: "Main" %>
 			<%= im.link_to_remove "X" , :class=>"dltlineitem" %>
 		<% end %>
+
 		<%= f.link_to_add "Add new line item", :main_items_menus, :class=>"addnewlineitem" %>
 		<br><br><br>
 		<h3>Side</h1><br>
+
 		<%= f.fields_for :side_items_menus, setup_obj(@menu, :side_items_menus) do |im| %>
 			Food Item <%= im.select :item_id, @side_items.collect{|i| [i.name, i.id]}, prompt: "Select an Item" %>
 			Qty: <%= im.text_field :quantity %>
-			Last Order: <%= im.select :availability_time_select, TimeSelect %>
+			Last Order: <span class="hideMins"><%= im.time_select :availability_time, {:ampm => true, :time_separator => ""} %></span>
 			<%= im.hidden_field :item_type, value: "Side" %>
 			<%= im.link_to_remove "X" , :class=>"dltlineitem"%>
 		<% end %>
+
 		<%= f.link_to_add "Add new line item", :side_items_menus, :class=>"addnewlineitem" %>
 		<br/>
 		<%= f.submit "Update", :class=>"submitteditem" %>
+
 	<% end %>
 </div>

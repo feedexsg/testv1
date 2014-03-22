@@ -1,12 +1,10 @@
 class Menu < ActiveRecord::Base
 
   ## CONSTANTS ##
-  attr_accessor :start_timeselect, :end_timeselect
   Operation = {"Open" => 1, "Closed" => 0}
 
   ## VALIDATIONS ##
   validates :available_on, presence: true, uniqueness: { allow_blank: true }
-  validate :assign_time
 
   ## ASSOCIATIONS ##
   has_many :items_menus
@@ -32,10 +30,5 @@ class Menu < ActiveRecord::Base
   end
 
   ## PRIVATE METHODS ##
-  def assign_time
-    self.start_time = Time.parse(available_on.to_s + " " + start_timeselect) if start_timeselect
-    self.end_time = Time.parse(available_on.to_s + " " + end_timeselect) if end_timeselect
-    return true
-  end
 
 end

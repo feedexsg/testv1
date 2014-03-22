@@ -16,9 +16,9 @@ class Admin::MenusController < Admin::BaseController
   private
 
   def menu_params
-    params.require(:menu).permit(:status, :start_timeselect, :end_timeselect, main_items_menus_attributes: [:item_id, :quantity,
-                                 :availability_time_select, :item_type, :_destroy], side_items_menus_attributes: [:item_id, :quantity,
-                                 :availability_time_select, :item_type, :_destroy])
+    params.require(:menu).permit(:id, :status, :start_time, :end_time, main_items_menus_attributes: [:id, :item_id, :quantity,
+                                 :availability_time, :item_type, :_destroy], side_items_menus_attributes: [:id, :item_id, :quantity,
+                                 :availability_time, :item_type, :_destroy])
   end
 
   def load_current_menu

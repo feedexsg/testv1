@@ -414,3 +414,6 @@ ul.creditboxes li span {
 }
 
 
+#menu_start_time_5i, #menu_end_time_5i {display:none;}
+#menu_start_time_4i {margin-right:8px;}
+span.hideMins select:nth-child(odd){display:none;}
