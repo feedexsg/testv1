@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   serialize :items, Array
 
   ## VALIDATIONS ##
-  validates :user, :amount, presence: true
+  validates :user, :amount, :items, presence: true
 
   ## ASSOCIATIONS ##
   belongs_to :user
@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
     desc = ""
     items.each do |item|
       li = item_list.select{|i| item["id"].to_i == i.id}.first
-      desc += "#{li.name}, Qty : #{item['quantity']}<br/>" if li
+      desc += "#{li.name}<br/>" if li
     end
     desc
   end
@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
     total_amt = 0
     items.each do |i|
       item = Item.find_by_id(i["id"])
-      total_amt += (item.price.to_f * i["quantity"].to_i) if item
+      total_amt += item.price.to_f if item
     end
     self.amount = total_amt
   end

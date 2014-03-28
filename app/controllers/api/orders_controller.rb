@@ -16,9 +16,6 @@ module Api
         else
           @response = {success: false, error_message: "Insufficient balance", errors: order.errors}
         end
-      rescue Exception => e
-        @response = {success: false, error_message: "error processing request, please try again later!"}
-        Rails.logger.error "Credits not added. ERROR => #{e.message}"
       end
       render json: @response.to_json
     end
@@ -27,7 +24,7 @@ module Api
     def order_params
       if params[:order].present?
         params[:order].merge!({user_id: @current_user.id})
-        return params[:order].permit(:user_id, :delivery_time, :items => [:id, :quantity])
+        return params[:order].permit(:user_id, :delivery_time, :items => [:id])
       end
     end
 
