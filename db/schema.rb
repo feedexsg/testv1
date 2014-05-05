@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140505061140) do
+ActiveRecord::Schema.define(version: 20140505080721) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -102,8 +102,10 @@ ActiveRecord::Schema.define(version: 20140505061140) do
     t.string   "auth_key"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "colony"
+    t.integer  "colony_id"
   end
+
+  add_index "users", ["colony_id"], name: "index_users_on_colony_id", using: :btree
 
   create_table "vendors", force: true do |t|
     t.string   "name"

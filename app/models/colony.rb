@@ -1,5 +1,7 @@
 class Colony < ActiveRecord::Base
 
+  has_many :users
+
   ## CONSTANTS ##
 
 

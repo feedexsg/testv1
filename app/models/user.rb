@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   include ActiveModel::SecurePassword
   has_secure_password
 
+  belongs_to :colony
+
   ## CONSTANTS ##
 
   ## VALIDATIONS ##
