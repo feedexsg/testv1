@@ -19,8 +19,8 @@ class Item < ActiveRecord::Base
         :storage => :s3,
         :s3_credentials => {
           :bucket => "feedex",
-          :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-          :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+          :access_key_id => 'AKIAJMUB6BJTAHZBBSEQ',
+          :secret_access_key => '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'
         }
 
   validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)

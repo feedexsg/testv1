@@ -21,7 +21,7 @@
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
 				<td><%= link_to user.name, edit_admin_user_path(user) %></td>
 				<td><%= user.email %></td>
-				<td><%= user.colony %></td>
+				<td><%= user.colony.name %></td>
 				<td><%= user.total_credits %></td>
 				<td><%= link_to raw(image_tag('editcreditbutton.png')), credits_admin_user_path(user) %></td>
 			</tr>
