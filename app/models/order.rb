@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   serialize :items, Array
 
   ## VALIDATIONS ##
-  validates :user, :amount, :items, presence: true
+  validates :user, :amount, presence: true
 
   ## ASSOCIATIONS ##
   belongs_to :user

@@ -5,7 +5,9 @@ module Api
     
     def create
       begin
-        order = Order.new(order_params)
+        temp_params = order_params
+        order = Order.new(:user_id => temp_params[:user_id], :delivery_time => temp_params[:delivery_time])
+
         order.calculate_amount
         if @current_user.total_credits > order.amount
           if order.save
