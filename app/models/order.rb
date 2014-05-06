@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
     desc = ""
     items.each do |item|
       li = item_list.select{|i| item["id"].to_i == i.id}.first
-      desc += "#{li.name}<br/>" if li
+      desc += "#{li.name}, Qty : #{item['quantity']} <br/>" if li
     end
     desc
   end
@@ -28,7 +28,7 @@ class Order < ActiveRecord::Base
     total_amt = 0
     items.each do |i|
       item = Item.find_by_id(i["id"])
-      total_amt += item.price.to_f if item
+      total_amt += (item.price.to_f * i["quantity"].to_i) if item
     end
     self.amount = total_amt
   end

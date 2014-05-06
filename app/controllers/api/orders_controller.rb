@@ -24,7 +24,7 @@ module Api
     def order_params
       if params[:order].present?
         params[:order].merge!({user_id: @current_user.id})
-        return params[:order].permit(:user_id, :delivery_time, :items => [:id])
+        return params[:order].permit(:user_id, :delivery_time, :items => [:id, :quantity])
       end
     end
 

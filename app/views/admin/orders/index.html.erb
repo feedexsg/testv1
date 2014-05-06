@@ -6,7 +6,7 @@
 			<th>Order Description</th>
 			<th>Amount</th>
 			<th>Date</th>
-			<th>Time</th>
+			<th>Delivery Time</th>
 			<th>Redeemed?</th>
 		</tr>
 		<% @orders.each do |order| %>
@@ -16,6 +16,7 @@
 				<td><%= number_to_currency(order.amount) %></td>
 				<td><%= order.created_at %></td>
 				<td><%= order.delivery_time %></td>
+				<td><%= order.redeemed %></td>
 			</tr>
 		<% end %>
 	</table>
