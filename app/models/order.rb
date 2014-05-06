@@ -9,6 +9,7 @@ class Order < ActiveRecord::Base
 
   ## ASSOCIATIONS ##
   belongs_to :user
+  has_many :order_items
 
   ## CALLBACKS ##
   after_create :send_order_notification
