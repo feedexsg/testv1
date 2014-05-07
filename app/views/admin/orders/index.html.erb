@@ -15,7 +15,8 @@
 
 				<td>
 				<% order.order_items.each do |i| %>
-					<%= i.amount %> x <%= Item.find(i.items_id).name %> <br>
+					Main : <%= Item.find(i.main_id).name %> ||
+					Side : <%= Item.find(i.side_id).name %> <br>
 
 				<% end %>
 				</td>
