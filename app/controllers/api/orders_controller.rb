@@ -25,13 +25,23 @@ module Api
         # order.calculate_amount
 
         # Get Total Dollar Amount 
-        total_amt = 0
-        order_params[:items].each do |i|
-          item = Item.find_by_id(i["id"])
-          total_amt += (item.price.to_f * i["quantity"].to_i) if item
-        end
+        #total_amt = 0
+        #order_params[:items].each do |i|
+        #  item = Item.find_by_id(i["id"])
+        #  total_amt += (item.price.to_f * i["quantity"].to_i) if item
+        #end
 
-        order.amount = total_amt
+        #order.amount = total_amt
+        
+        # Get Total Dollar Amount
+        total_amt = 0
+        item_sets = order_params[:item_sets]
+        item_sets.each do |i|
+          main_item = Item.find_by_id(i["main_id"])
+          side_item = Item.find_by_id(i["side_id"])
+          total_amt += main_item.price.to_f if main_item
+          total_amt += side_item.price.to_f if side_item
+        end
 
         if @current_user.total_credits > total_amt # order.amount ORDER AMOUNT
           if order.save
@@ -56,7 +66,7 @@ module Api
     def order_params
       if params[:order].present?
         params[:order].merge!({user_id: @current_user.id})
-        return params[:order].permit(:user_id, :delivery_time, :items => [:id, :quantity])
+        return params[:order].permit(:user_id, :delivery_time, :item_sets => [:main_id, :side_id], )
       end
     end
 
