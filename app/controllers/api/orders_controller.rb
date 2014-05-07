@@ -2,6 +2,21 @@ module Api
   
   class OrdersController < Api::BaseController
     respond_to :json
+
+    def redeem
+      @order = Order.where(:id => params[:id]).first
+      if @order
+        if @order.redeemed
+          render json: { success: false, error_message: "Order is already redeemed." }.to_json
+        else
+          @order.redeemed = true
+          @order.save
+          render json: { success: true, success_message: "Order redeemed.", order: @order }.to_json
+        end
+      else
+        render json: { success: false, error_message: "Order doesn't exist.", }.to_json
+      end
+    end
     
     def create
       begin
@@ -34,6 +49,8 @@ module Api
       end
       render json: @response.to_json
     end
+
+
 
     private
     def order_params

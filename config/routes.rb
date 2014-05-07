@@ -26,7 +26,11 @@ Feedex::Application.routes.draw do
         get :sort
       end
     end
-    resources :orders
+    resources :orders do
+      collection do
+        post :redeem
+      end
+    end
     resources :credits
     resources :sessions, only: [:create, :destroy]
     match "*path", :to => "base#route_not_found", :via => :all
