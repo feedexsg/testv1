@@ -32,7 +32,7 @@ module Api
         #end
 
         #order.amount = total_amt
-        
+
         # Get Total Dollar Amount
         total_amt = 0
         item_sets = order_params[:item_sets]
@@ -43,10 +43,12 @@ module Api
           total_amt += side_item.price.to_f if side_item
         end
 
+        order.amount = total_amt
+
         if @current_user.total_credits > total_amt # order.amount ORDER AMOUNT
           if order.save
-            order_params[:items].each do |item|
-              orderitem = OrderItem.new(:order_id => order.id, :items_id => item["id"].to_i, :amount => item["quantity"].to_i) if item
+            order_params[:item_sets].each do |item|
+              orderitem = OrderItem.new(:order_id => order.id, :main_id => item["main_id"].to_i, :side_id => item["side_id"].to_i) if item
               orderitem.save!
             end
             @response = {success: true, success_message: "Order created", order: order}
