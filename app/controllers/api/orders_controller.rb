@@ -3,6 +3,12 @@ module Api
   class OrdersController < Api::BaseController
     respond_to :json
 
+    def index
+      @orders = Order.where(:user_id => @current_user.id, :redeemed => false).order(delivery_time: :desc)
+      render json: @orders.to_json
+
+    end
+
     def redeem
       @order = Order.where(:id => params[:id]).first
       if @order
