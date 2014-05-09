@@ -5,7 +5,54 @@ module Api
 
     def index
       @orders = Order.where(:user_id => @current_user.id, :redeemed => false).order(delivery_time: :desc)
-      render json: @orders.to_json
+
+      @sorted_orders = @orders.group_by do |order|
+        order.delivery_time.to_date
+      end
+
+      # Join all order item sets to a big array
+
+      large_array =[]
+
+      @sorted_orders.each do |group_of_orders|
+        # big_array = []
+        big_hash = {}
+        big_hash["delivery_date"] = group_of_orders.shift
+        item_sets_array = []
+        group_of_orders.each do |order_group|
+          order_group.each do |order|
+            order.order_items.each do |order_item|
+              itemset_hash = {}
+              itemset_hash["main_id"] = order_item.main_id
+              itemset_hash["main_title"] = Item.find(order_item.main_id).name
+              itemset_hash["side_id"] = order_item.side_id
+              itemset_hash["side_title"] = Item.find(order_item.side_id).name
+              itemset_hash["quantity"] = 1
+
+              add_to_array = true
+
+              item_sets_array.each do |check_set|
+                if check_set["main_id"] == itemset_hash["main_id"] && check_set["side_id"] == itemset_hash["side_id"]
+                  add_to_array = false
+                  check_set["quantity"] += 1
+                  break
+                end
+              end
+
+              item_sets_array << itemset_hash if add_to_array
+            end
+            
+          end
+        end
+        item_sets_array.each do |hash_arr|
+          hash_arr.delete("main_id")
+          hash_arr.delete("side_id")
+        end
+        big_hash["item_sets"] = item_sets_array
+        large_array << big_hash
+      end
+
+      render json: large_array 
 
     end
 
