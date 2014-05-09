@@ -4,7 +4,7 @@ module Api
     respond_to :json
 
     def index
-      @orders = Order.where(:user_id => @current_user.id, :redeemed => false).order(delivery_time: :desc)
+      @orders = Order.where(:user_id => @current_user.id, :redeemed => true).order(delivery_time: :desc)
 
       @sorted_orders = @orders.group_by do |order|
         order.delivery_time.to_date
