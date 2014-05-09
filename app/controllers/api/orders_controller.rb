@@ -57,18 +57,28 @@ module Api
     end
 
     def redeem
-      @order = Order.where(:id => params[:id]).first
-      if @order
-        if @order.redeemed
-          render json: { success: false, error_message: "Order is already redeemed." }.to_json
-        else
-          @order.redeemed = true
-          @order.save
-          render json: { success: true, success_message: "Order redeemed.", order: @order }.to_json
-        end
-      else
-        render json: { success: false, error_message: "Order doesn't exist.", }.to_json
+      order_references = params[:order_ids]
+      order_references.each do |order_ref|
+        order = Order.where(:id => order_ref.to_i).first
+        order.redeemed = true if order
+        order.save if order
       end
+      render json: { success: true, success_message: "Orders redeemed.", order_ids: order_references }.to_json
+
+
+
+      #@order = Order.where(:id => params[:id]).first
+      #if @order
+      #  if @order.redeemed
+      #    render json: { success: false, error_message: "Order is already redeemed." }.to_json
+      #  else
+      #    @order.redeemed = true
+      #    @order.save
+       #   render json: { success: true, success_message: "Order redeemed.", order: @order }.to_json
+      #  end
+      #else
+      #  render json: { success: false, error_message: "Order doesn't exist.", }.to_json
+      #end
     end
     
     def create
