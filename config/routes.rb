@@ -29,6 +29,7 @@ Feedex::Application.routes.draw do
     resources :orders do
       collection do
         post :redeem
+        get :current
       end
     end
     resources :credits
