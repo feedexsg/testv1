@@ -1,7 +1,7 @@
 class Admin::OrdersController < Admin::BaseController
 
   def index
-    @orders = Order.all
+    @orders = Order.all.order(created_at: :desc)
   end
 
   def current
