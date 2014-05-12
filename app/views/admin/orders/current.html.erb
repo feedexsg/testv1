@@ -11,22 +11,16 @@
 			<th>Delivery Time</th>
 			<th>Redeemed?</th>
 		</tr>
-		<% @orders.each do |order| %>
+		<% @sorted_orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
-				<td><%= order.user.try(:name) %></td>
-				<td>
-				<% index = 1 %>
-				<% order.order_items.each do |i| %>
-					<%= index %>.
-					<%= Item.find(i.main_id).name %> ||
-					<%= Item.find(i.side_id).name %> <br>
-					<% index += 1 %>
-				<% end %>
-				</td>
-				<td><%= number_to_currency(order.amount) %></td>
-				<td><%= order.delivery_time %></td>
-				<td><%= order.redeemed %></td>
+
 			</tr>
 		<% end %>
 	</table>
+
+	<%= @sorted_orders %>
+
+
+
+
 </div>

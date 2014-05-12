@@ -17,7 +17,7 @@ module Api
       @sorted_orders.each do |group_of_orders|
         # big_array = []
         big_hash = {}
-        big_hash["delivery_date"] = date
+        big_hash["delivery_date"] = group_of_orders.shift
         item_sets_array = []
         group_of_orders.each do |order_group|
           order_group.each do |order|
