@@ -1,6 +1,6 @@
 <div id="allitems">
 	<h1>Today's Orders</h1>
-	<%= link_to raw(image_tag('sendemailbutton.png')), notify_admin_users_path, class: 'addnew' %>
+	<% #link_to raw(image_tag('sendemailbutton.png')), notify_admin_users_path, class: 'addnew' %>
 	<hr />
 	<%= form_tag admin_users_path, method: :get do %>
 		<%= select_tag "location", options_for_select(location_set), selected: params[:location], class: "sortusersdropdown" %>
@@ -10,14 +10,24 @@
 			<th>User</th>
 			<th>Order Description</th>
 			<th>Amount</th>
-			<th>Time</th>
+			<th>Delivery Time</th>
+			<th>Redeemed?</th>
 		</tr>
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
 				<td><%= order.user.try(:name) %></td>
-				<td><%= order.description %></td>
+				<td>
+				<% index = 1 %>
+				<% order.order_items.each do |i| %>
+					<%= index %>.
+					<%= Item.find(i.main_id).name %> ||
+					<%= Item.find(i.side_id).name %> <br>
+					<% index += 1 %>
+				<% end %>
+				</td>
 				<td><%= number_to_currency(order.amount) %></td>
 				<td><%= order.delivery_time %></td>
+				<td><%= order.redeemed %></td>
 			</tr>
 		<% end %>
 	</table>
