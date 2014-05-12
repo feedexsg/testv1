@@ -1,26 +1,30 @@
 <div id="allitems">
 	<h1>Today's Orders</h1>
+	<h3>Showing Unredeemed Orders only</h3>
 	<% #link_to raw(image_tag('sendemailbutton.png')), notify_admin_users_path, class: 'addnew' %>
 	<hr />
 	
 	<table width="100%">
 		<tr>
-			<th>User</th>
+			<th>Username</th>
 			<th>Order Description</th>
-			<th>Amount</th>
-			<th>Delivery Time</th>
 			<th>Redeemed?</th>
 		</tr>
-		<% @sorted_orders.each do |order| %>
+		<% @large_array.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+			<td><%= order["username"] %></td>
+			<td><% order["item_sets"].each do |item_set| %>
+					<%= item_set["main_title"] %> +
+					<%= item_set["side_title"] %> X
+					<%= item_set["quantity"] %> set(s)
+					<br>
+				<% end %>
+			</td>
+			<td>NO</td>
+
 
 			</tr>
 		<% end %>
 	</table>
-
-	<%= @sorted_orders %>
-
-
-
 
 </div>

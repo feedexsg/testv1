@@ -15,8 +15,8 @@
 
 				<td>
 				<% order.order_items.each do |i| %>
-					Main : <%= Item.find(i.main_id).name %> ||
-					Side : <%= Item.find(i.side_id).name %> <br>
+					<%= Item.find(i.main_id).name %> +
+					<%= Item.find(i.side_id).name %> <br>
 
 				<% end %>
 				</td>
