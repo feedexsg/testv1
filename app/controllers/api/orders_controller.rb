@@ -57,7 +57,7 @@ module Api
     end
 
     def current
-      @orders = Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
+      @orders = Order.today.where(:user_id => @current_user.id, :redeemed => false) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
       
       # Refactor - order ids
       order_ids = []
