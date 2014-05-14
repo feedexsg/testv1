@@ -55,6 +55,7 @@ Feedex::Application.routes.draw do
     resources :orders do
       collection do
         get :current
+        get :current_redeemed
       end
     end
     resources :colonies

@@ -1,10 +1,9 @@
 <div id="allitems">
 	<h1>Today's Orders</h1>
-	<h3>Showing <b>Unredeemed</b> Orders only    <%= link_to "See Redeemed Orders", current_redeemed_admin_orders_path %></h3>
-	<% #link_to raw(image_tag('sendemailbutton.png')), notify_admin_users_path, class: 'addnew' %>
+	<h3>Showing <b>Redeemed</b> Orders only   <%= link_to "See Unredeemed Orders", current_admin_orders_path %></h3></h3>
 	<hr />
-	
-	<table width="100%">
+
+		<table width="100%">
 		<tr>
 			<th>Username</th>
 			<th>Order Description</th>
@@ -20,7 +19,7 @@
 					<br>
 				<% end %>
 			</td>
-			<td>NO</td>
+			<td>YES</td>
 
 
 			</tr>
@@ -28,3 +27,4 @@
 	</table>
 
 </div>
+	
