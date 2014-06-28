@@ -29,6 +29,8 @@ gem "paperclip", "~> 4.1"
 gem 'nested_form'
 gem 'aws-sdk'
 
+gem 'devise'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
