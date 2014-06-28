@@ -30,6 +30,9 @@ gem 'nested_form'
 gem 'aws-sdk'
 
 gem 'devise'
+gem 'tlsmail'
+
+gem 'owlcarousel-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

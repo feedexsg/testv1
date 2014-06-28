@@ -4,18 +4,18 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  include ActiveModel::SecurePassword
-  has_secure_password
+  #include ActiveModel::SecurePassword
+  #has_secure_password
 
   belongs_to :colony
 
   ## CONSTANTS ##
 
   ## VALIDATIONS ##
-  validates :name, :email, :password_digest, presence: true
-  validates :email, uniqueness: { allow_blank: true }
-  validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, allow_blank: true }
-  validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }
+  #validates :name, :email, :password_digest, presence: true
+  #validates :email, uniqueness: { allow_blank: true }
+  #validates :email, format: { with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/, allow_blank: true }
+  #validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }
 
   ## ASSOCIATIONS ##
   has_many :credits, dependent: :destroy
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :credits
 
   ## CALLBACKS ##
-  after_create :send_welcome_notification
+  #after_create :send_welcome_notification
 
   ## INSTANCE METHODS ##
   def available_credits
