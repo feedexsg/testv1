@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "feedexfeeding@gmail.com"
 
   def welcome_notification(user)
     @user = user

@@ -67,6 +67,8 @@ Feedex::Application.routes.draw do
 
   resources :sessions
 
+  resources :users, only: [:new, :create]
+
   root "welcome#index"
 
 end
