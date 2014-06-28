@@ -63,6 +63,10 @@ Feedex::Application.routes.draw do
     resources :menus
 
   end
+
+
+  resources :sessions
+
   root "welcome#index"
 
 end
