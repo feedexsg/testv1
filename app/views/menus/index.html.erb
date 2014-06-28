@@ -1,8 +1,158 @@
-
-<% @main_items.each do |main_item| %>
-
-	<%= image_tag main_item.image.url, width: 500, height: 312 %>
-
+<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+<%= javascript_tag do %>
+	window.sideItems = '<%= raw @side_items.to_json %>';
 <% end %>
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+  	
 
+    $('#main-slider').flexslider({
+    	animation: "slide",
+    	itemWidth: 500,
+    	maxItems: 1,
+    	controlNav: false,
+    	slideshow: false,
+    	start: function() {
+    		var index = $('#main-slider').data('flexslider').currentSlide;
+    		var currentItemName = $('#mainitem'+index).data('url')
+
+    		window.mainPrice = gon.main_items[index]["price"];
+
+    		$('#main-display').text(currentItemName.toString() + " " + window.mainPrice.toString());
+
+    		$('#smoov-form').append('<input type="hidden" name="item_name_1" value="Main" />');
+    		$('#smoov-form').append('<input type="hidden" id="item_description_1" name="item_description_1" value="' + currentItemName +'" />');
+    		$('#smoov-form').append('<input type="hidden" name="item_quantity_1" value="1" />');
+    		$('#smoov-form').append('<input type="hidden" id="item_amount_1" name="item_amount_1" value="' + window.mainPrice +'" />');
+
+    	},
+    	after: function(){
+    		var index = $('#main-slider').data('flexslider').currentSlide;
+    		var currentItemName = $('#mainitem'+index).data('url');
+
+    		window.mainPrice = gon.main_items[index]["price"];
+
+    		var totalPrice = Number(window.sidePrice) + Number(window.mainPrice);
+
+    		$('#money-display').text("Total Price: " + totalPrice.toString());
+
+    		$("#item_description_1").val(currentItemName.toString());
+    		$("#item_amount_1").val(window.mainPrice.toString());
+    		$("#total_amount").val(totalPrice.toString());
+
+    		var concat = "0db5a5b4cc2840009ff2c2c98a520582" + "gab.on.rails@gmail.com" + "pay" + "SampleReference" + totalPrice + "SGD";
+
+    		var signature = CryptoJS.SHA1(concat);
+
+    		$("#signature").val(signature);
+
+    		$('#main-display').text(currentItemName.toString() + " " + window.mainPrice.toString());
+
+    		
+    	}
+
+    });
+
+    $('#side-slider').flexslider({
+    	animation: "slide",
+    	itemWidth: 500,
+    	maxItems: 1,
+    	controlNav: false,
+    	slideshow: false,
+    	start: function() {
+    		var index = $('#side-slider').data('flexslider').currentSlide;
+    		var currentItemName = $('#sideitem'+index).data('url')
+
+    		window.sidePrice = gon.side_items[index]["price"];
+
+    		$('#side-display').text(currentItemName.toString() + " " + window.sidePrice.toString());
+
+    		var totalPrice = Number(window.sidePrice) + Number(window.mainPrice);
+
+    		$('#money-display').text("Total Price: " + totalPrice.toString());
+
+    		$('#smoov-form').append('<input type="hidden" name="item_name_2" value="Side" />');
+    		$('#smoov-form').append('<input type="hidden" id="item_description_2" name="item_description_2" value="' + currentItemName + '" />');
+    		$('#smoov-form').append('<input type="hidden" name="item_quantity_2" value="1" />');
+    		$('#smoov-form').append('<input type="hidden" id="item_amount_2" name="item_amount_2" value="'+ window.sidePrice +'" />');
+    		$('#smoov-form').append('<input type="hidden" id="total_amount" name="total_amount" value="'+ totalPrice +'" />');
+
+    		var concat = "0db5a5b4cc2840009ff2c2c98a520582" + "gab.on.rails@gmail.com" + "pay" + "SampleReference" + totalPrice + "SGD";
+
+
+    		var signature = CryptoJS.SHA1(concat);
+
+    		$('#smoov-form').append('<input type="hidden" id="signature" name="signature" value="' + signature + '" />');
+
+    	},
+    	after: function(){
+    		var index = $('#side-slider').data('flexslider').currentSlide;
+    		var currentItemName = $('#sideitem'+index).data('url')
+
+    		window.sidePrice = gon.side_items[index]["price"];
+
+    		$('#side-display').text(currentItemName.toString() + " " + window.sidePrice.toString());
+
+    		var totalPrice = Number(window.sidePrice) + Number(window.mainPrice);
+
+    		$("#item_description_2").val(currentItemName.toString());
+    		$("#item_amount_2").val(window.sidePrice.toString());
+    		$("#total_amount").val(totalPrice.toString());
+
+
+    		var concat = "0db5a5b4cc2840009ff2c2c98a520582" + "gab.on.rails@gmail.com" + "pay" + "SampleReference" + totalPrice + "SGD";
+
+    		var signature = CryptoJS.SHA1(concat);
+
+    		$("#signature").val(signature);
+
+    		$('#money-display').text("Total Price: " + totalPrice.toString());
+    	}
+    });
+
+  });
+</script>
+<style>
+	.flex-direction-nav a  {
+    	overflow: visible;
+    	font-size: 10px;
+	}
+</style>
+<div id="main-slider" class="flexslider" style="width: 500px;">
+	<ul class="slides">
+		<% @main_items.each_with_index do |main_item, index| %>
+			<li id="mainitem<%= index %>" data-url="<%= main_item.name %>"><%= image_tag main_item.image.url, width: 500, height: 312 %></li>
+		<% end %>
+	</ul>
+</div>
+
+<div id="side-slider" class="flexslider" style="width: 500px;">
+	<ul class="slides">
+		<% @side_items.each_with_index do |side_item, index| %>
+			<li id="sideitem<%= index %>" data-url="<%= side_item.name %>"><%= image_tag side_item.image.url, width: 500, height: 312 %></li>
+		<% end %>
+	</ul>
+</div>
+<span id="main-display"></span>
+<br>
+<span id="side-display"></span>
+<br>
+<span id="money-display"></span>
+
+
+<form id="smoov-form" action="https://sandbox.smoovpay.com/access" method="post">
+	<input type="hidden" name="action" value="pay" />
+	<input type="hidden" name="currency" value="SGD" />
+	<input type="hidden" name="version" value="2.0" />
+	<input type="hidden" name="merchant" value="gab.on.rails@gmail.com" />
+	<input type="hidden" name="ref_id" value="SampleReference" />
+	<input type="hidden" name="delivery_charge" value="0.00" />
+	<input type="hidden" name="tax_amount" value="0.00" />
+	<input type="hidden" name="tax_percentage" value="0.00" />
+	<input type="hidden" name="str_url" value="" />
+	<input type="hidden" name="success_url" value="http://YourWebSite/SuccessPage" />
+	<input type="hidden" name="cancel_url" value="http://YourWebSite" />
+	<input type="hidden" name="signature_algorithm" value="sha1" /><br>
+	<input type="image" src="https://www.smoovpay.com/img/btn_smoovpay_v1.png" name="submit v2" alt="SmoovPay!" />
+</form>
 

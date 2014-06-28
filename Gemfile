@@ -32,7 +32,8 @@ gem 'aws-sdk'
 gem 'devise'
 gem 'tlsmail'
 
-gem 'owlcarousel-rails'
+gem 'flexslider'
+gem 'gon'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

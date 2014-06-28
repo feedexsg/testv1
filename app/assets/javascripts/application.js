@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.flexslider
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery_nested_form
