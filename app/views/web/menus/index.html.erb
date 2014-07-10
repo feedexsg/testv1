@@ -3,10 +3,14 @@
 <head>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<link rel="stylesheet" type="text/css" href="/assets/menus.css">
 	<%= csrf_meta_tags %>
 </head>
-<body ng-controller="maincontroller">
-	{{1+1}}
-	{{name.test}}
+<body ng-controller="maincontroller" id="web">
+    <div id= "cover">
+		{{1+1}}
+		{{name.test}}
+
+	</div>
 </body>
 </html>
