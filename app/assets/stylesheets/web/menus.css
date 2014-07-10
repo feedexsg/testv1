@@ -8,10 +8,19 @@
   font: 400 0.875em/1.25 Muli;
   color: black;
   z-index: 1;
+  left: 100px;
+}
+
+#logocopy {
+  position: fixed;
+  z-index: 2;
+  top: 50px;
+  left: 20px;
+  width:  20%;
 }
 
 #cover {
-	position: absolute;
+	position: relative;
 	top: 200px;
 	left: 200px;
 	width: 200px;
@@ -19,7 +28,46 @@
 	background-color: white;
 	z-index: 2;
 	color: black;
+  -webkit-transition:translate(3em, 0),  linear 1s;
+  transition:translate(3em, 0), linear 1s;
+}
+#cover :hover {
+  left: 300px;
+}
+.cover :hover {
+  left: 300px;
+}
+table {
+  position: relative;
+  left:50px;
+  border: black, thick, solid;
 }
 
+ tr :hover {
+  left: 100px;
+}
 
-for web app menus css
+.menusidepic {
+  position: ;
+}
+.menumainpic {
+  position: static;
+}
+
+.sample-show-hide {
+  -webkit-transition:all linear 1s;
+  transition:all linear 1s;
+}
+
+.sample-show-hide.ng-leave {
+  opacity:1;
+}
+.sample-show-hide.ng-leave-active {
+  opacity:0;
+}
+.sample-show-hide.ng-enter {
+  opacity: 0;
+}
+.sample-show-hide.ng-enter-active {
+  opacity: 1;
+}

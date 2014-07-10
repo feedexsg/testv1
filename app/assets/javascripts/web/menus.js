@@ -1,5 +1,21 @@
-var web = angular.module("web", []);
+var web = angular.module("web", ['ngAnimate']);
 web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menusgetter) {
+    $scope.name = {}
+    $scope.name.test = "wangjiadong"
+    $scope.name.show = true;
+    Menusgetter.get().success(function(data) {
+        $scope.name.side = []
+        $scope.name.main = []
+        console.log(data)
+        $scope.name.test = data
+        for (i = 0; i <= data['side_items'].length - 1; i++) {
+            $scope.name.side.push(data['side_items'][i]['original_url'])
+        }
+        for (i = 0; i <= data['main_items'].length - 1; i++) {
+            $scope.name.main.push(data['main_items'][i]['original_url'])
+        }
+
+    })
 
 });
 
