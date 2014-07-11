@@ -8,24 +8,58 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular-animate.js"></script>
 	<%= csrf_meta_tags %>
 </head>
-<body ng-controller="maincontroller" id="web">
-	<img id = 'logocopy' src="/assets/logo_copy.png">
-	<button ng-click="name.show = !name.show">Button</button>
-	<div class = 'sample-show-hide' ng-if="name.show">Hello World</div>
-	<div id= "cover" class ='cover'>
-		{{1+1}}
-		{{name.side}}
+<body ng-controller="maincontroller">
+	<!--fixed items-->
+	<div >
+		<ul>
+			<li>
+				Today's Menu
+			</li><br>
+			<li>
+				My Wallet
+			</li><br>
+			<li>
+				Settings
+			</li><br>
+			<li>
+				Log Out
+			</li><br>
+		</ul>
+	</div>
+
+	<div id= 'back'>	
+		<img id = 'logocopy' src="/assets/logo_copy.png">
+		<button ng-click="name.show = !name.show" onclick="move()">Button</button>
+		<div class = 'sample-show-hide' ng-if="name.show">Hello World</div>	
+		<p>{{name.leng}} is the length</p>
+		
+	</div>
+	<script type="text/javascript">
+	function move() {
+		var a = document.getElementById('back')
+		var b = document.getElementById('logocopy')
+		a.style.left == "200px" ? a.style.left = '0px' : a.style.left = '200px';
+		b.style.left == "220px" ? b.style.left = '20px' : b.style.left = '220px';
+		a.style.zIndex== '9' ? a.style.zIndex=1 : a.style.zIndex = 9 ;
+	}
+	</script>
+	<div id = "content">
 		<div id = 'side' >
 			<table>
 				<tr >
-					<td ng-repeat="pic in name.side"><img class= 'menusidepic' src={{pic}}></td>
+					<td><button >LEFT</button></td>
+					<td ng-repeat="pic in name.side"><img class= 'menusidepic' ng-src={{pic.original_url}}></td>
+					<td><button>RIGHT</button></td>
+
 				</tr>
 			</table>
 		</div>
 		<div id = 'main' >
 			<table>
 				<tr >
-					<td ng-repeat="pic in name.main"><img class= 'menumainpic' src={{pic}}></td>
+					<td><button >LEFT</button></td>
+					<td ng-repeat="pic in name.main"><img class= 'menumainpic' ng-src={{pic.original_url}}></td>
+					<td><button>RIGHT</button></td>
 				</tr>
 			</table>
 		</div>
