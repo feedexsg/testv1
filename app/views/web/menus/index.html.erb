@@ -10,7 +10,7 @@
 </head>
 <body ng-controller="maincontroller">
 	<!--fixed items-->
-	<div >
+	<div id='navi'>
 		<ul>
 			<li>
 				Today's Menu
@@ -31,7 +31,11 @@
 		<img id = 'logocopy' src="/assets/logo_copy.png">
 		<button ng-click="name.show = !name.show" onclick="move()">Button</button>
 		<div class = 'sample-show-hide' ng-if="name.show">Hello World</div>	
-		<p>{{name.leng}} is the length</p>
+		<p>{{name.mainleng}} is the  main length</p>
+		<p>{{name.sideindex}} is the side index</p>
+		<p>{{name.mainindex}} is the main index</p>
+		<p>{{name.mainimage.original_url}} this is the url</p>
+		<p>this is the side url         {{name.sideimage.original_url}} </p>
 		
 	</div>
 	<script type="text/javascript">
@@ -45,23 +49,14 @@
 	</script>
 	<div id = "content">
 		<div id = 'side' >
-			<table>
-				<tr >
-					<td><button >LEFT</button></td>
-					<td ng-repeat="pic in name.side"><img class= 'menusidepic' ng-src={{pic.original_url}}></td>
-					<td><button>RIGHT</button></td>
-
-				</tr>
-			</table>
+					<button class = 'imgbtn' class='left' ng-click='name.sideindex = name.sideindex -1' ng-if='!name.check(0,0)'>LEFT</button>
+					<img class= 'pic' id = 'menusidepic' ng-src={{name.sideimage.original_url}}>
+					<button class = 'imgbtn' class='right' ng-click='name.sideindex = name.sideindex +1' ng-if='!name.check(0,1)'>RIGHT</button>
 		</div>
 		<div id = 'main' >
-			<table>
-				<tr >
-					<td><button >LEFT</button></td>
-					<td ng-repeat="pic in name.main"><img class= 'menumainpic' ng-src={{pic.original_url}}></td>
-					<td><button>RIGHT</button></td>
-				</tr>
-			</table>
+				 	<button class = 'imgbtn' class='left' ng-click='name.mainindex = name.mainindex -1' ng-if='!name.check(1,0)'>LEFT</button>
+					<img class= 'pic' id= 'menumainpic' ng-src={{name.mainimage.original_url}}>
+					<button class = 'imgbtn' class='right' ng-click='name.mainindex = name.mainindex +1' ng-if='!name.check(1,1)'>RIGHT</button>
 		</div>
 	</div>
 </body>

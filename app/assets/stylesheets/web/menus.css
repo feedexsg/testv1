@@ -29,6 +29,7 @@
 table {
   position: relative;
   left:50px;
+  right: 0px;
   border: black, thick, solid;
 }
 .menusidepic {
@@ -36,4 +37,23 @@ table {
 }
 .menumainpic {
   position: static;
+}
+#navi {
+  position: fixed;
+}
+.pic {
+  position: relative;
+  left: 100px;
+  width: 600px;
+  height: 400px;
+}
+.imgbtn {
+  position: absolute;
+
+}
+.imgbtn .left {
+  left: 750px;
+}
+.imgbtn .right {
+  left: 50px;
 }
