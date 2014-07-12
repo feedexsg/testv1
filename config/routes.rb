@@ -1,6 +1,5 @@
 Feedex::Application.routes.draw do
 
-  devise_for :users
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -64,13 +63,9 @@ Feedex::Application.routes.draw do
     resources :menus
 
   end
-
-
-  resources :sessions
-
-  resources :menus
-
-
+  namespace :web do
+    resources :menus
+  end
   root "welcome#index"
-
+  
 end

@@ -1,0 +1,59 @@
+#back {
+  position: fixed;
+  left: 200px;
+  top:0px;
+  height: 100%;
+  width: 100%;
+  background: url("/assets/background.jpg") rgb(255, 255, 255);
+  background-repeat: repeat-y;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: scroll;
+  z-index: 1;
+}
+
+#logocopy {
+  position: fixed;
+  z-index: 2;
+  top: 50px;
+  left: 20px;
+  width:  20%;
+}
+
+#content {
+  position: absolute;
+  top: 100px;
+  left: 200px;
+  z-index: 2;
+}
+table {
+  position: relative;
+  left:50px;
+  right: 0px;
+  border: black, thick, solid;
+}
+.menusidepic {
+  position: ;
+}
+.menumainpic {
+  position: static;
+}
+#navi {
+  position: fixed;
+}
+.pic {
+  position: relative;
+  left: 100px;
+  width: 600px;
+  height: 400px;
+}
+.imgbtn {
+  position: absolute;
+
+}
+.imgbtn .left {
+  left: 750px;
+}
+.imgbtn .right {
+  left: 50px;
+}

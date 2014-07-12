@@ -1,0 +1,25 @@
+body #web {
+  height: 100%;
+  background: url("/assets/background.jpg") rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  font: 400 0.875em/1.25 Muli;
+  color: black;
+  z-index: 1;
+}
+
+#cover {
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	width: 200px;
+	height: 200px;
+	background-color: white;
+	z-index: 2;
+	color: black;
+}
+
+
+for web app menus css
