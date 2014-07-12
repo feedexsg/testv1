@@ -10,13 +10,21 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.show = true;
 
     // the index of the images shown in both main and side 
-    $scope.name.mainindex = 0;
-    $scope.name.sideindex = 0;
+    $scope.name.mainnow = 0;
+    $scope.name.mainnext = 0;
+    $scope.name.mainimgshow = true;
+
+    $scope.name.sidenow = 0;
+    $scope.name.sidenext = 0;
+    $scope.name.sideimgshow = true;
 
     // the pic shown in main and side
-    $scope.name.mainimage = 0;
-    $scope.name.sideimage = 0;
+    // $scope.name.mainimage = 0;
+    // $scope.name.sideimage = 0;
 
+    //the animation class of main and side
+    $scope.name.mainclass = 'img1'
+    $scope.name.sideclass = 'img1'
     // get the array of image urls
     Menusgetter.get().success(function(data) {
         $scope.name.side = []
@@ -33,40 +41,69 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     // to detect and update runtime
     $scope.$watch('name.main', function() {
         $scope.name.mainleng = $scope.name.main == null ? 0 : $scope.name.main.length;
-        $scope.$watch('name.mainindex', function() {
-            $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
-        })
+        // $scope.$watch('name.mainindex', function() {
+        //     $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
+        // })
     })
-    $scope.$watch('name.mainindex', function() {
-        $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
-    })
+
+    // $scope.$watch('name.mainindex', function() {
+    //     $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
+    // })
+    // $scope.$watch('name.sideindex', function() {
+    //     $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
+    // })
     // to detect and update runtime
     $scope.$watch('name.side', function() {
         $scope.name.sideleng = $scope.name.side == null ? 0 : $scope.name.side.length;
-        $scope.$watch('name.sideindex', function() {
-            $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
-        })
-    })
-    $scope.$watch('name.sideindex', function() {
-        $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
+        // $scope.$watch('name.sideindex', function() {
+        //     $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
+        // })
     })
 
 
-    // update the index of the maindishes and sidedishes
-    $scope.name.check = function(type, position) {
-        if (type == 0 && position == 0) {
-            return $scope.name.sideindex == 0;
-        } else if (type == 1 && position == 0) {
-            return $scope.name.mainindex == 0;
-        } else if (type == 0 && position == 1) {
-            return $scope.name.sideindex == $scope.name.sideleng - 1;
+    $scope.name.maincheckfun = function(val) {
+        if (val == 0) {
+            console.log("LEFT SIDE")
+            $scope.name.mainclass = "img1"
+            $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow - 1 + $scope.name.mainleng) % ($scope.name.mainleng)
         } else {
-            return $scope.name.mainindex == $scope.name.mainleng - 1;
+            console.log("RIGHT SIDE")
+            $scope.name.mainclass = "img2"
+            $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow - 1 + $scope.name.mainleng) % ($scope.name.mainleng)
         }
-        $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
-        $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
-    }
+        $scope.name.mainimgshow = !$scope.name.mainimgshow
+        $scope.name.mainnow = $scope.name.mainnext
+        console.log($scope.name.mainnext)
+        console.log($scope.name.mainclass)
 
+    }
+    $scope.name.sidecheckfun = function(val) {
+        if (val == 0) {
+            console.log("LEFT SIDE")
+            $scope.name.sideclass = "img1"
+            $scope.name.sidenext = ($scope.name.sideleng == 0) ? 0 : ($scope.name.sidenow - 1 + $scope.name.sideleng) % ($scope.name.sideleng)
+        } else {
+            console.log("RIGHT SIDE")
+            $scope.name.sideclass = "img2"
+            $scope.name.sidenext = ($scope.name.sideleng == 0) ? 0 : ($scope.name.sidenow - 1 + $scope.name.sideleng) % ($scope.name.sideleng)
+        }
+        $scope.name.sideimgshow = !$scope.name.sideimgshow
+        $scope.name.sidenow = $scope.name.sidenext
+        console.log($scope.name.sidenext)
+        console.log($scope.name.sideclass)
+    }
+    // update the index of the maindishes and sidedishes
+    // $scope.name.check = function(type, position) {
+    //     if (type == 0 && position == 0) {
+    //         return $scope.name.sideindex == 0;
+    //     } else if (type == 1 && position == 0) {
+    //         return $scope.name.mainindex == 0;
+    //     } else if (type == 0 && position == 1) {
+    //         return $scope.name.sideindex == $scope.name.sideleng - 1;
+    //     } else {
+    //         return $scope.name.mainindex == $scope.name.mainleng - 1;
+    //     }
+    // }
 
 });
 

@@ -33,8 +33,8 @@
 		<div class = 'sample-show-hide' ng-if="name.show">Hello World</div>	
 		<p>{{name.mainleng}} is the  main length</p>
 		<p>{{name.sideindex}} is the side index</p>
-		<p>{{name.mainindex}} is the main index</p>
-		<p>{{name.mainimage.original_url}} this is the url</p>
+		<p>{{name.mainnow}} is the main index</p>
+		<p>{{name.main[name.mainnow]}} this is the url</p>
 		<p>this is the side url         {{name.sideimage.original_url}} </p>
 		
 	</div>
@@ -49,14 +49,16 @@
 	</script>
 	<div id = "content">
 		<div id = 'side' >
-					<button class = 'imgbtn' class='left' ng-click='name.sideindex = name.sideindex -1' ng-if='!name.check(0,0)'>LEFT</button>
-					<img class= 'pic' id = 'menusidepic' ng-src={{name.sideimage.original_url}}>
-					<button class = 'imgbtn' class='right' ng-click='name.sideindex = name.sideindex +1' ng-if='!name.check(0,1)'>RIGHT</button>
+					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
+					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
+					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 		</div>
 		<div id = 'main' >
-				 	<button class = 'imgbtn' class='left' ng-click='name.mainindex = name.mainindex -1' ng-if='!name.check(1,0)'>LEFT</button>
-					<img class= 'pic' id= 'menumainpic' ng-src={{name.mainimage.original_url}}>
-					<button class = 'imgbtn' class='right' ng-click='name.mainindex = name.mainindex +1' ng-if='!name.check(1,1)'>RIGHT</button>
+				 	<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
+					<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+					<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
 </body>
