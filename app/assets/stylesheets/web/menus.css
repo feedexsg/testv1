@@ -26,18 +26,7 @@
   left: 200px;
   z-index: 2;
 }
-table {
-  position: relative;
-  left:50px;
-  right: 0px;
-  border: black, thick, solid;
-}
-.menusidepic {
-  position: ;
-}
-.menumainpic {
-  position: static;
-}
+
 #navi {
   position: fixed;
 }
@@ -48,6 +37,7 @@ table {
 .side {
   top: 100px;
 }
+
 .img1 {
   position: absolute;
   left: 100px;
@@ -120,11 +110,6 @@ table {
 .img2.ng-leave{
   opacity: 1;
   left: 100px;
-}
-
-.imgbtn {
-  position: absolute;
-
 }
 
 #mainleft{
