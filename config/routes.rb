@@ -63,9 +63,13 @@ Feedex::Application.routes.draw do
     resources :menus
 
   end
+
   namespace :web do
     resources :menus
   end
+
+  resources :users
+
   root "welcome#index"
   
 end
