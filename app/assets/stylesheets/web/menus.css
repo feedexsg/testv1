@@ -1,6 +1,6 @@
 #back {
   position: fixed;
-  left: 200px;
+  left: 0px;
   top:0px;
   height: 100%;
   width: 100%;
@@ -9,7 +9,8 @@
   background-size: cover;
   background-position: center center;
   background-attachment: scroll;
-  z-index: 1;
+  z-index: 9;
+  box-shadow: -10px 10px 5px black;
 }
 
 #logocopy {
@@ -29,6 +30,7 @@
 
 #navi {
   position: fixed;
+  font-size: 12pt;
 }
 
 .main {

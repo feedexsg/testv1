@@ -11,32 +11,34 @@
 <body ng-controller="maincontroller">
 	<!--fixed items-->
 	<div id='navi'>
-		<ul>
-			<li>
-				Today's Menu
-			</li><br>
-			<li>
-				My Wallet
-			</li><br>
-			<li>
-				Settings
-			</li><br>
-			<li>
-				Log Out
-			</li><br>
-		</ul>
+		<table>
+			<tr>
+				<td>	</td>
+				<td>Today's Menu</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>
+					My Wallet
+				</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>
+					Settings
+				</td>
+			</tr>
+			<tr>
+				<td>	</td>
+				<td>Log Out</td>	
+			</tr>
+		</table>
 	</div>
 
 	<div id= 'back'>	
 		<img id = 'logocopy' src="/assets/logo_copy.png">
 		<button ng-click="name.show = !name.show" onclick="move()">Button</button>
-		<div class = 'sample-show-hide' ng-if="name.show">Hello World</div>	
-		<p>{{name.mainleng}} is the  main length</p>
-		<p>{{name.sideindex}} is the side index</p>
-		<p>{{name.mainnow}} is the main index</p>
-		<p>{{name.main[name.mainnow]}} this is the url</p>
-		<p>this is the side url         {{name.sideimage.original_url}} </p>
-		
+
 	</div>
 	<script type="text/javascript">
 	function move() {
@@ -44,7 +46,7 @@
 		var b = document.getElementById('logocopy')
 		a.style.left == "200px" ? a.style.left = '0px' : a.style.left = '200px';
 		b.style.left == "220px" ? b.style.left = '20px' : b.style.left = '220px';
-		a.style.zIndex== '9' ? a.style.zIndex=1 : a.style.zIndex = 9 ;
+		a.style.zIndex== '1' ? a.style.zIndex='9' : a.style.zIndex = '1' ;
 	}
 	</script>
 	<div id = "content">
