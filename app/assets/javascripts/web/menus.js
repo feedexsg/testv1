@@ -6,10 +6,14 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
 
     // test use only variables, temperary, will be deleted later
     $scope.name = {}
-    $scope.name.test = "wangjiadong"
-    $scope.name.show = true;
+    $scope.name.test = function(obj) {
+        $scope.name.divshow = obj;
+        console.log($scope.name.divshow);
+    }
+
 
     // the index of the images shown in both main and side 
+
     $scope.name.mainnow = 0;
     $scope.name.mainnext = 0;
     $scope.name.mainimgshow = true;
@@ -18,9 +22,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.sidenext = 0;
     $scope.name.sideimgshow = true;
 
-    // the pic shown in main and side
-    // $scope.name.mainimage = 0;
-    // $scope.name.sideimage = 0;
+    $scope.name.divshow = 1;
 
     //the animation class of main and side
     $scope.name.mainclass = 'img1'
