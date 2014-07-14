@@ -1,11 +1,11 @@
-background */
+/*background */
 /*background 1, content 2, logo 10, navi 9, content 1-2*/
 
 #back {
   position: fixed;
   left: 300px;
   top:0px;
-  height: 1000px;
+  height: 100%;
   width: 100%;
   background: url("/assets/background.jpg");
   background-repeat: no-repeat;

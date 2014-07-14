@@ -42,32 +42,25 @@
 	</div>
 
 	<script>
-	function flip(obj) {
-		var a1 = document.getElementById('content1');
-		var a2 = document.getElementById('content2');
-		var a3 = document.getElementById('content3');
-		var a4 = document.getElementById('content4');
-		a1.style.zIndex = '1';
-		a2.style.zIndex = '1';
-		a3.style.zIndex = '1';		
-		a4.style.zIndex = '1';
-		var a = document.getElementById('content'+obj)
-		a.style.zIndex = '2';
-	}
+	// function flip(obj) {
+	// 	var a1 = document.getElementById('content1');
+	// 	var a2 = document.getElementById('content2');
+	// 	var a3 = document.getElementById('content3');
+	// 	var a4 = document.getElementById('content4');
+	// 	a1.style.zIndex = '1';
+	// 	a2.style.zIndex = '1';
+	// 	a3.style.zIndex = '1';		
+	// 	a4.style.zIndex = '1';
+	// 	var a = document.getElementById('content'+obj)
+	// 	a.style.zIndex = '2';
+	// }
 
-	function move() {
-		var a = document.getElementById('back')
-		var b = document.getElementById('logocopy')
-		a.style.left == "200px" ? a.style.left = '0px' : a.style.left = '200px';
-		b.style.left == "220px" ? b.style.left = '20px' : b.style.left = '220px';
-		a.style.zIndex== '1' ? a.style.zIndex='9' : a.style.zIndex = '1' ;
-	}
 	</script>
-	<div id = "content1" class='div1' ng-if='name.divshow == 1'>
+	<div  class='div1' ng-if='name.divshow == 1'>
 		<div id='contenttitle'></div>
 		
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT1</button>
+					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
 					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
 					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
@@ -79,9 +72,9 @@
 					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
-	<div id = "content2" class='div1' ng-if='name.divshow == 2'>
+	<div  class='div1' ng-if='name.divshow == 2'>
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT2</button>
+					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
 					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
 					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
@@ -93,9 +86,9 @@
 					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
-	<div id = "content3" class='div1' ng-if='name.divshow == 3'>
+	<div  class='div1' ng-if='name.divshow == 3'>
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT3</button>
+					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
 					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
 					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
@@ -107,9 +100,9 @@
 					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
-		<div id = "content4" class='div1' ng-if='name.divshow == 4'>
+		<div class='div1' ng-if='name.divshow == 4'>
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT4</button>
+					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
 					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
 					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>

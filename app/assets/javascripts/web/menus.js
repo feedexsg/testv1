@@ -8,7 +8,6 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name = {}
     $scope.name.test = function(obj) {
         $scope.name.divshow = obj;
-        console.log($scope.name.divshow);
     }
 
 
