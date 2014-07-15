@@ -27,6 +27,12 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.mainclass = 'img1'
     $scope.name.sideclass = 'img1'
     // get the array of image urls
+
+    $scope.name.foodselect = []
+    $scope.name.price = 0;
+
+
+
     Menusgetter.get().success(function(data) {
         $scope.name.side = []
         $scope.name.main = []
@@ -107,7 +113,29 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     // }
     $scope.name.sure = function(obj) {
         console.log('in')
-        obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3')
+        obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3');
+        if (obj == 0) {
+            if ($scope.name.sideclass == 'img3') {
+                $scope.name.foodselect.push($scope.name.side[$scope.name.sidenow])
+                $scope.name.price += parseInt($scope.name.side[$scope.name.sidenow].price);
+                console.log("side in")
+            } else {
+                $scope.name.foodselect.pop();
+                $scope.name.price -= parseInt($scope.name.side[$scope.name.sidenow].price);
+                console.log('side out')
+            }
+        } else {
+            if ($scope.name.mainclass == 'img3') {
+                $scope.name.foodselect.push($scope.name.main[$scope.name.mainnow])
+                $scope.name.price += parseInt($scope.name.main[$scope.name.mainnow].price);
+                console.log('main in')
+            } else {
+                $scope.name.foodselect.pop();
+                $scope.name.price -= parseInt($scope.name.main[$scope.name.mainnow].price);
+                console.log('main out')
+            }
+        }
+        console.log($scope.name.foodselect)
     }
 
     $scope.$watch('name.divshow', function() {
@@ -136,8 +164,24 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             $scope.name.pagetitle = 'Log Out'
         }
     })
+    $scope.$watch('name.step', function() {
+        if ($scope.name.step == 1) {
+            $scope.name.pagetitle = "Lunch Menu";
+            $scope.name.pagefoot = "ADD TO CART";
+        } else if ($scope.name.step == 2) {
+            $scope.name.pagetitle = "Summary";
+            $scope.name.pagefoot = "CHECK OUT"
+        } else if ($scope.name.step == 3) {
+            $scope.name.pagetitle = "Mode Of Payment";
+            $scope.name.pagefoot = "NEXT"
+        } else if ($scope.name.step == 4) {
+            $scope.name.pagetitle = "Confirmation";
+            $scope.name.pagefoot = "AWSOME"
+        }
+    })
     $scope.name.test = function(obj) {
         $scope.name.divshow = obj;
+        // $scope.name.foodselect.push($scope.name.mainnow)
     }
 });
 

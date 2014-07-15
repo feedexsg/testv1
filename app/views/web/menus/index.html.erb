@@ -57,21 +57,26 @@ html, body {
 	<div class='contentfoot'>
 		<div id = 'footcover'>
 			{{name.pagefoot}}
+			<button ng-click="name.step = name.step%4 +1">gogogo</button>
+		</div>
+		<div id='footpprice' ng-if='name.divshow==1 && name.step == 1 && name.price != 0'>
+			{{name.price}}
+			
 		</div>
 	</div>
 
 	<div  class='div1' ng-if='name.divshow == 1'>	
-		<div id='chooseitem'>
+		<div class='div2' ng-if = 'name.step ==1'>
 			<div id = 'side' >
 				<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
-				<img ng-class= 'name.sideclass' ng-click="name.sure(0)" id='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-				<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+				<img ng-class= 'name.sideclass' ng-click="name.sure(0)" id="side" ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+				<img ng-class= 'name.sideclass' id='side' ng-if='!name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 				<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 			</div>
 			<div id = 'main' >
 				<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
 				<img ng-class= 'name.mainclass' ng-click="name.sure(1)" id="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-				<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+				<img ng-class= 'name.mainclass' id="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
 				<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 			</div>
 			<script>
@@ -94,8 +99,18 @@ html, body {
 			// }
 			</script>
 		</div>
-		<div>
-			
+		<div class = 'div2' ng-if = 'name.step ==2'>
+			<table>
+				<tr ng-repeat='food in name.foodselect'><td>{{food.name}}</td></tr>
+			</table>
+		</div>
+		<div class = 'div2' ng-if = 'name.step ==3'>
+				
+		</div>
+		<div class = 'div2' ng-if = 'name.step ==4'>
+			<table>
+				<tr ng-repeat='food in name.foodselect'><td>{{food.name}}4444444</td></tr>
+			</table>
 		</div>
 	</div>
 	<div  class='div1' ng-if='name.divshow == 2'>
