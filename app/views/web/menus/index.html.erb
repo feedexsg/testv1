@@ -8,31 +8,38 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.14/angular-animate.js"></script>
 	<%= csrf_meta_tags %>
 </head>
-<body ng-controller="maincontroller">
+<style type="text/css">
+	html, body {
+		height: 100%
+	}
+</style>
+<body ng-controller="maincontroller" id = 'menubody'>
 	<!--fixed items-->
 
 	<div id='navi'>
-		<img id = 'logocopy' src="/assets/logo_copy.png">
-		<table id='navitable'>
-			<tr>
-				<td><button  ng-click="name.test(1)" class='navibutton'>Today's Menu</button></td>
-			</tr>
-			<tr >
-				<td><button  ng-click="name.test(2)"  class='navibutton'>My Wallet</button></td>
-			</tr>
-			<tr>
+		<div id='navicover'>
+			<img id = 'logocopy' src="/assets/logo_copy.png">
+			<table id='navitable'>
+				<tr>
+					<td><button  ng-click="name.test(1)" class='navibutton'>Today's Menu</button></td>
+				</tr>
+				<tr >
+					<td><button  ng-click="name.test(2)"  class='navibutton'>My Wallet</button></td>
+				</tr>
+				<tr>
 
-				<td>
-					<button ng-click="name.test(3)"  class='navibutton'>Settings</button>
-				</td>
-			</tr>
-			<tr>
-				<td><button ng-click="name.test(4)"  class='navibutton'>Log Out</button></td>
-			</tr>
-		</table>
-		<script>
+					<td>
+						<button ng-click="name.test(3)"  class='navibutton'>Settings</button>
+					</td>
+				</tr>
+				<tr>
+					<td><button ng-click="name.test(4)"  class='navibutton'>Log Out</button></td>
+				</tr>
+			</table>
+			<script>
 
-		</script>
+			</script>
+		</div>
 	</div>
 
 	<div id= 'back'>	
@@ -40,78 +47,68 @@
 		<!-- <button ng-click="name.show = !name.show" onclick="move()">Button</button> -->
 
 	</div>
+	<div class='contenttitle'>
 
-	<script>
-	// function flip(obj) {
-	// 	var a1 = document.getElementById('content1');
-	// 	var a2 = document.getElementById('content2');
-	// 	var a3 = document.getElementById('content3');
-	// 	var a4 = document.getElementById('content4');
-	// 	a1.style.zIndex = '1';
-	// 	a2.style.zIndex = '1';
-	// 	a3.style.zIndex = '1';		
-	// 	a4.style.zIndex = '1';
-	// 	var a = document.getElementById('content'+obj)
-	// 	a.style.zIndex = '2';
-	// }
+	</div>
+	<div class='contentfoot'>
+	</div>
 
-	</script>
-	<div  class='div1' ng-if='name.divshow == 1'>
-		<div id='contenttitle'></div>
-		
+	<div  class='div1' ng-if='name.divshow == 1'>	
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
-					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
-					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
+			<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
+			<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+			<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
+			<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 		</div>
 		<div id = 'main' >
-				 	<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
-					<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
+			<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
+			<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
 	<div  class='div1' ng-if='name.divshow == 2'>
-		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
-					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
-					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
+		<div id='remaining'>
+			<div id='remainword'>
+				<p id='remainvalue'>REMAINING VALUE</p>
+				<P id='remaindollar'>$ 12.00</p>
+			</div>
 		</div>
-		<div id = 'main' >
-				 	<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
-					<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
+		<div id='topup'>
+			<div id='topuppanel'>
+				<p id='topupword'>TOP-UP AMOUNT</p>
+				<button id='topupbtn'>$10 MINUMUM</button>
+			</div>
+			
 		</div>
+
 	</div>
 	<div  class='div1' ng-if='name.divshow == 3'>
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
-					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
-					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
+			<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
+			<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+			<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
+			<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 		</div>
 		<div id = 'main' >
-				 	<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
-					<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
+			<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
+			<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
-		<div class='div1' ng-if='name.divshow == 4'>
+	<div class='div1' ng-if='name.divshow == 4'>
 		<div id = 'side' >
-					<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
-					<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-					<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
-					<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
+			<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
+			<img ng-class= 'name.sideclass' class='side' ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+			<img ng-class= 'name.sideclass' class='side' ng-if='!name.sideimgshow'ng-src={{name.side[name.sidenow]['original_url']}}>
+			<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 		</div>
 		<div id = 'main' >
-				 	<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
-					<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-					<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
+			<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
+			<img ng-class= 'name.mainclass' class="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<img ng-class= 'name.mainclass' class="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+			<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 		</div>
 	</div>
 
