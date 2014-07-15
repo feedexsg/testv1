@@ -6,9 +6,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
 
     // test use only variables, temperary, will be deleted later
     $scope.name = {}
-    $scope.name.test = function(obj) {
-        $scope.name.divshow = obj;
-    }
+
 
 
     // the index of the images shown in both main and side 
@@ -22,7 +20,9 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.sideimgshow = true;
 
     $scope.name.divshow = 1;
-
+    $scope.name.step = 1;
+    $scope.name.pagetitle = "Lunch Menu"
+    $scope.name.pagefoot = "ADD TO CART"
     //the animation class of main and side
     $scope.name.mainclass = 'img1'
     $scope.name.sideclass = 'img1'
@@ -105,7 +105,40 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     //         return $scope.name.mainindex == $scope.name.mainleng - 1;
     //     }
     // }
+    $scope.name.sure = function(obj) {
+        console.log('in')
+        obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3')
+    }
 
+    $scope.$watch('name.divshow', function() {
+        if ($scope.name.divshow == 1) {
+            if ($scope.name.step == 1) {
+                $scope.name.pagetitle = "Lunch Menu";
+                $scope.name.pagefoot = "ADD TO CART";
+            } else if ($scope.name.step == 2) {
+                $scope.name.pagetitle = "Summary";
+                $scope.name.pagefoot = "CHECK OUT"
+            } else if ($scope.name.step == 3) {
+                $scope.name.pagetitle = "Mode Of Payment";
+                $scope.name.pagefoot = "NEXT"
+            } else {
+                $scope.name.pagetitle == "Confirmation";
+                $scope.name.pagefoot = "AWSOME"
+            }
+        } else if ($scope.name.divshow == 2) {
+            $scope.name.pagetitle = "My Wallet";
+            $scope.name.pagefoot = "ADD VALUE"
+        } else if ($scope.name.divshow == 3) {
+            $scope.name.pagetitle = "Settings"
+            $scope.name.pagefoot = "SAVE CHANGES"
+
+        } else {
+            $scope.name.pagetitle = 'Log Out'
+        }
+    })
+    $scope.name.test = function(obj) {
+        $scope.name.divshow = obj;
+    }
 });
 
 /*http get colony index*/
@@ -121,6 +154,7 @@ web.factory('Colonygetter', function($http) {
 
         }
     }
+
 });
 
 /*http items api*/
