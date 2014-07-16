@@ -432,7 +432,10 @@
 .cartnum {
   width: 25%;
 }
+#paymentmode {
+  color: white;
 
+}
 
 
 
@@ -506,8 +509,9 @@
 }
 #settingtable {
   position: absolute;
-  left: 30%;
-  right: 0px;
+  left: 20%;
+  width: 396px;
+  /*right: 0px;*/
   top: 0px;
   /*bottom: 0px;*/
   /*border: black, 3px, solid;*/
@@ -531,6 +535,15 @@
   #footpprice {
 
   width: 40%;
+}
+#settingtable {
+  position: absolute;
+  left: 20%;
+  width: 60%;
+  /*right: 0px;*/
+  top: 0px;
+  /*bottom: 0px;*/
+  /*border: black, 3px, solid;*/
 }
 
 }

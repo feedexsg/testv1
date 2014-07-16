@@ -21,28 +21,30 @@ html, body {
 			<img id = 'logocopy' src="/assets/logo_copy.png">
 			<table id='navitable'>
 				<tr>
-					<td><button  ng-click="name.test(1)"  onclick='classchange(this)' class='navibuttonc'>Today's Menu</button></td>
+					<td><button  ng-click="name.test(1)"  ng-class='name.buttonclass[0]'>Today's Menu</button></td>
 				</tr>
 				<tr >
-					<td><button  ng-click="name.test(2)"  onclick='classchange(this)' class='navibutton'>My Wallet</button></td>
+					<td><button  ng-click="name.test(2)"  ng-class='name.buttonclass[1]'>My Wallet</button></td>
 				</tr>
 				<tr>
 
 					<td>
-						<button ng-click="name.test(3)"  onclick='classchange(this)' class='navibutton'>Settings</button>
+						<button ng-click="name.test(3)"   ng-class='name.buttonclass[2]'>Settings</button>
 					</td>
 				</tr>
 				<tr>
-					<td><button ng-click="name.test(4)"  onclick='classchange(this)' class='navibutton'>Log Out</button></td>
+					<td><button class='navibutton' >Log Out</button></td>
 				</tr>
 			</table>
-			<script>
-			function classchange(obj) {
-				var a = document.getElementsByClassName('navibuttonc');
-				a[0].className = 'navibutton';
-				obj.className = 'navibuttonc';
-			}
-			</script>
+			 <script>
+
+			// function classchange(obj) {
+			// 	var a = document.getElementsByClassName('navibuttonc');
+			// 	a[0].className = 'navibutton';
+			// 	obj.className = 'navibuttonc';
+			// }<button ng-click="name.test(4)"   ng-class='name.buttonclass[3]'>Log Out</button>
+			// <%=button_to 'Log Out', root_path, method: :get,:class => 'navibutton' ,data: {confirm: "Are You Sure To Leave Feedex"}%>
+			 </script>
 		</div>
 	</div>
 
@@ -54,18 +56,17 @@ html, body {
 	<div class='contenttitle'>
 		<p>{{name.pagetitle}}</p>
 		<div id='cartimg'>
-			{{12}}
+			{{name.foodselect.length}}
 			<img src="/assets/cart.png" alt="Hello world">
 		</div>
 	</div>
 	<div class='contentfoot'>
 
 		<div id = 'footcover'>
-
-	<P ng-if='name.price != 0'>{{name.pagefoot}}</P>
-	<p ng-if='name.price == 0'> Please Choose Your Food</p>
-			<button ng-click="name.step = name.step%4 +1" ng-if='name.price != 0'>	<P ng-if='name.price != 0'>{{name.pagefoot}}</P>
-	<p ng-if='name.price == 0'> </p></button> 
+		
+	<P>{{name.pagefoot}}</P>
+	<!-- <p ng-if='name.price == 0'> Please Choose Your Food</p> -->
+			<button ng-click="name.footchange()" ng-if='name.price != 0 || name.divshow != 1'><P ng-if='0'>{{name.pagefoot}}</P><p ng-if='0'> </p></button> 
 	<!-- there is bug here, so i put stuff on the button, pls do not delete -->
 		</div>
 		<div id='footpprice' ng-if='name.divshow==1 && name.step != 4 && name.price != 0'>
@@ -116,12 +117,17 @@ html, body {
 					<td class='cartnum' rowspan ='2'> <img src="/assets/delete.png"></td>
 				</tr>
 				<tr>
-					<td>vendor</td>
+					<td>{{food.vendor_id}}</td>
 				</tr>
 			</table>
 		</div>
-		<div class = 'div2' ng-if = 'name.step ==3'>
-
+		<div class = 'div2' ng-if = 'name.step ==3' id='paymentmode'>
+			<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p>
+			<p>Please select your mode of payment</p>
+			<form action=''>
+				<input type='radio' ng-model='name.pay' value="Cash">Cash<br>
+				<input type='radio' ng-model='name.pay' value="Credit">Credit<br>
+			</form>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
 			<table>
@@ -147,14 +153,14 @@ html, body {
 		</div>
 		<div  class='div1' ng-if='name.divshow == 3'>
 			<div id='settingpanel'>
-				<table id='settingtable'>
-					<tr><td>EMAIL ADDRESS</td></tr>
-					<tr><td><input placeholder='someone@somewhere.com'></td></tr>
-					<tr><td>Change the e-mail address you use to login will also change the e-mail address that we use to contact you.</td></tr>
-					<tr><td>PASSWORD</td></tr>
-					<tr><td><input type='password'></td></tr>
-					<tr><td>PHONE NUMBER</td></tr>
-					<tr><td><input type='number'></td></tr>
+				<table id='settingtable' style='background-color:rgba(0,0,0,0.6);'>
+					<tr><td style="color:grey;">EMAIL ADDRESS</td></tr>
+					<tr><td><input placeholder='someone@somewhere.com' style='width:60%;font-size: 2em;'></td></tr>
+					<tr><td style='color:orange'>Change the e-mail address you use to login will also change the e-mail address that we use to contact you.</td></tr>
+					<tr><td style="color:grey;">PASSWORD</td></tr>
+					<tr><td><input type='password' style='width:60%;'></td></tr>
+					<tr><td style="color:grey;">PHONE NUMBER</td></tr>
+					<tr><td><input type='tel' style='width:60%;font-size: 2em;'></td></tr>
 				</table>
 			</div>
 		</div>

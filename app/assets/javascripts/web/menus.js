@@ -31,7 +31,14 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.foodselect = []
     $scope.name.price = 0;
 
+    $scope.name.pay = 'Cash';
 
+
+    $scope.name.buttonclass = ['navibuttonc', 'navibutton', 'navibutton', 'navibutton']
+
+
+    // temperary value, change to real one soon !!!!
+    // $scope.name.remainvalue = 30；
 
     Menusgetter.get().success(function(data) {
         $scope.name.side = []
@@ -143,7 +150,10 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         if ($scope.name.divshow == 1) {
             if ($scope.name.step == 1) {
                 $scope.name.pagetitle = "Lunch Menu";
+                // if ($scope.name.price != 0)
                 $scope.name.pagefoot = "ADD TO CART";
+                // else
+                // $scope.name.pagefoot = "Please select your meal";
             } else if ($scope.name.step == 2) {
                 $scope.name.pagetitle = "Summary";
                 $scope.name.pagefoot = "CHECK OUT"
@@ -181,9 +191,25 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         }
     })
     $scope.name.test = function(obj) {
+        $scope.name.buttonclass[$scope.name.divshow - 1] = 'navibutton'
         $scope.name.divshow = obj;
+        $scope.name.buttonclass[obj - 1] = 'navibuttonc'
         // $scope.name.foodselect.push($scope.name.mainnow)
     }
+    $scope.name.footchange = function() {
+        if ($scope.name.divshow == 1) {
+            // if ($scope.name.step == 3 && $scope.name.remainvalue < $scope.name.price) {
+
+            // } else {
+            $scope.name.step = $scope.name.step % 4 + 1;
+        } else {
+            // $scope.name.divshow = 1;
+        }
+    }
+    // $scope.$watch('name.pay', function() {
+    //     console.log($scope.name.pay)
+    // })
+
 });
 
 /*http get colony index*/
