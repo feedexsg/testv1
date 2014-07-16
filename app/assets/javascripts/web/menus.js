@@ -80,7 +80,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         if (val == 0) {
             console.log("LEFT SIDE")
             $scope.name.mainclass = "img1"
-            $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow - 1 + $scope.name.mainleng) % ($scope.name.mainleng)
+            $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow + 1 + $scope.name.mainleng) % ($scope.name.mainleng)
         } else {
             console.log("RIGHT SIDE")
             $scope.name.mainclass = "img2"
@@ -89,6 +89,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         $scope.name.mainimgshow = !$scope.name.mainimgshow
         $scope.name.mainnow = $scope.name.mainnext
         console.log($scope.name.mainnext)
+        console.log($scope.name.mainnow)
         console.log($scope.name.mainclass)
 
     }
@@ -96,7 +97,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         if (val == 0) {
             console.log("LEFT SIDE")
             $scope.name.sideclass = "img1"
-            $scope.name.sidenext = ($scope.name.sideleng == 0) ? 0 : ($scope.name.sidenow - 1 + $scope.name.sideleng) % ($scope.name.sideleng)
+            $scope.name.sidenext = ($scope.name.sideleng == 0) ? 0 : ($scope.name.sidenow + 1 + $scope.name.sideleng) % ($scope.name.sideleng)
         } else {
             console.log("RIGHT SIDE")
             $scope.name.sideclass = "img2"

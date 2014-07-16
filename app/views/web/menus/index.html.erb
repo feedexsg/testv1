@@ -80,13 +80,13 @@ html, body {
 			<div id = 'side' >
 				<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
 				<img ng-class= 'name.sideclass' ng-click="name.sure(0)" id="side" ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
-				<img ng-class= 'name.sideclass' id='side' ng-if='!name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
+				<img ng-class= 'name.sideclass' id='side' ng-click="name.sure(0)" ng-if='!name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 				<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 			</div>
 			<div id = 'main' >
 				<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
 				<img ng-class= 'name.mainclass' ng-click="name.sure(1)" id="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
-				<img ng-class= 'name.mainclass' id="main" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
+				<img ng-class= 'name.mainclass' id="main" ng-click="name.sure(1)" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
 				<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 			</div>
 			<script>
