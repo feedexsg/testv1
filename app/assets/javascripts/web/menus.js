@@ -41,6 +41,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         }
         for (i = 0; i <= data['main_items'].length - 1; i++) {
             $scope.name.main.push(data['main_items'][i])
+            console.log(data)
         }
     })
 
@@ -113,27 +114,27 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     // }
     $scope.name.sure = function(obj) {
         console.log('in')
-        obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3');
+        // obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3');
         if (obj == 0) {
-            if ($scope.name.sideclass == 'img3') {
-                $scope.name.foodselect.push($scope.name.side[$scope.name.sidenow])
-                $scope.name.price += parseInt($scope.name.side[$scope.name.sidenow].price);
-                console.log("side in")
-            } else {
-                $scope.name.foodselect.pop();
-                $scope.name.price -= parseInt($scope.name.side[$scope.name.sidenow].price);
-                console.log('side out')
-            }
+            // if ($scope.name.sideclass == 'img3') {
+            $scope.name.foodselect.push($scope.name.side[$scope.name.sidenow])
+            $scope.name.price += parseInt($scope.name.side[$scope.name.sidenow].price);
+            console.log("side in")
+            // } else {
+            // $scope.name.foodselect.pop();
+            // $scope.name.price -= parseInt($scope.name.side[$scope.name.sidenow].price);
+            // console.log('side out')
+            // }
         } else {
-            if ($scope.name.mainclass == 'img3') {
-                $scope.name.foodselect.push($scope.name.main[$scope.name.mainnow])
-                $scope.name.price += parseInt($scope.name.main[$scope.name.mainnow].price);
-                console.log('main in')
-            } else {
-                $scope.name.foodselect.pop();
-                $scope.name.price -= parseInt($scope.name.main[$scope.name.mainnow].price);
-                console.log('main out')
-            }
+            // if ($scope.name.mainclass == 'img3') {
+            $scope.name.foodselect.push($scope.name.main[$scope.name.mainnow])
+            $scope.name.price += parseInt($scope.name.main[$scope.name.mainnow].price);
+            console.log('main in')
+            // } else {
+            // $scope.name.foodselect.pop();
+            // $scope.name.price -= parseInt($scope.name.main[$scope.name.mainnow].price);
+            // console.log('main out')
+            // }
         }
         console.log($scope.name.foodselect)
     }

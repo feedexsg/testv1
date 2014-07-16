@@ -37,11 +37,11 @@ html, body {
 				</tr>
 			</table>
 			<script>
-				function classchange(obj) {
-					var a = document.getElementsByClassName('navibuttonc');
-					a[0].className = 'navibutton';
-					obj.className = 'navibuttonc';
-				}
+			function classchange(obj) {
+				var a = document.getElementsByClassName('navibuttonc');
+				a[0].className = 'navibutton';
+				obj.className = 'navibuttonc';
+			}
 			</script>
 		</div>
 	</div>
@@ -52,15 +52,24 @@ html, body {
 
 	</div>
 	<div class='contenttitle'>
-			{{name.pagetitle}}
+		<p>{{name.pagetitle}}</p>
+		<div id='cartimg'>
+			{{12}}
+			<img src="/assets/cart.png" alt="Hello world">
+		</div>
 	</div>
 	<div class='contentfoot'>
+
 		<div id = 'footcover'>
-			{{name.pagefoot}}
-			<button ng-click="name.step = name.step%4 +1">gogogo</button>
+
+	<P ng-if='name.price != 0'>{{name.pagefoot}}</P>
+	<p ng-if='name.price == 0'> Please Choose Your Food</p>
+			<button ng-click="name.step = name.step%4 +1" ng-if='name.price != 0'>	<P ng-if='name.price != 0'>{{name.pagefoot}}</P>
+	<p ng-if='name.price == 0'> </p></button> 
+	<!-- there is bug here, so i put stuff on the button, pls do not delete -->
 		</div>
-		<div id='footpprice' ng-if='name.divshow==1 && name.step == 1 && name.price != 0'>
-			{{name.price}}
+		<div id='footpprice' ng-if='name.divshow==1 && name.step != 4 && name.price != 0'>
+			<p>${{name.price}}</p>
 			
 		</div>
 	</div>
@@ -100,12 +109,19 @@ html, body {
 			</script>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==2'>
-			<table>
-				<tr ng-repeat='food in name.foodselect'><td>{{food.name}}</td></tr>
+			<table class='cartlist' ng-repeat='food in name.foodselect track by $index | orderBy : name '>
+				<tr>
+					<td class='cartindex' rowspan='2'>{{$index}}</td>
+					<td>{{food.name}}</td>
+					<td class='cartnum' rowspan ='2'> <img src="/assets/delete.png"></td>
+				</tr>
+				<tr>
+					<td>vendor</td>
+				</tr>
 			</table>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==3'>
-				
+
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
 			<table>
@@ -117,32 +133,34 @@ html, body {
 		<div id='remaining'>
 			<div id='remainword'>
 				<p id='remainvalue'>REMAINING VALUE</p>
-				<P id='remaindollar'>$ 12.00</p>
+				<P id='remaindollar'>$ 120.00</p>
 				</div>
 			</div>
 			<div id='topup'>
 				<div id='topuppanel'>
 					<p id='topupword'>TOP-UP AMOUNT</p>
-					<button id='topupbtn'>$10 MINUMUM</button>
+					<input id='topupbtn' placeholder="$10 MINIMUM">
 				</div>
 
 			</div>
 
 		</div>
 		<div  class='div1' ng-if='name.divshow == 3'>
-			<div>
-				EMAIL ADDRESS
-				<input placeholder='someone@somewhere.com'>
-				Change the e-mail address you use to login will also change the e-mail address that we use to contact you.
-				PASSWORD
-				<input type='password'>
-				PHONE NUMBER
-				<input type='number'>
+			<div id='settingpanel'>
+				<table id='settingtable'>
+					<tr><td>EMAIL ADDRESS</td></tr>
+					<tr><td><input placeholder='someone@somewhere.com'></td></tr>
+					<tr><td>Change the e-mail address you use to login will also change the e-mail address that we use to contact you.</td></tr>
+					<tr><td>PASSWORD</td></tr>
+					<tr><td><input type='password'></td></tr>
+					<tr><td>PHONE NUMBER</td></tr>
+					<tr><td><input type='number'></td></tr>
+				</table>
 			</div>
 		</div>
 		<div class='div1' ng-if='name.divshow == 4'>
-				LOGOUT ?
-				<button>YES</button>
+			LOGOUT ?
+			<button>YES</button>
 		</div>
 
 	</body>
