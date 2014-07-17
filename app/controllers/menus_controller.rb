@@ -1,4 +1,5 @@
 class MenusController < ApplicationController
+  layout false
   def index
   	@menu = Menu.last # Menu.current
   	@main_items = @menu.items.main

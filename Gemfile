@@ -29,7 +29,6 @@ gem "paperclip", "~> 4.1"
 gem 'nested_form'
 gem 'aws-sdk'
 
-gem 'devise'
 gem 'tlsmail'
 
 gem 'flexslider'
