@@ -651,3 +651,17 @@
   }
 
 }
+@media screen and (max-height: 500px) {
+    .contentfoot {
+    height: 6px;
+  }
+  #footcover {
+    background-color: white
+  }
+  .contentfoot:hover {
+    height: 80px;
+  }
+  #footcover:hover {
+    background-color: rgba(0,0,0,0.6);
+  }
+}
