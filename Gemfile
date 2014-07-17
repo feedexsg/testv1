@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'capistrano-local-precompile', require: false
+  gem 'sqlite3'
 end
 
 # Use debugger
