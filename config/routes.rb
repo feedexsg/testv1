@@ -1,5 +1,9 @@
 Feedex::Application.routes.draw do
 
+  resources :line_items
+
+  resources :carts
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
