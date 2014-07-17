@@ -21,7 +21,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
 
     $scope.name.divshow = 1;
     $scope.name.step = 1;
-    $scope.name.pagetitle = "Lunch Menu"
+    $scope.name.pagetitle = null
     $scope.name.pagefoot = "ADD TO CART"
     //the animation class of main and side
     $scope.name.mainclass = 'img1'
@@ -39,6 +39,8 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.setpassword2 = '';
     $scope.name.setphone = '';
 
+    $scope.name.menutitle = null;
+
     $scope.name.buttonclass = ['navibuttonc', 'navibutton', 'navibutton', 'navibutton']
 
 
@@ -55,13 +57,15 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             $scope.name.main.push(data['main_items'][i])
             console.log(data)
         }
-        console.log(data)
+        $scope.name.menutitle = data['menu']['title']
+        // console.log(data)
     })
 
     // mainleng and sideleng are the number of main dishes and sidedishes
     // to detect and update runtime
     $scope.$watch('name.main', function() {
         $scope.name.mainleng = $scope.name.main == null ? 0 : $scope.name.main.length;
+        $scope.name.pagetitle = $scope.name.menutitle
         // $scope.$watch('name.mainindex', function() {
         //     $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
         // })
@@ -127,7 +131,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     //     }
     // }
     $scope.name.sure = function(obj) {
-        console.log('in')
+        // console.log('in')
         // obj == 0 ? ($scope.name.sideclass == 'img3' ? $scope.name.sideclass = 'img1' : $scope.name.sideclass = 'img3') : ($scope.name.mainclass == 'img3' ? $scope.name.mainclass = 'img1' : $scope.name.mainclass = 'img3');
         if (obj == 0) {
             // if ($scope.name.sideclass == 'img3') {
@@ -160,7 +164,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             console.log('in2')
             if ($scope.name.step == 1) {
                 // console.log('lunchmenu')
-                $scope.name.pagetitle = "Lunch Menu";
+                $scope.name.pagetitle = $scope.name.menutitle;
                 $scope.name.pagefoot = "ADD TO CART";
             } else if ($scope.name.step == 2) {
                 $scope.name.pagetitle = "Summary";
@@ -186,7 +190,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     })
     $scope.$watch('name.step', function() {
         if ($scope.name.step == 1) {
-            $scope.name.pagetitle = "Lunch Menu";
+            $scope.name.pagetitle = $scope.name.menutitle;
             $scope.name.pagefoot = "ADD TO CART";
         } else if ($scope.name.step == 2) {
             $scope.name.pagetitle = "Summary";
