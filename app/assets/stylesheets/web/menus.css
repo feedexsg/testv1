@@ -630,5 +630,9 @@
   #topupbtn {
     height: 50%;
   }
+  #settingpanel {
+    /*height: 300px;*/
+    bottom: 160px;
+  }
 
 }

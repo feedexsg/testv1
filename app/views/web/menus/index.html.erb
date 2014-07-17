@@ -51,7 +51,7 @@ html, body {
 		<div id = 'footcover'>
 
 			<P>{{name.pagefoot}}</P>
-			<button ng-click="name.footchange()" ng-if='name.price != 0 || name.divshow != 1'><P ng-if='0'>{{name.pagefoot}}</P><p ng-if='0'> </p></button> 
+			<button ng-click="name.footchange()" ng-if='name.footshow()'><P ng-if='0'>{{name.pagefoot}}</P><p ng-if='0'> </p></button> 
 		</div>
 		<div id='footpprice' ng-if='name.divshow==1 && name.step != 4 && name.price != 0'>
 			<p>${{name.price}}</p>
@@ -89,17 +89,17 @@ html, body {
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==3' >
 			<div id='paymentmode'>
-			<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p>
-			<p>Please select your mode of payment</p>
-			<form action=''>
-				<input type='radio' ng-model='name.pay' value="Cash">Cash<br>
-				<input type='radio' ng-model='name.pay' value="Credit">Credit<br>
-			</form>
+				<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p>
+				<p>Please select your mode of payment</p>
+				<form action=''>
+					<input type='radio' ng-model='name.pay' value="Cash">Cash<br>
+					<input type='radio' ng-model='name.pay' value="Credit">Credit<br>
+				</form>
 			</div>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
 			<table>
-				<tr ng-repeat='food in name.foodselect'><td>{{food.name}}4444444</td></tr>
+				<tr ng-repeat='food in name.foodselect'><td></td></tr>
 			</table>
 		</div>
 	</div>
@@ -107,13 +107,13 @@ html, body {
 		<div id='remaining'>
 			<div id='remainword'>
 				<p id='remainvalue'>REMAINING VALUE</p>
-				<P id='remaindollar' style="text-align: center;">$ 1000.00</p>
+				<P id='remaindollar' style="text-align: center;">${{name.credit}}</p>
 				</div>
 			</div>
 			<div id='topup'>
 				<div id='topuppanel'>
 					<p id='topupword'>TOP-UP AMOUNT</p>
-					<input id='topupbtn' placeholder="$10 MINIMUM">
+					<input id='topupbtn' placeholder="$10 MINIMUM" ng-model = 'name.topupnum'>
 				</div>
 
 			</div>
@@ -123,12 +123,14 @@ html, body {
 			<div id='settingpanel'>
 				<table id='settingtable' style='background-color:rgba(0,0,0,0.6);'>
 					<tr><td style="color:grey;">EMAIL ADDRESS</td></tr>
-					<tr><td><input placeholder='someone@somewhere.com' style='width:60%;font-size: 2em;'></td></tr>
+					<tr><td><input placeholder='someone@somewhere.com' style='width:60%;font-size: 2em;' ng-model='name.setemail'></td></tr>
 					<tr><td style='color:orange'>Change the e-mail address you use to login will also change the e-mail address that we use to contact you.</td></tr>
 					<tr><td style="color:grey;">PASSWORD</td></tr>
-					<tr><td><input type='password' style='width:60%;'></td></tr>
+					<tr><td><input type='password' style='width:60%;' ng-model='name.setpassword'></td></tr>
+					<tr><td style="color:grey;">RETYPE PASSWORD</td></tr>
+					<tr><td><input type='password' style='width:60%;' ng-model='name.setpassword2'></td></tr>
 					<tr><td style="color:grey;">PHONE NUMBER</td></tr>
-					<tr><td><input type='tel' style='width:60%;font-size: 2em;'></td></tr>
+					<tr><td><input type='tel' style='width:60%;font-size: 2em;' ng-model='name.setphone'></td></tr>
 				</table>
 			</div>
 		</div>

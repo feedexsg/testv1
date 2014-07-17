@@ -32,7 +32,12 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.price = 0;
 
     $scope.name.pay = 'Cash';
+    $scope.name.credit = 0;
 
+    $scope.name.setemail = '';
+    $scope.name.setpassword = '';
+    $scope.name.setpassword2 = '';
+    $scope.name.setphone = '';
 
     $scope.name.buttonclass = ['navibuttonc', 'navibutton', 'navibutton', 'navibutton']
 
@@ -50,6 +55,7 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             $scope.name.main.push(data['main_items'][i])
             console.log(data)
         }
+        console.log(data)
     })
 
     // mainleng and sideleng are the number of main dishes and sidedishes
@@ -126,8 +132,8 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         if (obj == 0) {
             // if ($scope.name.sideclass == 'img3') {
             $scope.name.foodselect.push($scope.name.side[$scope.name.sidenow])
-            $scope.name.price += parseInt($scope.name.side[$scope.name.sidenow].price);
-            console.log("side in")
+            $scope.name.price += parseFloat($scope.name.side[$scope.name.sidenow].price);
+            // console.log("side in")
             // } else {
             // $scope.name.foodselect.pop();
             // $scope.name.price -= parseInt($scope.name.side[$scope.name.sidenow].price);
@@ -136,8 +142,8 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         } else {
             // if ($scope.name.mainclass == 'img3') {
             $scope.name.foodselect.push($scope.name.main[$scope.name.mainnow])
-            $scope.name.price += parseInt($scope.name.main[$scope.name.mainnow].price);
-            console.log('main in')
+            $scope.name.price += parseFloat($scope.name.main[$scope.name.mainnow].price);
+            // console.log('main in')
             // } else {
             // $scope.name.foodselect.pop();
             // $scope.name.price -= parseInt($scope.name.main[$scope.name.mainnow].price);
@@ -148,21 +154,23 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     }
 
     $scope.$watch('name.divshow', function() {
+        // console.log('in1')
+        // console.log($scope.name.step)
         if ($scope.name.divshow == 1) {
+            console.log('in2')
             if ($scope.name.step == 1) {
+                // console.log('lunchmenu')
                 $scope.name.pagetitle = "Lunch Menu";
-                // if ($scope.name.price != 0)
                 $scope.name.pagefoot = "ADD TO CART";
-                // else
-                // $scope.name.pagefoot = "Please select your meal";
             } else if ($scope.name.step == 2) {
                 $scope.name.pagetitle = "Summary";
                 $scope.name.pagefoot = "CHECK OUT"
             } else if ($scope.name.step == 3) {
                 $scope.name.pagetitle = "Mode Of Payment";
                 $scope.name.pagefoot = "NEXT"
-            } else {
-                $scope.name.pagetitle == "Confirmation";
+            } else if ($scope.name.step == 4) {
+                // console.log('in3')
+                $scope.name.pagetitle = "Confirmation";
                 $scope.name.pagefoot = "AWSOME"
             }
         } else if ($scope.name.divshow == 2) {
@@ -207,7 +215,59 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             // $scope.name.divshow = 1;
         }
     }
+    $scope.name.footshow = function() {
+        if ($scope.name.divshow == 1) {
+            if ($scope.name.step == 1) {
+                if ($scope.name.price == 0)
+                    return false;
+                else
+                    return true;
+            } else if ($scope.name.step == 2) {
+                if ($scope.name.price == 0)
+                    return false;
+                else
+                    return true;
+            } else if ($scope.name.step == 3) {
+                if ($scope.name.pay == "Cash")
+                    return true;
+                else {
+                    if ($scope.name.price > $scope.name.credit)
+                        return false;
+                    else
+                        return true;
+                }
+            } else {
+                return true;
+            }
+        } else if ($scope.name.divshow == 2) {
+            if (isNaN($scope.name.topupnum))
+                return false;
+            else {
+                if ($scope.name.topupnum >= 10)
+                    return true;
+                else {
+                    return false;
+                }
+            }
+        } else if ($scope.name.divshow == 3) {
+            if ($scope.name.setemail == '') {
+                return false;
+            } else {
+                if ($scope.name.setpassword == '')
+                    return false;
+                else {
+                    if ($scope.name.setphone == '')
+                        return false;
+                    else
+                        return true;
+                }
+            }
+        } else {
+            return false;
+        }
+    }
     $scope.name.cartremove = function(index) {
+        $scope.name.price -= $scope.name.foodselect[index].price
         $scope.name.foodselect.splice(index, 1)
     }
     // $scope.$watch('name.pay', function() {
