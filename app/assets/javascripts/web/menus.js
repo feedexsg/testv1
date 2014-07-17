@@ -1,16 +1,10 @@
 var web = angular.module("web", ['ngAnimate']);
-web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menusgetter) {
+web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menusgetter, Tokengetter) {
     // pre define of varibales
     // name is the global name space for rhe controller and itself has no meanings
-
-
-    // test use only variables, temperary, will be deleted later
     $scope.name = {}
 
-
-
     // the index of the images shown in both main and side 
-
     $scope.name.mainnow = 0;
     $scope.name.mainnext = 0;
     $scope.name.mainimgshow = true;
@@ -19,88 +13,88 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.sidenext = 0;
     $scope.name.sideimgshow = true;
 
+
+    //page content variables
     $scope.name.divshow = 1;
     $scope.name.step = 1;
     $scope.name.pagetitle = null
     $scope.name.pagefoot = "ADD TO CART"
+    $scope.name.menutitle = null;
+
     //the animation class of main and side
     $scope.name.mainclass = 'img1'
     $scope.name.sideclass = 'img1'
-    // get the array of image urls
+
+
+    //user info and food info 
 
     $scope.name.foodselect = []
     $scope.name.price = 0;
-
     $scope.name.pay = 'Cash';
     $scope.name.credit = 0;
 
+    $scope.name.usertoken = null;
+
+    //setting page variables
     $scope.name.setemail = '';
     $scope.name.setpassword = '';
     $scope.name.setpassword2 = '';
     $scope.name.setphone = '';
 
-    $scope.name.menutitle = null;
+
+
 
     $scope.name.buttonclass = ['navibuttonc', 'navibutton', 'navibutton', 'navibutton']
 
-
-    // temperary value, change to real one soon !!!!
-    // $scope.name.remainvalue = 30；
-
-    Menusgetter.get().success(function(data) {
-        $scope.name.side = []
-        $scope.name.main = []
-        for (i = 0; i <= data['side_items'].length - 1; i++) {
-            $scope.name.side.push(data['side_items'][i])
-        }
-        for (i = 0; i <= data['main_items'].length - 1; i++) {
-            $scope.name.main.push(data['main_items'][i])
-            console.log(data)
-        }
-        $scope.name.menutitle = data['menu']['title']
-        // console.log(data)
+    Tokengetter.get().success(function(data) {
+        $scope.name.usertoken = data['auth_key'];
+        $scope.name.credit = data['user']['total_credits'];
+        console.log(data)
     })
 
+    $scope.$watch('name.usertoken', function() {
+        Menusgetter.get($scope.name.usertoken).success(function(data) {
+            $scope.name.side = []
+            $scope.name.main = []
+            for (i = 0; i <= data['side_items'].length - 1; i++) {
+                $scope.name.side.push(data['side_items'][i])
+            }
+            for (i = 0; i <= data['main_items'].length - 1; i++) {
+                $scope.name.main.push(data['main_items'][i])
+                console.log(data)
+            }
+            $scope.name.menutitle = data['menu']['title']
+            // console.log(data)
+        })
+    })
     // mainleng and sideleng are the number of main dishes and sidedishes
     // to detect and update runtime
+
     $scope.$watch('name.main', function() {
         $scope.name.mainleng = $scope.name.main == null ? 0 : $scope.name.main.length;
         $scope.name.pagetitle = $scope.name.menutitle
-        // $scope.$watch('name.mainindex', function() {
-        //     $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
-        // })
     })
-
-    // $scope.$watch('name.mainindex', function() {
-    //     $scope.name.mainimage = $scope.name.main == null ? null : $scope.name.main[$scope.name.mainindex];
-    // })
-    // $scope.$watch('name.sideindex', function() {
-    //     $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
-    // })
-    // to detect and update runtime
     $scope.$watch('name.side', function() {
         $scope.name.sideleng = $scope.name.side == null ? 0 : $scope.name.side.length;
-        // $scope.$watch('name.sideindex', function() {
-        //     $scope.name.sideimage = $scope.name.side == null ? null : $scope.name.side[$scope.name.sideindex];
-        // })
+
     })
 
 
     $scope.name.maincheckfun = function(val) {
         if (val == 0) {
-            console.log("LEFT SIDE")
+            // console.log("LEFT SIDE")
             $scope.name.mainclass = "img1"
             $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow + 1 + $scope.name.mainleng) % ($scope.name.mainleng)
         } else {
-            console.log("RIGHT SIDE")
+            // console.log("RIGHT SIDE")
             $scope.name.mainclass = "img2"
             $scope.name.mainnext = ($scope.name.mainleng == 0) ? 0 : ($scope.name.mainnow - 1 + $scope.name.mainleng) % ($scope.name.mainleng)
         }
         $scope.name.mainimgshow = !$scope.name.mainimgshow
         $scope.name.mainnow = $scope.name.mainnext
-        console.log($scope.name.mainnext)
-        console.log($scope.name.mainnow)
-        console.log($scope.name.mainclass)
+        // console.log($scope.name.mainnext)
+        // console.log($scope.name.mainnow)
+        // console.log($scope.name.mainclass)
 
     }
     $scope.name.sidecheckfun = function(val) {
@@ -343,13 +337,30 @@ web.factory('Itemgetter', function($http) {
 
 web.factory('Menusgetter', function($http) {
     return {
-        get: function() {
+        get: function(obj) {
             return $http.get('/api/menus', {
                 headers: {
-                    'X-Auth': 'c63c4aabc197ab6016aaad8ba2b44a76'
+                    'X-Auth': obj
                 }
             })
 
         }
     }
 });
+web.factory('Tokengetter', function($http) {
+    return {
+        get: function() {
+            return $http({
+                method: 'POST',
+                url: '/api/sessions',
+                data: JSON.stringify({
+                    email: 'wangjiadong1993@gmail.com',
+                    password: '12345'
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        }
+    }
+})
