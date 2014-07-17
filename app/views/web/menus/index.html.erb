@@ -41,9 +41,9 @@ html, body {
 	</div>
 	<div class='contenttitle'>
 		<p>{{name.pagetitle}}</p>
-		<div id='cartimg'>
+		<div id='cartimg' ng-if="name.step != 4">
 			{{name.foodselect.length}}
-			<img src="/assets/cart.png" alt="Hello world">
+			<img src="/assets/cart.png"  alt="Hello world">
 		</div>
 	</div>
 	<div class='contentfoot'>
@@ -108,9 +108,10 @@ html, body {
 			</div>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
-			<table>
-				<tr ng-repeat='food in name.foodselect'><td></td></tr>
-			</table>
+			<div>
+				<p>Your order has been processed. Be sure to check your email for your reciept. It will be required for collection</p>
+				<img src="/assets/happy.png">
+			</div>
 		</div>
 	</div>
 	<div  class='div1' ng-if='name.divshow == 2'>
