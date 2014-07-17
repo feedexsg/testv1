@@ -62,12 +62,17 @@ html, body {
 	<div  class='div1' ng-if='name.divshow == 1'>	
 		<div class='div2' ng-if = 'name.step ==1'>
 			<div id = 'side' >
+				<img src="/assets/right-arrow.png">
+				<img src="/assets/left-arrow.png">
 				<button id='sideleft'  ng-click='name.sidecheckfun(1)'>SIDELEFT</button>
+
 				<img ng-class= 'name.sideclass' ng-click="name.sure(0)" id="side" ng-if='name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 				<img ng-class= 'name.sideclass' id='side' ng-click="name.sure(0)" ng-if='!name.sideimgshow' ng-src={{name.side[name.sidenow]['original_url']}}>
 				<button id='sideright' ng-click='name.sidecheckfun(0)' >SIDERIGHT</button>
 			</div>
 			<div id = 'main' >
+				<img src="/assets/right-arrow.png">
+				<img src="/assets/left-arrow.png">
 				<button id="mainleft"  ng-click='name.maincheckfun(1)'>MAINLEFT</button>
 				<img ng-class= 'name.mainclass' ng-click="name.sure(1)" id="main" ng-if='name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
 				<img ng-class= 'name.mainclass' id="main" ng-click="name.sure(1)" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
@@ -108,7 +113,7 @@ html, body {
 			</div>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
-			<div>
+			<div class='paymentcomplete'>
 				<p>Your order has been processed. Be sure to check your email for your reciept. It will be required for collection</p>
 				<img src="/assets/happy.png">
 			</div>
