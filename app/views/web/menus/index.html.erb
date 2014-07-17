@@ -14,8 +14,6 @@ html, body {
 }
 </style>
 <body ng-controller="maincontroller" id = 'menubody'>
-	<!--fixed items-->
-
 	<div id='navi'>
 		<div id='navicover'>
 			<img id = 'logocopy' src="/assets/logo_copy.png">
@@ -36,22 +34,10 @@ html, body {
 					<td><button class='navibutton' >Log Out</button></td>
 				</tr>
 			</table>
-			 <script>
-
-			// function classchange(obj) {
-			// 	var a = document.getElementsByClassName('navibuttonc');
-			// 	a[0].className = 'navibutton';
-			// 	obj.className = 'navibuttonc';
-			// }<button ng-click="name.test(4)"   ng-class='name.buttonclass[3]'>Log Out</button>
-			// <%=button_to 'Log Out', root_path, method: :get,:class => 'navibutton' ,data: {confirm: "Are You Sure To Leave Feedex"}%>
-			 </script>
 		</div>
 	</div>
 
-	<div id= 'back'>	
-		
-		<!-- <button ng-click="name.show = !name.show" onclick="move()">Button</button> -->
-
+	<div id= 'back'>
 	</div>
 	<div class='contenttitle'>
 		<p>{{name.pagetitle}}</p>
@@ -63,11 +49,9 @@ html, body {
 	<div class='contentfoot'>
 
 		<div id = 'footcover'>
-		
-	<P>{{name.pagefoot}}</P>
-	<!-- <p ng-if='name.price == 0'> Please Choose Your Food</p> -->
+
+			<P>{{name.pagefoot}}</P>
 			<button ng-click="name.footchange()" ng-if='name.price != 0 || name.divshow != 1'><P ng-if='0'>{{name.pagefoot}}</P><p ng-if='0'> </p></button> 
-	<!-- there is bug here, so i put stuff on the button, pls do not delete -->
 		</div>
 		<div id='footpprice' ng-if='name.divshow==1 && name.step != 4 && name.price != 0'>
 			<p>${{name.price}}</p>
@@ -89,25 +73,6 @@ html, body {
 				<img ng-class= 'name.mainclass' id="main" ng-click="name.sure(1)" ng-if='!name.mainimgshow' ng-src={{name.main[name.mainnow]['original_url']}}>
 				<button id ='mainright' ng-click='name.maincheckfun(0)'>MAINRIGHT</button>
 			</div>
-			<script>
-			// function sure(obj) {
-			// 	console.log("in")
-			// 	if(obj==0){
-			// 		var a= document.getElementById('side');
-			// 		var b= document.getElementById('sideleft');
-			// 		var c= document.getElementById('sideright');
-			// 	}
-			// 	else {
-			// 		var a= document.getElementById('main');
-			// 		var b= document.getElementById('mainleft');
-			// 		var c= document.getElementById('mainright');
-			// 	}
-			// 	a.style.boxshadow="3px 3px 3px #7C7C7C";
-			// 	b.style.visibility = b.style.visibility =='hidden' ? 'visible' :'hidden';
-			// 	c.style.visibility = c.style.visibility =='hidden' ? 'visible' :'hidden';
-// 
-			// }
-			</script>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==2'>
 			<table class='cartlist' ng-repeat='food in name.foodselect track by $index | orderBy : name '>
@@ -122,13 +87,15 @@ html, body {
 				</tr>
 			</table>
 		</div>
-		<div class = 'div2' ng-if = 'name.step ==3' id='paymentmode'>
+		<div class = 'div2' ng-if = 'name.step ==3' >
+			<div id='paymentmode'>
 			<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p>
 			<p>Please select your mode of payment</p>
 			<form action=''>
 				<input type='radio' ng-model='name.pay' value="Cash">Cash<br>
 				<input type='radio' ng-model='name.pay' value="Credit">Credit<br>
 			</form>
+			</div>
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==4'>
 			<table>
