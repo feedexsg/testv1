@@ -207,6 +207,9 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
             // $scope.name.divshow = 1;
         }
     }
+    $scope.name.cartremove = function(index) {
+        $scope.name.foodselect.splice(index, 1)
+    }
     // $scope.$watch('name.pay', function() {
     //     console.log($scope.name.pay)
     // })

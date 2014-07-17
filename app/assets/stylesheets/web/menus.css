@@ -198,7 +198,7 @@
   font-size: 2em;
   display: inline;
   text-align: center;
-  left: 40%;
+  left: 30%;
 }
 #footpprice  p {
   position: relative;
@@ -237,6 +237,9 @@
 .div1.ng-enter, .div1.ng-leave {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
 }
 .div1.ng-enter{
   opacity: 0;
@@ -265,6 +268,9 @@
 .div2.ng-enter, .div2.ng-leave {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1s;
 }
 .div2.ng-enter{
   opacity: 0;
@@ -329,6 +335,9 @@
 .img1.ng-enter, .img1.ng-leave {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
 .img1.ng-enter{
   opacity: 1;
@@ -357,6 +366,9 @@
 .img2.ng-enter, .img2.ng-leave {
   -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -ms-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+  -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
 .img2.ng-enter{
   opacity: 1;
@@ -431,14 +443,63 @@
 }
 .cartnum {
   width: 25%;
+
+}
+.cartprice {
+  width: 25%;
+}
+.cartnum button {
+  background-color: transparent;
+  border-radius: 22px;
+  border: none 0px;
+}
+
+.cartlist.ng-enter, .cartlist.ng-move {
+  -webkit-transition:0.5s linear all;
+  -moz-transition:0.5s linear all;
+  -o-transition:0.5s linear all;
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+.cartlist.ng-enter.ng-enter-active,
+.cartlist.ng-move.ng-move-active {
+  opacity:1;
+}
+.cartlist.ng-leave {
+  -webkit-animation:0.5s my_animation;
+  -moz-animation:0.5s my_animation;
+  -o-animation:0.5s my_animation;
+  animation:0.5s my_animation;
+}
+@keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-webkit-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-moz-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-o-keyframes my_animation {
+  from { opacity:1; }
+  to { opacity:0; }
 }
 #paymentmode {
-  color: white;
+  position: absolute;
+  color: grey;
+  left: 288px; /*30% 960px*/
+  top: 40%;
+  width: 330px;
+  background-color: rgba(0,0,0,0.6);
 
 }
-
-
-
 /*the my wallet page*/
 #remaining {
   position: absolute;
@@ -448,6 +509,7 @@
   height: 40%;
   z-index: 2;
   background-color: rgba(0,0,0,0.6);
+
 }
 #remainword {
   position: absolute;
@@ -467,7 +529,7 @@
   color: white;
   position: relative;
   font-size: 4em;
-  left: 10%;
+  left: 0%;
   /*left: 40%;*/
   /*top: */
 }
@@ -493,7 +555,7 @@
 }
 #topupbtn {
   position: relative;
-  left: -10%;
+  left: 0%;
   top: 10%;
   width: 100%;
   height: 40px;
@@ -545,11 +607,22 @@
   /*bottom: 0px;*/
   /*border: black, 3px, solid;*/
 }
+#paymentmode {
+  color: grey;
+  left: 30%; /*30% 960px*/
+  top: 40%;
+  width: 50%;
+  background-color: rgba(0,0,0,0.6);
+
+}
 
 }
 
 @media screen and (max-width: 758px) {
+ #footcover p {
 
+  left: 0px;
+}
 }
 
 @media screen and (max-width: 524px) {
@@ -560,4 +633,5 @@
   #topupbtn {
     height: 50%;
   }
+
 }

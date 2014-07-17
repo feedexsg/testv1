@@ -105,7 +105,7 @@ html, body {
 			// 	a.style.boxshadow="3px 3px 3px #7C7C7C";
 			// 	b.style.visibility = b.style.visibility =='hidden' ? 'visible' :'hidden';
 			// 	c.style.visibility = c.style.visibility =='hidden' ? 'visible' :'hidden';
-
+// 
 			// }
 			</script>
 		</div>
@@ -114,7 +114,8 @@ html, body {
 				<tr>
 					<td class='cartindex' rowspan='2'>{{$index}}</td>
 					<td>{{food.name}}</td>
-					<td class='cartnum' rowspan ='2'> <img src="/assets/delete.png"></td>
+					<td rowspan='2' class='cartprice'>$ &nbsp {{food.price}}</td>
+					<td class='cartnum' rowspan ='2'> <button ng-click='name.cartremove($index)'><img src="/assets/delete.png"></button></td>
 				</tr>
 				<tr>
 					<td>{{food.vendor_id}}</td>
@@ -139,7 +140,7 @@ html, body {
 		<div id='remaining'>
 			<div id='remainword'>
 				<p id='remainvalue'>REMAINING VALUE</p>
-				<P id='remaindollar'>$ 120.00</p>
+				<P id='remaindollar' style="text-align: center;">$ 1000.00</p>
 				</div>
 			</div>
 			<div id='topup'>
