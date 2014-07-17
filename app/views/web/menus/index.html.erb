@@ -89,11 +89,21 @@ html, body {
 		</div>
 		<div class = 'div2' ng-if = 'name.step ==3' >
 			<div id='paymentmode'>
-				<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p>
+				<p>In a limited period, you can complete your purchase by making a cash payment directly at FeedexHQ. </p><br>
 				<p>Please select your mode of payment</p>
 				<form action=''>
-					<input type='radio' ng-model='name.pay' value="Cash">Cash<br>
-					<input type='radio' ng-model='name.pay' value="Credit">Credit<br>
+					<table style='margin:0px;'>
+						<tr><td>
+							<input type='radio' ng-model='name.pay' value="Cash"></td>
+							<td>
+							<p class='paychoice' style='display:inline;'>Cash</p></td>
+						</tr>
+						<tr><td>
+							<input type='radio' ng-model='name.pay' value="Credit"></td>
+							<td>
+							<p class='paychoice' style='display:inline'>Credit</p></td>
+						</tr>
+					</table>
 				</form>
 			</div>
 		</div>
@@ -131,6 +141,10 @@ html, body {
 					<tr><td><input type='password' style='width:60%;' ng-model='name.setpassword2'></td></tr>
 					<tr><td style="color:grey;">PHONE NUMBER</td></tr>
 					<tr><td><input type='tel' style='width:60%;font-size: 2em;' ng-model='name.setphone'></td></tr>
+					<tr><td></td></tr>
+					<tr><td></td></tr>
+					<tr><td></td></tr>
+					<tr><td></td></tr>
 				</table>
 			</div>
 		</div>

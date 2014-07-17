@@ -218,23 +218,33 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
     $scope.name.footshow = function() {
         if ($scope.name.divshow == 1) {
             if ($scope.name.step == 1) {
-                if ($scope.name.price == 0)
+                if ($scope.name.price == 0) {
+                    $scope.name.pagefoot = "Select Your Food First"
                     return false;
-                else
+                } else {
+                    $scope.name.pagefoot = "Add To Cart"
                     return true;
+                }
             } else if ($scope.name.step == 2) {
-                if ($scope.name.price == 0)
+                if ($scope.name.price == 0) {
+                    $scope.name.pagefoot = "No Food Selected"
                     return false;
-                else
+                } else {
+                    $scope.name.pagefoot = "Check Out"
                     return true;
+                }
             } else if ($scope.name.step == 3) {
-                if ($scope.name.pay == "Cash")
+                if ($scope.name.pay == "Cash") {
+                    $scope.name.pagefoot = "Next"
                     return true;
-                else {
-                    if ($scope.name.price > $scope.name.credit)
+                } else {
+                    if ($scope.name.price > $scope.name.credit) {
+                        $scope.name.pagefoot = "Credit Not Enough"
                         return false;
-                    else
+                    } else {
+                        $scope.name.pagefoot = "Next"
                         return true;
+                    }
                 }
             } else {
                 return true;
@@ -270,9 +280,9 @@ web.controller('maincontroller', function($scope, Colonygetter, Itemgetter, Menu
         $scope.name.price -= $scope.name.foodselect[index].price
         $scope.name.foodselect.splice(index, 1)
     }
-    // $scope.$watch('name.pay', function() {
-    //     console.log($scope.name.pay)
-    // })
+    $scope.$watch('name.pay', function() {
+        console.log($scope.name.pay)
+    })
 
 });
 

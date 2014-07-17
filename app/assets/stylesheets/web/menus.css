@@ -495,9 +495,22 @@
   position: absolute;
   color: grey;
   left: 20%;
+  top: 80px;
   width: 396px;
   background-color: rgba(0,0,0,0.6);
+  box-shadow: -5px -5px 3px black;
+  /*box-shadow: 5px 5px 5px black;*/
 }
+/*#paymentmode input {
+  position: absolute;
+  left: 30%;
+
+}
+#paymentmode .paychoice {
+  position: absolute;
+  left: 40%;
+  font-size: 1.2em;
+}*/
 /*the my wallet page*/
 #remaining {
   position: absolute;
@@ -606,10 +619,10 @@
   /*border: black, 3px, solid;*/
 }
 #paymentmode {
-  color: grey;
+  /*color: grey;*/
   left: 20%; /*30% 960px*/
   width: 50%;
-  background-color: rgba(0,0,0,0.6);
+  /*background-color: rgba(0,0,0,0.6);*/
 
 }
 
@@ -630,9 +643,11 @@
   #topupbtn {
     height: 50%;
   }
-  #settingpanel {
+
+  #settingtable {
     /*height: 300px;*/
     bottom: 160px;
+    overflow: scroll;
   }
 
 }
