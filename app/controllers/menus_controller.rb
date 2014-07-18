@@ -1,5 +1,7 @@
 class MenusController < ApplicationController
   layout false
+  include CurrentCart
+  before_action :set_cart, only: [:index]
   def index
   	@menu = Menu.last # Menu.current
   	@main_items = @menu.items.main
@@ -18,7 +20,7 @@ class MenusController < ApplicationController
 
       gon.main_items = @main_items
       gon.side_items = @side_items
-
+      gon.cart_number = @cart.line_items.count
   end
   
 end

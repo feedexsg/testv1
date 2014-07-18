@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  layout false
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
@@ -11,6 +12,12 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    @total_price = 0.0
+    @cart.line_items.each do |item|
+      @total_price += Item.find(item.main_id).price
+      @total_price += Item.find(item.side_id).price
+    end
+
   end
 
   # GET /carts/new

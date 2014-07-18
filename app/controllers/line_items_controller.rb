@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -26,13 +26,19 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    # @line_item = LineItem.new(line_item_params)
+    @menu = Menu.last # Menu.current
+    @main_items = @menu.items.main
+    @side_items = @menu.items.side
 
-    @line_item = @cart.line_items.build(main_id: line_item_params[:main_id], side_id: line_item_params[:side_id])
+    main_item = @main_items[line_item_params[:main_id].to_i]
+    side_item = @side_items[line_item_params[:side_id].to_i]
+
+    @line_item = @cart.line_items.build(main_id: main_item.id, side_id: side_item.id)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
+        format.html { redirect_to menus_url }
+        format.js
         format.json { render action: 'show', status: :created, location: @line_item }
       else
         format.html { render action: 'new' }
@@ -60,7 +66,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to @cart }
       format.json { head :no_content }
     end
   end

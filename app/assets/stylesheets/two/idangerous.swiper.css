@@ -203,7 +203,7 @@ height:0;
 .swipeButton.prev{
   left:1%;
   top:40%;
-  background:url('../images/leftarrow.png');
+  background:url('/assets/leftarrow.png');
   background-size:90%;
   background-repeat:no-repeat;
   background-position: center center;
@@ -212,7 +212,7 @@ height:0;
 .swipeButton.next{
   right:1%;
   top:40%;
-  background:url('../images/rightarrow.png');
+  background:url('/assets/rightarrow.png');
   background-size:90%;
   background-repeat:no-repeat;
   background-position: center center;
