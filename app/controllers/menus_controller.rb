@@ -1,7 +1,9 @@
 class MenusController < ApplicationController
   layout false
   include CurrentCart
+  include SessionsHelper
   before_action :set_cart, only: [:index]
+  before_action :signed_in_user, only: [:index]
   def index
   	@menu = Menu.last # Menu.current
   	@main_items = @menu.items.main
@@ -21,6 +23,11 @@ class MenusController < ApplicationController
       gon.main_items = @main_items
       gon.side_items = @side_items
       gon.cart_number = @cart.line_items.count
+  end
+
+  private
+  def signed_in_user
+    redirect_to signin_url, notice: "Please sign in." unless signed_in?
   end
   
 end

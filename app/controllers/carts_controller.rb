@@ -1,6 +1,8 @@
 class CartsController < ApplicationController
   layout false
+  include SessionsHelper
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:index, :show]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
 
   # GET /carts
@@ -93,5 +95,9 @@ class CartsController < ApplicationController
     def invalid_cart
       logger.error "Attemp to access invalid cart #{params[:id]}"
       redirect_to root_url, notice: 'Invalid cart'
+    end
+
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
     end
 end
