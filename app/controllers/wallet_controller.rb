@@ -20,5 +20,43 @@ class WalletController < ApplicationController
 	end
 
 	def create
+		remember_token = User.digest(cookies[:remember_token])
+		@current_user ||= User.find_by(remember_token: remember_token)
+		tp_amount = params[:amount]
+
+		puts "AMOUNT RECIEVED__ ****"
+		puts tp_amount
+
+		@response = HTTParty.post("https://sandbox.smoovpay.com/redirecturl",
+			:body => { 
+				:version => "2.0",
+				:action => "pay",
+				:merchant => "gab.on.rails@gmail.com",
+				:ref_id => "SampleReference",
+				:item_name_1 => "Feedex Wallet Top Up",
+				:item_description_1 => "Feedex Top Up",
+				:item_quantity_1 => "1",
+				:item_amount_1 => tp_amount.to_s,
+				:currency => "SGD",
+				:total_amount => tp_amount.to_s,
+				:success_url => "http://feedex.sg/wallet",
+				:cancel_url => "http://feedex.sg/wallet",
+				:str_url => "http://feedex.sg/payment"
+			 },
+			 :debug_output => $stdout
+
+
+			)
+
+		puts "******* REPONSE FROM SMOOVE *********"
+		puts @response.to_json
+
+		puts "Done ****"
+
+		redirect_to @response["redirect_url"]
+
+
 	end
+
+
 end

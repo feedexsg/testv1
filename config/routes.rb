@@ -74,7 +74,7 @@ Feedex::Application.routes.draw do
 
   resources :users
   resources :menus, only: [:index]
-  resources :wallet, only: [:index]
+  resources :wallet, only: [:index, :create]
   resources :orders, only: [:index, :create]
 
   resources :sessions, only: [:new, :create, :destroy]

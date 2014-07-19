@@ -53,7 +53,6 @@
 					<form id="walletform">
 
 
-
 						<% if @topup %>
 							<input type="number" name="topupamt" value=<%= @topup %> placeholder="$10 MINIMUM"/> 
 
@@ -67,22 +66,11 @@
 
 				</div>
 
-				<form id="smoov-form" action="https://sandbox.smoovpay.com/access" method="post">
-	<input type="hidden" name="action" value="pay" />
-	<input type="hidden" name="currency" value="SGD" />
-	<input type="hidden" name="version" value="2.0" />
-	<input type="hidden" name="merchant" value="gab.on.rails@gmail.com" />
-	<input type="hidden" name="ref_id" value="SampleReference" />
-	<input type="hidden" name="delivery_charge" value="3.90" />
-	<input type="hidden" name="tax_amount" value="5.60" />
-	<input type="hidden" name="tax_percentage" value="10.0" />
-	<input type="hidden" name="str_url" value="" />
-	<input type="hidden" name="success_url" value="http://YourWebSite/SuccessPage" />
-	<input type="hidden" name="cancel_url" value="http://YourWebSite" />
-	<input type="hidden" name="signature_algorithm" value="sha1" /><br>
-	<input type="image" src="https://www.smoovpay.com/img/btn_smoovpay_v1.png" name="submit v2" alt="SmoovPay!" />
-</form>
+				<%= form_tag do %>
+					<%= number_field :topupamt, nil, in: 10...9999, name: "amount", placeholder: "$10 MINIMUM" %>
+					<%= submit_tag("Add Value") %>
 
+				<% end %>
 
 
 			
