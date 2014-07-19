@@ -75,6 +75,7 @@ Feedex::Application.routes.draw do
   resources :users
   resources :menus, only: [:index]
   resources :wallet, only: [:index]
+  resources :orders, only: [:index, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new', via: 'get'

@@ -9,7 +9,6 @@
 		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
-		<%= csrf_meta_tag %>
 
 		<%= stylesheet_link_tag "two/normalize.css" %>
 		<%= stylesheet_link_tag "two/demo.css" %>
@@ -18,9 +17,11 @@
 		<%= stylesheet_link_tag "two/style5.css" %>
 		<%= stylesheet_link_tag "two/stylemain.css" %>
 
+		
 		<%= javascript_include_tag "jquery", "jquery_ujs" %>
 		<%= javascript_include_tag "two/modernizr.custom.js" %>
 		<%= javascript_include_tag "two/idangerous.swiper-2.1.min.js" %>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
 
 
 	</head>
@@ -31,80 +32,81 @@
 
 
 				<div id="maincontent">
-				<div id="header"><h1>SUMMARY</h1><div id="cartbutton"><a href="#"><span><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
+				<div id="header"><h1>MY WALLET</h1><div id="cartbutton">
+				<%= link_to @cart do %><span><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
 				<%= image_tag("icon_cart.png") %>
 
-
-				</a></div></div>
+				<% end %></div></div>
 
 				
 
 		
-				<div id="summarybg"></div>
-			<div id="summarycontent">
+				<div id="walletbg"></div>
+			<div id="walletcontent">
 
-			<ul class="summarylist">
-				<% @cart.line_items.each_with_index do |item, index| %>
-					<li><%= index + 1 %><ul class="orderitems">
-						<li><%= Item.find(item.main_id).name %></li>
-						<li><%= Item.find(item.side_id).name %></li>
-					</ul>
-					<%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to remove this from the cart?' } do %>
-						<%= image_tag("icon_dlt.png", class: "summarydlt") %>
-					<% end %>
-					</li><hr />
-				<% end %>
+
+				<div class="walletvalue"><h3>REMAINING VALUE</h3><p>$<%= @credits %></p></div>
+
+
+				<div class="wallettopup"><h3>TOP-UP AMOUNT</h3>
+
+					<form id="walletform">
 
 
 
+						<% if @topup %>
+							<input type="number" name="topupamt" value=<%= @topup %> placeholder="$10 MINIMUM"/> 
+
+						<% else %>
+							<input type="number" name="topupamt" placeholder="$10 MINIMUM"/> 
+						<% end %>
 
 
-				
 
-        
+					</form>	
 
-			</ul>
+				</div>
+
+				<form id="smoov-form" action="https://sandbox.smoovpay.com/access" method="post">
+	<input type="hidden" name="action" value="pay" />
+	<input type="hidden" name="currency" value="SGD" />
+	<input type="hidden" name="version" value="2.0" />
+	<input type="hidden" name="merchant" value="gab.on.rails@gmail.com" />
+	<input type="hidden" name="ref_id" value="SampleReference" />
+	<input type="hidden" name="delivery_charge" value="3.90" />
+	<input type="hidden" name="tax_amount" value="5.60" />
+	<input type="hidden" name="tax_percentage" value="10.0" />
+	<input type="hidden" name="str_url" value="" />
+	<input type="hidden" name="success_url" value="http://YourWebSite/SuccessPage" />
+	<input type="hidden" name="cancel_url" value="http://YourWebSite" />
+	<input type="hidden" name="signature_algorithm" value="sha1" /><br>
+	<input type="image" src="https://www.smoovpay.com/img/btn_smoovpay_v1.png" name="submit v2" alt="SmoovPay!" />
+</form>
 
 
+
+			
 		</div><!--end of summary content-->
 
 
 
 					<div id="footer" class="summaryfooter">
+				<a href="#">
+
+			<div id="addtocartbg" class="summaryatcbg"></div>		
+
+			<div id="addtocart" class="summaryatc">
 
 
-		
-			<!--<div id="addtocartbg" class="summaryatcbg"></div>-->
-			<div id="addtocartbg"></div>				
-
-			<!--<div id="addtocart" class="summaryatc">-->
-			<div id="addtocart">
-
-
-				<% if @current_user.total_credits > @total_price %>
-				<%= button_to 'Checkout', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }} %>
-					
-						<h1>CHECKOUT</h1>
-
-				<% else %>
-
-					<%= link_to 'Top Up', :controller => "wallet", :topup => @total_price - @current_user.total_credits %>
-
-					<h1>Top Up</h1>
-				<% end %>
+				<h1>ADD VALUE</h1>
 
 			</div><!--add to cart end-->	
 
 			
-			<div id="addprice" class="checkoutprice">
-					
-					<h1>$<%=@total_price%></h1>
 
-			</div>
-
+		</a>
 
 		</div><!--end of footer-->
-
 
 
 
@@ -130,20 +132,26 @@
 
 				<ul>
 					<li>
-					
 					<%= image_tag("fdxlogo.png", id: "fdxlogo") %>
+
 					</li><br><br>
 					<li id="btfirstli"><a href="/menus">
 					<%= image_tag("icon_menu.png", class: "menuimg") %>
+
 					<span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
 					<li><a href="/wallet">
 					<%= image_tag("icon_money.png", class: "menuimg") %>
+
+
 					<span>&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
 					<li><a href="settings.html">
 					<%= image_tag("icon_settings.png", class: "menuimg") %>
+
 					<span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
 					<li><a href="login.html">
 					<%= image_tag("icon_logout.png", class: "menuimg") %>
+
+
 					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
 				
 				</ul>
@@ -161,22 +169,24 @@
 
 				<ul id="#navshowul">
 					<li>
-					
+
 					<%= image_tag("fdxlogo.png", id: "fdxlogo2") %>
 
 
 					</li><br><br><br><br><br>
-					<li><a href="/menus">
-					<%= image_tag("icon_menu.png", class: "menuimg") %>
-					<span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
+					<li><a href="/menus"><%= image_tag("icon_menu.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
 					<li><a href="/wallet">
 					<%= image_tag("icon_money.png", class: "menuimg") %>
+
 					<span>&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
 					<li><a href="settings.html">
 					<%= image_tag("icon_settings.png", class: "menuimg") %>
+
 					<span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
-					<li><a href="v">
+					<li><a href="login.html">
 					<%= image_tag("icon_logout.png", class: "menuimg") %>
+
+
 					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
 				
 				</ul>
@@ -203,13 +213,12 @@
 
 		</div><!-- /container -->
 	</body>
-
 	<%= javascript_include_tag "two/classie.js" %>
 	<%= javascript_include_tag "two/borderMenu.js" %>
 
-
-
 	<script>
+
+
 
 
 
