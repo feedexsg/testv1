@@ -29,11 +29,12 @@ gem "paperclip", "~> 4.1"
 gem 'nested_form'
 gem 'aws-sdk'
 
-gem 'devise'
 gem 'tlsmail'
 
 gem 'flexslider'
 gem 'gon'
+
+gem 'httparty'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -55,6 +56,7 @@ group :development do
   gem 'capistrano-ext'
   gem 'rvm-capistrano'
   gem 'capistrano-local-precompile', require: false
+  gem 'sqlite3'
 end
 
 # Use debugger

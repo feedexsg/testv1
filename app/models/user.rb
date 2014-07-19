@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  before_create :create_remember_token
+  before_save { self.email = email.downcase }
+
   include ActiveModel::SecurePassword
   has_secure_password
 
@@ -28,11 +31,23 @@ class User < ActiveRecord::Base
     credits.collect(&:amount).sum - orders.collect(&:amount).sum
   end
 
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def User.digest(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
+
   ## CLASS METHODS ##
 
 
   ## PRIVATE METHODS ##
   private
+
+  def create_remember_token
+    self.remember_token = User.digest(User.new_remember_token)
+  end
 
   def send_welcome_notification
     Notifier.welcome_notification(self)

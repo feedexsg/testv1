@@ -1,0 +1,140 @@
+body {
+  height: 100%;
+  background: url('../images/background2.jpg') rgb(255, 255, 255);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  font: 400 1.125em/1.08 Muli;
+  color: white;
+}
+
+.blackglass {
+  width: 600px;
+  height: 370px;
+  margin: 0 auto;
+  border: 4px solid rgb(255, 108, 0);
+  border-radius: 30px;
+  background-color: rgba(0, 0, 0, 0.56);
+}
+
+.footer {
+  margin: 0 auto;
+  text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  font-size: 0.722em;
+  line-height: 1.38;
+  text-align: center;
+  color: white;
+  opacity: 0.65;
+}
+
+.logo {
+  display: block;
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.message {
+  width: 316px;
+  margin: 17px auto 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  font-size: 1em;
+  text-align: center;
+  color: white;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 8;
+  width: 700px;
+  height: 492px;
+  margin: auto;
+}
+
+._container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+._text {
+  width: 390px;
+  margin: 32px auto 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  font-family: Montserrat;
+  font-size: 1.389em;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+.blackglass ._container-1 {
+  width: 440px;
+  height: 183px;
+  margin-top: 26px;
+}
+
+.blackglass ._container-2 {
+  display: block;
+  width: 100%;
+  height: 181px;
+}
+
+.wrapper ._container-3 {
+  width: 440px;
+  height: 49px;
+  margin-top: 73px;
+}
+
+@media(max-width: 700px) {
+  .blackglass .logo {
+    width: 250px;
+    height: auto;
+  }
+
+  .blackglass ._text,
+  .blackglass .message {
+    width: 300px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .wrapper {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 300px;
+    margin: auto;
+  }
+
+  .wrapper .blackglass {
+    width: 300px;
+    border-width: 0;
+    border-style: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .wrapper .footer {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  .blackglass ._container-1 {
+    width: 300px;
+    height: 153px;
+    margin-top: 36px;
+  }
+
+  .blackglass ._container-2 {
+    height: 149px;
+  }
+
+  .wrapper ._container-3 {
+    width: 300px;
+  }
+}

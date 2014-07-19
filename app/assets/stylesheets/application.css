@@ -10,5 +10,5 @@
  *
  *= require_self
  *= require flexslider.css
- *= require_tree .
+ *= require_directory .
  */

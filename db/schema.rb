@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628143137) do
+ActiveRecord::Schema.define(version: 20140717095451) do
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -65,6 +70,16 @@ ActiveRecord::Schema.define(version: 20140628143137) do
     t.string   "item_type"
   end
 
+  create_table "line_items", force: true do |t|
+    t.integer  "main_id"
+    t.integer  "side_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+
   create_table "locations", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -89,7 +104,7 @@ ActiveRecord::Schema.define(version: 20140628143137) do
     t.integer  "side_id"
   end
 
-  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -126,12 +141,14 @@ ActiveRecord::Schema.define(version: 20140628143137) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "remember_token"
   end
 
-  add_index "users", ["colony_id"], name: "index_users_on_colony_id", using: :btree
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["colony_id"], name: "index_users_on_colony_id"
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "vendors", force: true do |t|
     t.string   "name"

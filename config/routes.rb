@@ -1,5 +1,9 @@
 Feedex::Application.routes.draw do
 
+  resources :line_items
+
+  resources :carts
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -69,6 +73,48 @@ Feedex::Application.routes.draw do
   end
 
   resources :users
+  resources :menus, only: [:index]
+  resources :wallet, only: [:index, :create]
+  resources :orders, only: [:index, :create]
+
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup', to: 'users#new', via: 'get'
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   root "welcome#index"
   
