@@ -8,6 +8,8 @@ class OrderMailer < ActionMailer::Base
   	@order_items_array = []
   	@total_price = 0.0
 
+    @user = User.find(@order.user_id)
+
   	order_items.each do |item|
   		packed_hash = {}
   		main = Item.find(item.main_id)
