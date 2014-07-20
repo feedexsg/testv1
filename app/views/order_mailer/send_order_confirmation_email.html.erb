@@ -139,14 +139,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " background="page-bg.jpg" bgcolor="#ffffff" eqid="EQMST-5B629705-2068-4643-A1B4-1BA752D88F04"> 
 
-<table width="100%" cellspacing="0" cellpadding="0" id="page-wrap" align="center" background=url(<%= asset_path '/order_confirm/page-bg.jpg' %>) bgcolor="#ffffff">
+<table width="100%" cellspacing="0" cellpadding="0" id="page-wrap" align="center" background=<%= asset_path("order_confirm/page-bg.jpg", type: :image) %> bgcolor="#ffffff">
 <tbody><tr>
   <td>
 
 <table class="email-body-wrap" width="910" cellspacing="0" cellpadding="0" id="email-body" align="center">
 <tbody><tr>
   <td width="30" eqfixedwidth="true" class="page-bg-show-thru">&nbsp;<!-- Left page bg show-thru --></td>
-  <td width="850" id="page-body" eqid="EQMST-E42EE1D2-FD64-4CC3-81A8-CEDDEEA78958" background=url('/order_confirm/background.jpg') bgcolor="#ffffff">
+  <td width="850" id="page-body" eqid="EQMST-E42EE1D2-FD64-4CC3-81A8-CEDDEEA78958" background=<%= asset_path("order_confirm/background.jpg", type: :image) %> bgcolor="#ffffff">
     
     <!-- Begin of layout container -->
     <div id="eqLayoutContainer">
@@ -159,7 +159,7 @@
                 <tbody><tr>
                   <td width="850">
                     <div class="layout-block-image">
-                      <img width="850" height="166" alt="" eqid="EQMST-A3DFEC46-51FA-451A-ACDD-D6ABFF7CCE7F" src="/assets/order_confirm/image-1.png" border="0" style="display: block; ">
+                      <img width="850" height="166" alt="" eqid="EQMST-A3DFEC46-51FA-451A-ACDD-D6ABFF7CCE7F" src=<%= asset_path("order_confirm/image-1.png", type: :image) %> border="0" style="display: block; ">
                     </div>
                   </td>
                 </tr>
