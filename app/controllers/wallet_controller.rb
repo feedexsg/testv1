@@ -43,7 +43,7 @@ class WalletController < ApplicationController
 				:total_amount => tp_amount.to_s,
 				:success_url => "http://app.feedex.sg/wallet",
 				:cancel_url => "http://app.feedex.sg/wallet",
-				:str_url => "http://app.feedex.sg/payment"
+				:str_url => "http://app.feedex.sg/payments"
 			 },
 			 :debug_output => $stdout
 

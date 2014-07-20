@@ -6,6 +6,9 @@ class PaymentsController < ApplicationController
 		Rails.logger.info "****** Receving parameters from SmoovPay... ******"
 		Rails.logger.info params
 
+		Rails.logger.info "Trying to get merchant..."
+		Rails.logger.info params[:merchant]
+
 		render nil
 
 
