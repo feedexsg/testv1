@@ -41,9 +41,9 @@ class WalletController < ApplicationController
 				:item_amount_1 => tp_amount.to_s,
 				:currency => "SGD",
 				:total_amount => tp_amount.to_s,
-				:success_url => "http://feedex.sg/wallet",
-				:cancel_url => "http://feedex.sg/wallet",
-				:str_url => "http://feedex.sg/payment"
+				:success_url => "http://app.feedex.sg/wallet",
+				:cancel_url => "http://app.feedex.sg/wallet",
+				:str_url => "http://app.feedex.sg/payment"
 			 },
 			 :debug_output => $stdout
 
