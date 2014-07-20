@@ -50,27 +50,21 @@
 
 				<div class="wallettopup"><h3>TOP-UP AMOUNT</h3>
 
-					<form id="walletform">
-
-
+					<%= form_tag do %>
 						<% if @topup %>
-							<input type="number" name="topupamt" value=<%= @topup %> placeholder="$10 MINIMUM"/> 
-
+							<%= number_field :topupamt, nil, in: 10...9999, step: "any", value: @topup, name: "amount", placeholder: "$10 MINIMUM" %>
 						<% else %>
-							<input type="number" name="topupamt" placeholder="$10 MINIMUM"/> 
+							<%= number_field :topupamt, nil, in: 10...9999, step: "any", name: "amount", placeholder: "$10 MINIMUM" %>
 						<% end %>
+						<%= submit_tag("Add Value") %>
 
+					<% end %>
 
-
-					</form>	
+					
 
 				</div>
 
-				<%= form_tag do %>
-					<%= number_field :topupamt, nil, in: 10...9999, name: "amount", placeholder: "$10 MINIMUM" %>
-					<%= submit_tag("Add Value") %>
-
-				<% end %>
+				
 
 
 			
