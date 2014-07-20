@@ -18,6 +18,8 @@ module Feedex
 
     config.assets.enabled = true
 
+    # config.assets.precompile += ['borderMenu.js', 'classie.js', 'idangerous.swiper-2.1.min.js', 'jquery.js', 'modernizr.custom.js', 'demo.css', 'icons.css', 'idangerous.swiper.css', 'login-grid.css', 'login.css', 'normalize.css', 'signup-grid.css', 'signup.css', 'signup_success-grid.css', 'signup_success.css', 'standardize.css', 'style5.css', 'stylemain.css']
+    config.assets.precompile += [ "two/demo.css" ]
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
