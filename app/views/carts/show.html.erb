@@ -81,7 +81,7 @@
 			<div id="addtocart">
 
 
-				<% if @current_user.total_credits > @total_price %>
+				<% if @current_user.total_credits >= @total_price %>
 				<%= button_to 'Checkout', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }} %>
 					
 						<h1>CHECKOUT</h1>

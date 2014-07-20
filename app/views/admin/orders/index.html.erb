@@ -2,6 +2,7 @@
 	<h1>Order History</h1><hr />
 	<table width="100%">
 		<tr>
+			<th>Order ID</th>
 			<th>User</th>
 			<th>Order Description</th>
 			<th>Amount</th>
@@ -11,6 +12,7 @@
 		</tr>
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td><%= order.id %></td>
 				<td><%= order.user.try(:name) %></td>
 
 				<td>
