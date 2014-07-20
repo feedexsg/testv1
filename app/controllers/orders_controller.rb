@@ -28,6 +28,10 @@ class OrdersController < ApplicationController
 					orderitem = OrderItem.new(:order_id => order.id, :main_id => item["main_id"].to_i, :side_id => item["side_id"].to_i) if item
               		orderitem.save!
 				end
+
+				# Send email confirmation
+				OrderMailer.send_order_confirmation_email("a").deliver
+				
 				redirect_to orders_url
 			else
 				# Invalid order

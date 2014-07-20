@@ -80,4 +80,19 @@ Feedex::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.action_mailer.default_url_options = {
+    :host => "http://app.feedex.sg"
+  }
+  config.action_mailer.asset_host = "http://app.feedex.sg"
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.mandrillapp.com',
+    port:                 587,
+    user_name:            'gabriel@gettingrail.com',
+    password:             'ZH1ut_xNZHsaj4iLG5h9vg',
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
+
 end
