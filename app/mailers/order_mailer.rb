@@ -24,6 +24,6 @@ class OrderMailer < ActionMailer::Base
   	end
 
   	Rails.logger.info "******* EMAIL WAS SENT THRU ORDER MAILER *******"
-  	mail(to: "gabriel@gettingrail.com", subject: "Feedex needs you!")
+  	mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Feedex needs you!")
   end
 end
