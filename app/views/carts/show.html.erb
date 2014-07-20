@@ -98,7 +98,7 @@
 			
 			<div id="addprice" class="checkoutprice">
 					
-					<h1>$<%=@total_price%></h1>
+					<h1>$<%= number_with_precision(@total_price, precision: 2) %></h1>
 
 			</div>
 

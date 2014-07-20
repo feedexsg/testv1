@@ -45,7 +45,7 @@
 			<div id="walletcontent">
 
 
-				<div class="walletvalue"><h3>REMAINING VALUE</h3><p>$<%= @credits %></p></div>
+				<div class="walletvalue"><h3>REMAINING VALUE</h3><p>$<%= number_with_precision(@credits, precision: 2) %></p></div>
 
 
 				<div class="wallettopup"><h3>TOP-UP AMOUNT</h3>

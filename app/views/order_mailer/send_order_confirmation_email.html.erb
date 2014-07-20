@@ -429,7 +429,7 @@
                         </tr>
                         <tr>
                           <td align="left" valign="top" width="367">
-                            <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ <%= item[:subprice] %></span></div>
+                            <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ <%= number_with_precision(item[:subprice], precision: 2) %></span></div>
                               </div>
                           </td>
                         </tr>
@@ -480,7 +480,7 @@
                     <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="460">
                       <tbody><tr>
                         <td align="left" class="layout-block-column" width="460">
-                          <div class="text" eqid="EQMST-FFE32205-DEB2-4958-BAD7-16FCAF0F249C" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01">TOTAL: $<%= @total_price %></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font color="#f84016" face="Helvetica"><br></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; font-family: Helvetica; "><font color="#f84016" face=""><br></font></span></b></p></div>
+                          <div class="text" eqid="EQMST-FFE32205-DEB2-4958-BAD7-16FCAF0F249C" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01">TOTAL: $<%= number_with_precision(@total_price, precision: 2) %></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font color="#f84016" face="Helvetica"><br></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; font-family: Helvetica; "><font color="#f84016" face=""><br></font></span></b></p></div>
                         </td>
                       </tr>
                     </tbody></table>
