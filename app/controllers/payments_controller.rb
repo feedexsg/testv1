@@ -35,18 +35,16 @@ class PaymentsController < ApplicationController
 
 		if (params[:signature] == check_signature)
 			Rails.logger.info "DING DING DING MATCH!"
-
+			purchasing_user = User.find(ref_id.to_i)
+			credit = Credit.new(amount: total_amount, user_id: purchasing_user.id, source: "Direct")
+			if credit.save
+				Rails.logger.info "Credit was saved!"
+			else
+				Rails.logger.info "Something went wrong when saving the credits"
+			end
 		else
 			Rails.logger.info "BLEAH DO NOT MATCH!"
 		end
-
-
-
 		render :nothing => true
-
-
-
 	end
-
-	
 end
