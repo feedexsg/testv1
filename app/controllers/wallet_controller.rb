@@ -34,7 +34,7 @@ class WalletController < ApplicationController
 				:version => "2.0",
 				:action => "pay",
 				:merchant => "gab.on.rails@gmail.com",
-				:ref_id => "SampleReference",
+				:ref_id => @current_user.id.to_s,
 				:item_name_1 => "Feedex Wallet Top Up",
 				:item_description_1 => "Feedex Top Up",
 				:item_quantity_1 => "1",
