@@ -198,7 +198,7 @@
                     <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
                       <tbody><tr>
                         <td align="left" class="layout-block-column" width="756">
-                          <div class="heading" eqid="EQMST-5D3E8BB4-426D-4955-9639-2A3F9445ED32" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; font-size: 5px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 19px; line-height: 1.2; ">ORDER CONFIRMATION</b></div><div style="text-align: center; font-size: 8px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 27px; "><font color="#fa6e01" style="line-height: 1.2; " face="">#0016</font></b></div>
+                          <div class="heading" eqid="EQMST-5D3E8BB4-426D-4955-9639-2A3F9445ED32" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; font-size: 5px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 19px; line-height: 1.2; ">ORDER CONFIRMATION</b></div><div style="text-align: center; font-size: 8px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 27px; "><font color="#fa6e01" style="line-height: 1.2; " face="">#<%= @order.id %></font></b></div>
                             </div>
                         </td>
                       </tr>
@@ -267,7 +267,7 @@
                     <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
                       <tbody><tr>
                         <td align="left" class="layout-block-column" width="756">
-                          <div class="text" eqid="EQMST-63FDFE4B-7A60-4943-B5FE-55558B2B2464" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Order number: <b><%= @order.id %></b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Date: <b>05-06-2014</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Time: <b>11:00 AM</b></font></span></div></div>
+                          <div class="text" eqid="EQMST-63FDFE4B-7A60-4943-B5FE-55558B2B2464" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Order number: <b><%= @order.id %></b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Date: <b><%= @order.delivery_time.to_date %></b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Time: <b><%= @order.delivery_time.to_time %></b></font></span></div></div>
                         </td>
                       </tr>
                     </tbody></table>
