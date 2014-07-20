@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 				end
 
 				# Send email confirmation
-				OrderMailer.send_order_confirmation_email("a").deliver
+				OrderMailer.send_order_confirmation_email(order).deliver
 				
 				redirect_to orders_url
 			else

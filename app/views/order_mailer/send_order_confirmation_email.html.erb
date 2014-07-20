@@ -267,7 +267,7 @@
                     <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
                       <tbody><tr>
                         <td align="left" class="layout-block-column" width="756">
-                          <div class="text" eqid="EQMST-63FDFE4B-7A60-4943-B5FE-55558B2B2464" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Order number: <b>0016</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Date: <b>05-06-2014</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Time: <b>11:00 AM</b></font></span></div></div>
+                          <div class="text" eqid="EQMST-63FDFE4B-7A60-4943-B5FE-55558B2B2464" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Order number: <b><%= @order.id %></b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Date: <b>05-06-2014</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Time: <b>11:00 AM</b></font></span></div></div>
                         </td>
                       </tr>
                     </tbody></table>
@@ -400,46 +400,50 @@
           </tr>
         </tbody></table>
       </div>
+
+      <% @order_items_array.each do |item| %>
       
-      <div eqlayoutblock="" eqid="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138">
-        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
-          <tbody><tr>
-            <td width="37" class="layout-block-padding-left">&nbsp;</td>
-            <td width="756" valign="top" align="left" background="box-bg-11.jpg" class="layout-block-content-cell" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-5BAC6FC7-5D55-4FE6-8F7D-2F59BB46C472">
-              <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
-                <tbody><tr>
-                  <td width="756" align="left" eqcontentlayout="horizontal" class="layout-block-column-padded-column">
-                    <table width="368" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
-                      <tbody><tr>
-                        <td align="left" valign="top" class="layout-block-padded-column" width="368">
-                          <div class="text" eqid="EQMST-D5F656E7-38CF-452F-B1D9-E17C5509E270" style="font-size: 16px; font-family: 'Lucida Grande'; "><font face="Arial"><span style="line-height: 24px; ">Green Curry with Rice</span></font><div style="line-height: 24px; "><font face="Arial"><span style="line-height: 24px; ">Yoghurt</span></font></div></div>
-                        </td>
-                      </tr>
-                    </tbody></table>
-                    <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="21">
-                      <tbody><tr>
-                        <td width="21" class="layout-block-horizontal-spacer">&nbsp;</td>
-                      </tr>
-                    </tbody></table>
-                    <table width="367" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
-                      <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
-                        <td width="367"><div class="spacer"></div></td>
-                      </tr>
-                      <tr>
-                        <td align="left" valign="top" width="367">
-                          <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ 8.90</span></div>
-                            </div>
-                        </td>
-                      </tr>
-                    </tbody></table>
-                  </td>
-                </tr>
-              </tbody></table>
-            </td>
-            <td width="37" class="layout-block-padding-right">&nbsp;</td>
-          </tr>
-        </tbody></table>
-      </div>
+        <div eqlayoutblock="" eqid="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138">
+          <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+            <tbody><tr>
+              <td width="37" class="layout-block-padding-left">&nbsp;</td>
+              <td width="756" valign="top" align="left" background="box-bg-11.jpg" class="layout-block-content-cell" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-5BAC6FC7-5D55-4FE6-8F7D-2F59BB46C472">
+                <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                  <tbody><tr>
+                    <td width="756" align="left" eqcontentlayout="horizontal" class="layout-block-column-padded-column">
+                      <table width="368" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                        <tbody><tr>
+                          <td align="left" valign="top" class="layout-block-padded-column" width="368">
+                            <div class="text" eqid="EQMST-D5F656E7-38CF-452F-B1D9-E17C5509E270" style="font-size: 16px; font-family: 'Lucida Grande'; "><font face="Arial"><span style="line-height: 24px; "><%= item[:main] %></span></font><div style="line-height: 24px; "><font face="Arial"><span style="line-height: 24px; "><%= item[:side] %></span></font></div></div>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="21">
+                        <tbody><tr>
+                          <td width="21" class="layout-block-horizontal-spacer">&nbsp;</td>
+                        </tr>
+                      </tbody></table>
+                      <table width="367" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                        <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                          <td width="367"><div class="spacer"></div></td>
+                        </tr>
+                        <tr>
+                          <td align="left" valign="top" width="367">
+                            <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ <%= item[:subprice] %></span></div>
+                              </div>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </td>
+                  </tr>
+                </tbody></table>
+              </td>
+              <td width="37" class="layout-block-padding-right">&nbsp;</td>
+            </tr>
+          </tbody></table>
+        </div>
+
+      <% end %>
       
       <div eqlayoutblock="" eqid="EQMST-30732417-2751-497E-8F55-C38A035B3799">
         <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
@@ -532,7 +536,7 @@
                     <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="460">
                       <tbody><tr>
                         <td align="left" class="layout-block-column" width="460">
-                          <div class="text" eqid="EQMST-FFE32205-DEB2-4958-BAD7-16FCAF0F249C" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01">TOTAL: $16.80</font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font color="#f84016" face="Helvetica"><br></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; font-family: Helvetica; "><font color="#f84016" face=""><br></font></span></b></p></div>
+                          <div class="text" eqid="EQMST-FFE32205-DEB2-4958-BAD7-16FCAF0F249C" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01">TOTAL: $<%= @total_price %></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font color="#f84016" face="Helvetica"><br></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; font-family: Helvetica; "><font color="#f84016" face=""><br></font></span></b></p></div>
                         </td>
                       </tr>
                     </tbody></table>
