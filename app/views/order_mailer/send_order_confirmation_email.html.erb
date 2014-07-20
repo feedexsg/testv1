@@ -1,17 +1,585 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h1>Welcome to example.com, Gab</h1>
-    <p>
-      You have successfully signed up to example.com,
-      your username is: Gab.<br>
-    </p>
-    <p>
-      To login to the site, just follow this link: Gab.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
-</html>
+<html><head>
+  <meta name="Viewport" content="width=device-width">
+  <style type="text/css" id="General Style Sheet">
+    a { word-break: break-word; }
+  </style>
+  <style type="text/css" id="Mobile Style Sheet">
+    @media only screen and (max-width: 580px) {
+      table[class=email-body-wrap] {
+        width: 320px !important;
+      }
+      td[class=page-bg-show-thru] {
+        display: none !important;
+      }
+      table[class=layout-block-wrapping-table] {
+        width: 320px !important;
+      }
+      table[class=mso-fixed-width-wrapping-table] {
+        width: 320px !important;
+      }
+      *[class=layout-block-full-width] {
+        width: 320px !important;
+      }
+      table[class=layout-block-column], table[class=layout-block-padded-column] {
+        width: 100% !important;
+      }
+      table[class=layout-block-box-padding] {
+        width: 100% !important;
+        padding: 5px !important;
+      }
+      table[class=layout-block-horizontal-spacer] {
+        display: none !important;
+      }
+      tr[class=layout-block-vertical-spacer] {
+         display: block !important;
+         height: 8px !important;}
+      td[class=container-padding] {
+        display: none !important;
+      }
+      
+      *[class~=desktop-only] { display: none !important; }
+      *[class~=mobile-only] { display: block !important; }
+      
+      .hide {
+        max-height: none !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+      
+      div[eqID="EQMST-9684568B-42D9-480B-88F9-A8A5628A3E95"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-9684568B-42D9-480B-88F9-A8A5628A3E95"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-9684568B-42D9-480B-88F9-A8A5628A3E95"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-75862536-3C98-4173-9B69-261FAA665A8A"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-75862536-3C98-4173-9B69-261FAA665A8A"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-75862536-3C98-4173-9B69-261FAA665A8A"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      img[eqID="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87"] { width: 282px !important; height: 9px !important; } /* image-4.png */
+      img[id="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87"] { width: 282px !important; height: 9px !important; } /* image-4.png */
+      
+      div[eqID="EQMST-064E8BFB-2DF0-4A50-909F-4937D1C5238A"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-064E8BFB-2DF0-4A50-909F-4937D1C5238A"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-064E8BFB-2DF0-4A50-909F-4937D1C5238A"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      img[eqID="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87"] { width: 282px !important; height: 9px !important; } /* image-3.png */
+      img[id="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87"] { width: 282px !important; height: 9px !important; } /* image-3.png */
+      
+      div[eqID="EQMST-876D37E0-FB1B-4010-9B94-F39200EDBF92"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-876D37E0-FB1B-4010-9B94-F39200EDBF92"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-876D37E0-FB1B-4010-9B94-F39200EDBF92"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-10DFF8F8-A55E-479F-B530-7D955FBEB896"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-10DFF8F8-A55E-479F-B530-7D955FBEB896"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-10DFF8F8-A55E-479F-B530-7D955FBEB896"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      img[eqID="EQMST-2D752DB7-487C-4D2E-BB7F-87AE25E91610"] { width: 282px !important; height: 9px !important; } /* image-5.png */
+      img[id="EQMST-2D752DB7-487C-4D2E-BB7F-87AE25E91610"] { width: 282px !important; height: 9px !important; } /* image-5.png */
+      
+      div[eqID="EQMST-CA6E16BF-767C-4E2F-BBFE-62A7CE95D56B"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-CA6E16BF-767C-4E2F-BBFE-62A7CE95D56B"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-CA6E16BF-767C-4E2F-BBFE-62A7CE95D56B"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      img[eqID="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186"] { width: 282px !important; height: 9px !important; } /* image-7.png */
+      img[id="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186"] { width: 282px !important; height: 9px !important; } /* image-7.png */
+      
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-30732417-2751-497E-8F55-C38A035B3799"] [class~="layout-block-content-cell"] { width: 292px !important; }
+      img[eqID="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186"] { width: 282px !important; height: 9px !important; } /* image-6.png */
+      img[id="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186"] { width: 282px !important; height: 9px !important; } /* image-6.png */
+      
+      div[eqID="EQMST-07819C95-C45F-4B95-82CF-5E2A33667E23"] [class~="layout-block-padding-left"] { width: 125px !important; }
+      div[eqID="EQMST-07819C95-C45F-4B95-82CF-5E2A33667E23"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-07819C95-C45F-4B95-82CF-5E2A33667E23"] [class~="layout-block-content-cell"] { width: 181px !important; }
+      
+      div[eqID="EQMST-368DBC54-E2A0-4AE3-B698-7DEE04EF48BB"] [class~="layout-block-padding-left"] { width: 14px !important; }
+      div[eqID="EQMST-368DBC54-E2A0-4AE3-B698-7DEE04EF48BB"] [class~="layout-block-padding-right"] { width: 14px !important; }
+      div[eqID="EQMST-368DBC54-E2A0-4AE3-B698-7DEE04EF48BB"] [class~="layout-block-content-cell"] { width: 292px !important; }
+    }
+  </style>
+  <!--[if gte mso 9]>
+  <style type="text/css" id="Outlook Style Sheet">
+    .mso-fixed-width { width: 854px !important; }
+    .mso-fixed-width-wrapping-table { width: 854px !important; }
+    table.layout-block-horizontal-spacer {
+        display: none !important;
+    }
+    table {
+        border-collapse:collapse;
+        mso-table-lspace:0pt;
+        mso-table-rspace:0pt;
+        mso-table-bspace:0pt;
+        mso-table-tspace:0pt;
+        mso-padding-alt:0;
+        mso-table-top:0;
+        mso-table-wrap:around;
+    }
+    td {
+        border-collapse:collapse;
+        mso-cellspacing:0;
+    }
+  </style>
+  <![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<body style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; " background="page-bg.jpg" bgcolor="#ffffff" eqid="EQMST-5B629705-2068-4643-A1B4-1BA752D88F04"> 
+
+<table width="100%" cellspacing="0" cellpadding="0" id="page-wrap" align="center" background=<%= asset_path '/order_confirm/page-bg.jpg' %> bgcolor="#ffffff">
+<tbody><tr>
+  <td>
+
+<table class="email-body-wrap" width="910" cellspacing="0" cellpadding="0" id="email-body" align="center">
+<tbody><tr>
+  <td width="30" eqfixedwidth="true" class="page-bg-show-thru">&nbsp;<!-- Left page bg show-thru --></td>
+  <td width="850" id="page-body" eqid="EQMST-E42EE1D2-FD64-4CC3-81A8-CEDDEEA78958" background=<%= asset_path '/order_confirm/background.jpg' %> bgcolor="#ffffff">
+    
+    <!-- Begin of layout container -->
+    <div id="eqLayoutContainer">
+      
+      <div eqlayoutblock="" eqid="EQMST-188CA4C8-0993-41A1-96D4-3F44AF105B12" class="desktop-only" eqsiblinglayoutblockid="2D67E41E-6AE3-456D-909A-B2BF15E13709">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td valign="top" class="layout-block-full-width" width="850">
+              <table cellspacing="0" cellpadding="0" class="layout-block-full-width" width="850">
+                <tbody><tr>
+                  <td width="850">
+                    <div class="layout-block-image">
+                      <img width="850" height="166" alt="" eqid="EQMST-A3DFEC46-51FA-451A-ACDD-D6ABFF7CCE7F" src="image-1.png" border="0" style="display: block; ">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" style="display: none; max-height: 0px; overflow: hidden; " eqid="EQMST-2D67E41E-6AE3-456D-909A-B2BF15E13709" class="mobile-only hide" eqsiblinglayoutblockid="188CA4C8-0993-41A1-96D4-3F44AF105B12" background="">
+        <table width="320" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table hide" style="display: none; max-height: 0px; overflow: hidden; ">
+          <tbody><tr>
+            <td valign="top" class="layout-block-full-width" width="320">
+              <table cellspacing="0" cellpadding="0" class="layout-block-full-width hide" width="320" style="display: none; max-height: 0px; overflow: hidden; ">
+                <tbody><tr>
+                  <td width="320">
+                    <div class="layout-block-image hide" style="display: none; max-height: 0px; overflow: hidden; ">
+                      <img width="320" height="117" alt="" eqid="EQMST-5530B174-46AD-49B5-8CFD-4454AE65A394" src="image-2.png" border="0" style="display: none; max-height: 0px; overflow: hidden; " class="hide">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-9684568B-42D9-480B-88F9-A8A5628A3E95">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td valign="top" align="left" class="layout-block-content-cell" width="776">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="776">
+                <tbody><tr>
+                  <td width="756" valign="top" align="left" background="box-bg.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#fffffe" eqid="EQMST-832D1D65-C6DF-4E58-8BEC-3E50F3BC55F4">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="756">
+                          <div class="heading" eqid="EQMST-5D3E8BB4-426D-4955-9639-2A3F9445ED32" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; font-size: 5px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 19px; line-height: 1.2; ">ORDER CONFIRMATION</b></div><div style="text-align: center; font-size: 8px; line-height: 1.2; "><b style="font-family: Helvetica; font-size: 27px; "><font color="#fa6e01" style="line-height: 1.2; " face="">#0016</font></b></div>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-75862536-3C98-4173-9B69-261FAA665A8A">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td class="layout-block-content-cell" width="776">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="776">
+                <tbody><tr>
+                  <td width="756" valign="top" align="left" background="box-bg-3.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#fffffe" eqid="EQMST-E4036403-27B5-4698-AE55-A8AADC0E9C19">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="756">
+                          <div class="text" eqid="EQMST-5C203A85-C3B0-4228-8F8A-3601DC7AA248" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: justify; margin: 0px; line-height: 25px; "><br></p><p style="text-align: justify; margin: 0px; line-height: 21px; "><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Dear Ivan,</font></span></p><p style="text-align: justify; margin: 0px; line-height: 21px; "><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><br></font></span></p><p style="text-align: justify; margin: 0px; line-height: 21px; "><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Thank you for choosing to have your lunch with us! Please remember to bring this recipet along with you for collection. Our friendly Feeders will be there to hand you your order :)</font></span></p><div style="text-align: justify; "><span style="font-size: 15px; font-family: Helvetica; "><br></span></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td eqcontentlayout="horizontal" background="box-bg-4.jpg" class="layout-block-content-cell" bgcolor="#ffffff" width="776" eqid="EQMST-F194215B-BD47-4709-B796-C7BC024CCBCF">
+              <table cellspacing="0" cellpadding="0" align="left" style="padding-left: 10px; padding-right: 10px; " class="layout-block-box-padding" width="776">
+                <tbody><tr>
+                  <td valign="top" class="layout-block-padded-column" align="center" width="756">
+                    <div class="layout-block-image">
+                      <img width="756" height="25" alt="" eqid="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87" src="image-4.png" border="0" style="display: block; " id="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-064E8BFB-2DF0-4A50-909F-4937D1C5238A">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td class="layout-block-content-cell" width="776">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="776">
+                <tbody><tr>
+                  <td width="756" valign="top" align="left" background="box-bg-2.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-8784A0DB-1DB9-46AF-8B11-AFD4DC724754">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="756">
+                          <div class="text" eqid="EQMST-63FDFE4B-7A60-4943-B5FE-55558B2B2464" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Order number: <b>0016</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Date: <b>05-06-2014</b></font></span></div><div style="line-height: 21px; font-size: 21px; "><span style="font-size: 15px; line-height: 21px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Time: <b>11:00 AM</b></font></span></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-DD66D17E-4137-436D-9A13-F8ED55FE616E">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td eqcontentlayout="horizontal" background="box-bg-5.jpg" class="layout-block-content-cell" bgcolor="#ffffff" width="776" eqid="EQMST-F194215B-BD47-4709-B796-C7BC024CCBCF">
+              <table cellspacing="0" cellpadding="0" align="left" style="padding-left: 10px; padding-right: 10px; " class="layout-block-box-padding" width="776">
+                <tbody><tr>
+                  <td valign="top" class="layout-block-padded-column" align="center" width="756">
+                    <div class="layout-block-image">
+                      <img width="756" height="25" alt="" eqid="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87" src="image-3.png" border="0" style="display: block; " id="EQMST-EA3BCCED-4E1E-44F1-91BA-E1E2635B1F87">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-876D37E0-FB1B-4010-9B94-F39200EDBF92">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td width="756" valign="top" align="left" background="box-bg-1.jpg" class="layout-block-content-cell" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-387DE019-BE5F-484F-A6D2-9B80721B40F3">
+              <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                  <td width="756"><div class="spacer"></div></td>
+                </tr>
+                <tr>
+                  <td width="756" align="left" eqcontentlayout="horizontal" class="layout-block-padded-column">
+                    <table width="238" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr>
+                        <td align="left" valign="top" class="layout-block-padded-column" width="238">
+                          <div class="text" eqid="EQMST-851E90F7-D0C9-496D-9655-AA7F74FA17F1" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="font-size: 16px; margin: 0px; line-height: 20px; "><span style="font-size: 15px; "><b><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">COLLECTION ADDRESS</font></b></span></p><p style="margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; ">#01-01A</span></font></p><p style="margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; ">137 Telok Ayer Street</span></font></p><p style="margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; ">Singapore,&nbsp;</span></font><span style="font-size: 15px; font-family: Helvetica, Arial, Roboto, 'Droid Sans', sans-serif; ">068602</span></p><div><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; "><br></span></font></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="21">
+                      <tbody><tr>
+                        <td width="21" class="layout-block-horizontal-spacer">&nbsp;</td>
+                      </tr>
+                    </tbody></table>
+                    <table width="216" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                        <td width="216"><div class="spacer"></div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top" width="216">
+                          <div class="text" eqid="EQMST-BAEE1722-F3A3-4680-951A-65E3AE1E853F" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="font-size: 16px; margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; "><b>COLLECTION TIME</b></span></font></p><p style="font-size: 16px; margin: 0px; "></p><p style="margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; ">Collect your meal anytime between 11:30 AM and 2:00 PM</span></font></p><div><font face="Helvetica"><span style="font-size: 15px; "><br></span></font></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="43">
+                      <tbody><tr>
+                        <td width="43" class="layout-block-horizontal-spacer">&nbsp;</td>
+                      </tr>
+                    </tbody></table>
+                    <table width="238" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                        <td width="238"><div class="spacer"></div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top" class="layout-block-padded-column" width="238">
+                          <div class="text" eqid="EQMST-DFB2F9FF-A00D-49DB-880A-4A1654C77FE0" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="font-size: 16px; margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; "><b>PAYMENT STATUS</b></span></font></p><p style="font-size: 16px; margin: 0px; line-height: 20px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="font-size: 15px; ">Cash on Collection</span></font></p><div><font face="Helvetica"><span style="font-size: 15px; "><br></span></font></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-10DFF8F8-A55E-479F-B530-7D955FBEB896">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td eqcontentlayout="horizontal" background="box-bg-6.jpg" class="layout-block-content-cell" bgcolor="#ffffff" width="776" eqid="EQMST-9870929D-04E4-4DA5-B338-C976E0498FC8">
+              <table cellspacing="0" cellpadding="0" align="left" style="padding-left: 10px; padding-right: 10px; " class="layout-block-box-padding" width="776">
+                <tbody><tr>
+                  <td valign="top" class="layout-block-padded-column" align="center" width="756">
+                    <div class="layout-block-image">
+                      <img width="756" height="25" alt="" eqid="EQMST-2D752DB7-487C-4D2E-BB7F-87AE25E91610" src="image-5.png" border="0" style="display: block; " id="EQMST-2D752DB7-487C-4D2E-BB7F-87AE25E91610">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-CA6E16BF-767C-4E2F-BBFE-62A7CE95D56B">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td class="layout-block-content-cell" width="776">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="776">
+                <tbody><tr>
+                  <td width="756" valign="top" align="left" background="box-bg-10.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-4C82F616-CC9B-45B7-AEBA-A3240A64ECD9">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="756">
+                          <div class="text" eqid="EQMST-39BCBAB3-0BEC-4601-8B35-5FE33CA841CC" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: justify; margin: 0px; font-size: 17px; line-height: 25px; "><b style="color: rgb(250, 110, 1); font-family: Helvetica, Arial, Roboto, 'Droid Sans', sans-serif; ">ORDER DETAILS</b></p><p style="text-align: justify; margin: 0px; line-height: 25px; font-size: 17px; "><br></p></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td width="756" valign="top" align="left" background="box-bg-11.jpg" class="layout-block-content-cell" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-5BAC6FC7-5D55-4FE6-8F7D-2F59BB46C472">
+              <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                <tbody><tr>
+                  <td width="756" align="left" eqcontentlayout="horizontal" class="layout-block-column-padded-column">
+                    <table width="368" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr>
+                        <td align="left" valign="top" class="layout-block-padded-column" width="368">
+                          <div class="text" eqid="EQMST-D5F656E7-38CF-452F-B1D9-E17C5509E270" style="font-size: 16px; font-family: 'Lucida Grande'; "><font face="Arial"><span style="line-height: 24px; ">Green Curry with Rice</span></font><div style="line-height: 24px; "><font face="Arial"><span style="line-height: 24px; ">Yoghurt</span></font></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="21">
+                      <tbody><tr>
+                        <td width="21" class="layout-block-horizontal-spacer">&nbsp;</td>
+                      </tr>
+                    </tbody></table>
+                    <table width="367" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                        <td width="367"><div class="spacer"></div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top" width="367">
+                          <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ 8.90</span></div>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-30732417-2751-497E-8F55-C38A035B3799">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td eqcontentlayout="horizontal" background="box-bg-12.jpg" class="layout-block-content-cell" bgcolor="#ffffff" width="776" eqid="EQMST-292B49F7-1E8F-494A-809E-1ACCAF7E47D0">
+              <table cellspacing="0" cellpadding="0" align="left" style="padding-left: 10px; padding-right: 10px; " class="layout-block-box-padding" width="776">
+                <tbody><tr>
+                  <td valign="top" class="layout-block-padded-column" align="center" width="756">
+                    <div class="layout-block-image">
+                      <img width="756" height="25" alt="" eqid="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186" src="image-7.png" border="0" style="display: block; " id="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-8A5AE304-A0B4-42BD-9895-8BAB38B4D138">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td width="756" valign="top" align="left" background="box-bg-8.jpg" class="layout-block-content-cell" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-5BAC6FC7-5D55-4FE6-8F7D-2F59BB46C472">
+              <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="756">
+                <tbody><tr>
+                  <td width="756" align="left" eqcontentlayout="horizontal" class="layout-block-column-padded-column">
+                    <table width="368" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr>
+                        <td align="left" valign="top" class="layout-block-padded-column" width="368">
+                          <div class="text" eqid="EQMST-D5F656E7-38CF-452F-B1D9-E17C5509E270" style="font-size: 16px; font-family: 'Lucida Grande'; "><font face="Arial"><span style="line-height: 24px; ">Nasi Lemak</span></font><div style="line-height: 24px; "><font face="Arial"><span style="line-height: 24px; ">Soya Bean Curd</span></font></div></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                    <table cellspacing="0" cellpadding="0" align="left" class="layout-block-horizontal-spacer" width="21">
+                      <tbody><tr>
+                        <td width="21" class="layout-block-horizontal-spacer">&nbsp;</td>
+                      </tr>
+                    </tbody></table>
+                    <table width="367" cellspacing="0" cellpadding="0" align="left" class="layout-block-padded-column">
+                      <tbody><tr class="layout-block-vertical-spacer" style="display:none; height:8px; ">
+                        <td width="367"><div class="spacer"></div></td>
+                      </tr>
+                      <tr>
+                        <td align="left" valign="top" width="367">
+                          <div class="text" eqid="EQMST-ADEBC107-A30A-48C5-866A-FBFF56DE70B9" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: right; line-height: 1.5; "><span style="font-size: 16px; line-height: 1.5; font-family: Arial; ">$ 7.90</span></div>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-30732417-2751-497E-8F55-C38A035B3799">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="37" class="layout-block-padding-left">&nbsp;</td>
+            <td eqcontentlayout="horizontal" background="box-bg-7.jpg" class="layout-block-content-cell" bgcolor="#ffffff" width="776" eqid="EQMST-292B49F7-1E8F-494A-809E-1ACCAF7E47D0">
+              <table cellspacing="0" cellpadding="0" align="left" style="padding-left: 10px; padding-right: 10px; " class="layout-block-box-padding" width="776">
+                <tbody><tr>
+                  <td valign="top" class="layout-block-padded-column" align="center" width="756">
+                    <div class="layout-block-image">
+                      <img width="756" height="25" alt="" eqid="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186" src="image-6.png" border="0" style="display: block; " id="EQMST-DE8F4425-5037-4EE4-9607-7214D947A186">
+                    </div>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-07819C95-C45F-4B95-82CF-5E2A33667E23">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="333" class="layout-block-padding-left">&nbsp;</td>
+            <td class="layout-block-content-cell" width="480">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="480">
+                <tbody><tr>
+                  <td width="460" valign="top" align="left" background="box-bg-9.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-0EAA7C70-2947-4B79-8AA9-AED3090D3F2F">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="460">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="460">
+                          <div class="text" eqid="EQMST-FFE32205-DEB2-4958-BAD7-16FCAF0F249C" style="font-size: 16px; font-family: 'Lucida Grande'; "><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01">TOTAL: $16.80</font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; "><font color="#f84016" face="Helvetica"><br></font></span></b></p><p style="text-align: right; font-size: 16px; margin: 0px; line-height: 20px; "><b><span style="font-size: 15px; font-family: Helvetica; "><font color="#f84016" face=""><br></font></span></b></p></div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+      <div eqlayoutblock="" eqid="EQMST-368DBC54-E2A0-4AE3-B698-7DEE04EF48BB">
+        <table width="850" cellspacing="0" cellpadding="0" class="layout-block-wrapping-table">
+          <tbody><tr>
+            <td width="36" class="layout-block-padding-left">&nbsp;</td>
+            <td class="layout-block-content-cell" width="777">
+              <table cellspacing="0" cellpadding="0" align="left" class="layout-block-column" width="777">
+                <tbody><tr>
+                  <td width="757" valign="top" align="left" background="box-bg-14.jpg" style="padding-left: 10px; padding-right: 10px; " bgcolor="#ffffff" eqid="EQMST-93010FF3-4EDE-4A03-9B74-39FC323ED978">
+                    <table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="757">
+                      <tbody><tr>
+                        <td align="left" class="layout-block-column" width="757">
+                          <div class="text" eqid="EQMST-7AE59498-9032-49A1-BDBD-B64C1863394C" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; font-size: 13px; line-height: 1; "><font face="Arial" style="line-height: 1; " color="#d3d4d6"><br></font></div><div style="text-align: center; font-size: 13px; line-height: 1; "><font face="Arial" style="line-height: 1; " color="#d3d4d6"><br></font></div><div style="text-align: center; font-size: 13px; line-height: 1; "><font face="Arial" style="line-height: 1; " color="#d3d4d6">©2014, Feedex Pte Ltd.&nbsp;</font></div><div style="text-align: center; font-size: 12px; "><font face="" color="#c3c3c5"><a href="http://www.feedex.sg"><font color="#c3c3c5" face="">www.feedex.sg</font></a></font></div><div style="text-align: center; font-size: 12px; "><font color="#d3d4d6" face=""><br></font></div><div style="text-align: center; font-size: 12px; "><font color="#d3d4d6" face=""><br></font></div>
+                            </div>
+                        </td>
+                      </tr>
+                    </tbody></table>
+                  </td>
+                </tr>
+              </tbody></table>
+            </td>
+            <td width="37" class="layout-block-padding-right">&nbsp;</td>
+          </tr>
+        </tbody></table>
+      </div>
+      
+    </div>
+    <!-- End of layout container -->
+    
+  </td>
+  <td width="30" eqfixedwidth="true" class="page-bg-show-thru">&nbsp;<!-- Right page bg show-thru --></td>
+</tr>
+</tbody></table><!-- email-body -->
+
+  </td>
+</tr>
+</tbody></table><!-- page-wrap -->
+
+</body></html>
