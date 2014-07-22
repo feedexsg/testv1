@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
   	@user = User.new(user_params)
   	if @user.save
+      # Send mailer
+      OrderMailer.send_account_activation_email(@user).deliver
   		redirect_to signup_success_url
   	else
   		flash[:error] = @user.errors.full_messages
