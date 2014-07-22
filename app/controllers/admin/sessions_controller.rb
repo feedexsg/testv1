@@ -18,8 +18,8 @@ class Admin::SessionsController < Admin::BaseController
   end
 
   def destroy
-    reset_session
-    redirect_to admin_root_path
+    session.delete(:admin_id)
+    redirect_to root_url
   end
 
 end
