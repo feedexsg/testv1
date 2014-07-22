@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   before_create :create_remember_token
+  before_create :generate_confirmation_token
   before_save { self.email = email.downcase }
 
   include ActiveModel::SecurePassword
@@ -51,6 +52,14 @@ class User < ActiveRecord::Base
 
   def send_welcome_notification
     Notifier.welcome_notification(self)
+  end
+
+  protected
+  def generate_confirmation_token
+    self.confirmation_token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless User.exists?(confirmation_token: random_token)
+    end
   end
 
 end
