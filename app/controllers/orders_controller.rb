@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
 		order.amount = total_amt
 
-		if @current_user.total_credits > total_amt
+		if @current_user.total_credits >= total_amt
 			if order.save
 				order_params[:item_sets].each do |item|
 					orderitem = OrderItem.new(:order_id => order.id, :main_id => item["main_id"].to_i, :side_id => item["side_id"].to_i) if item
