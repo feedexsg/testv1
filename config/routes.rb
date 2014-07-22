@@ -58,6 +58,7 @@ Feedex::Application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :orders do
       collection do
+        get :redeem
         get :current
         get :current_redeemed
       end

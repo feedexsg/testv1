@@ -5,19 +5,45 @@
 
 		<table width="100%">
 		<tr>
+			<th>Order ID</th>
 			<th>Username</th>
 			<th>Order Description</th>
 			<th>Redeemed?</th>
 		</tr>
-		<% @large_array.each do |order| %>
+		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
-			<td><%= order["username"] %></td>
-			<td><% order["item_sets"].each do |item_set| %>
-					<%= item_set["main_title"] %> +
-					<%= item_set["side_title"] %> X
-					<%= item_set["quantity"] %> set(s)
+			<td><%= order.id %></td>
+			<td><%= order.user.name %></td>
+			<% item_sets_array = [] %>
+			<td><% order.order_items.each do |order_item| %>
+				<% itemset_hash = {}
+					itemset_hash["main_id"] = order_item.main_id
+				   itemset_hash["main_title"] = Item.find(order_item.main_id).name
+				   itemset_hash["side_id"] = order_item.side_id
+				   itemset_hash["side_title"] = Item.find(order_item.side_id).name
+				   itemset_hash["quantity"] = 1
+				   add_to_array = true
+				   item_sets_array.each do |check_set|
+                		if check_set["main_id"] == itemset_hash["main_id"] && check_set["side_id"] == itemset_hash["side_id"]
+                  			add_to_array = false
+                  			check_set["quantity"] += 1
+                  			break
+                		end
+              		end # end of item_sets_array.each do 
+              		item_sets_array << itemset_hash if add_to_array
+				%>
+			<% end %>
+			<% item_sets_array.each do |a| %>
+				<%= a["main_title"] %> +
+					<%= a["side_title"] %> X
+					<%= a["quantity"] %> 
+					<% if a["quantity"] == 1 %>
+						set
+					<% else %>
+						sets
+					<% end %>
 					<br>
-				<% end %>
+			<% end %>
 			</td>
 			<td>YES</td>
 
@@ -27,4 +53,3 @@
 	</table>
 
 </div>
-	

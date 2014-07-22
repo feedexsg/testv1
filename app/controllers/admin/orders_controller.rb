@@ -4,8 +4,18 @@ class Admin::OrdersController < Admin::BaseController
     @orders = Order.all.order(created_at: :desc)
   end
 
+  def redeem
+    order_id = params[:order_id]
+    if order_id
+      order = Order.find(order_id)
+      order.redeemed = true
+      order.save if order
+    end
+    redirect_to current_admin_orders_path
+  end
+
   def current
-      @orders = Order.today.where(:redeemed => false) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
+      @orders = Order.today.where(:redeemed => false).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
       
       @sorted_orders = @orders.group_by do |order|
         order.user_id
@@ -51,7 +61,7 @@ class Admin::OrdersController < Admin::BaseController
   end
 
   def current_redeemed
-    @orders = Order.today.where(:redeemed => true) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
+    @orders = Order.today.where(:redeemed => true).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
       
       @sorted_orders = @orders.group_by do |order|
         order.user_id
