@@ -29,11 +29,11 @@ class WalletController < ApplicationController
 		puts "AMOUNT RECIEVED__ ****"
 		puts tp_amount
 
-		@response = HTTParty.post("https://sandbox.smoovpay.com/redirecturl",
+		@response = HTTParty.post("https://secure.smoovpay.com/redirecturl",#HTTParty.post("https://sandbox.smoovpay.com/redirecturl",
 			:body => { 
 				:version => "2.0",
 				:action => "pay",
-				:merchant => "gab.on.rails@gmail.com",
+				:merchant => "ivan@feedex.sg", #"gab.on.rails@gmail.com",
 				:ref_id => @current_user.id.to_s,
 				:item_name_1 => "Feedex Wallet Top Up",
 				:item_description_1 => "Feedex Top Up",

@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
 		Rails.logger.info "**** Signature *****"
 		Rails.logger.info params[:signature]
 
-		secret_key = "0db5a5b4cc2840009ff2c2c98a520582"
+		secret_key = "02dc8e51bd6c4af4a3f5d09237e9e3a5" #"0db5a5b4cc2840009ff2c2c98a520582"
 		merchant = params[:merchant]
 		ref_id = params[:ref_id]
 		reference_code = params[:reference_code]
