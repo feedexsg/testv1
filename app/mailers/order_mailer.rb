@@ -26,4 +26,9 @@ class OrderMailer < ActionMailer::Base
   	Rails.logger.info "******* EMAIL WAS SENT THRU ORDER MAILER *******"
   	mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Feedex needs you!")
   end
+
+  def send_account_activation_email(account)
+    Rails.logger.info "**** ACTIVATION EMAIL WAS SENT THROUGH ORDER MAILER ****"
+    mail(to: "gabriel@gettingrail.com", subject: "Please Confirm Your Account")
+  end
 end
