@@ -1224,6 +1224,14 @@ img {
 
   <%= form_for @user, :html => {class: "signup"} do |f| %>
     <%= f.text_field :name, class: "firstname", placeholder: "Your full name" %>
+    <%= f.email_field :email, class: "email", placeholder: "We don't spam. Ever." %>
+    <%= f.text_field :mobile, class: "phone", placeholder: "No prank calls either." %>
+    <fieldset class="password password-1">
+      <%= f.password_field :password, class: "password password-2", placeholder: "It'll be our little secret" %>
+      <%= f.password_field :password_confirmation, class: "password password-3", placeholder: "Once more to be sure." %>
+    </fieldset>
+    <%= f.select :colony_id, Colony.all.collect{|c| [c.name, c.id] }, {}, { :class => "colony" } %>
+
 
     <%= f.submit "Sign me up!", class: "submit" %>
 

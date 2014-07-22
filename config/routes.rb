@@ -79,6 +79,7 @@ Feedex::Application.routes.draw do
   resources :orders, only: [:index, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
+  match '/signup_success', to: 'users#signup_success', via: 'get'
   match '/signup', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'

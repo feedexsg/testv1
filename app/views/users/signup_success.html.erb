@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>Feedex | Sign Up</title>
+  <link href="http://fonts.googleapis.com/css?family=Muli:400|Montserrat:700" rel="stylesheet" type="text/css">
+  <%= stylesheet_link_tag "two/standardize.css" %>
+  <%= stylesheet_link_tag "two/signup_success-grid.css" %>
+  <%= stylesheet_link_tag "two/signup_success.css" %>
+  <style>
+  .signup:hover {
+  color: rgb(255,177,9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+}
+
+  .learn:hover {
+  color: rgb(255,177,9);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+}
+  </style>
+</head>
+<body class="body signup_success clearfix">
+  <div class="wrapper clearfix">
+    <div class="blackglass clearfix">
+      <header class="_container _container-1 clearfix">
+        <a href="login.html" class="_container _container-2 clearfix">
+          <%= image_tag("logo.png", class: "logo") %>
+        </a>
+      </header>
+      <h1 class="_text">thank you for signing up!</h1>
+      <p class="message">Please check your email to verify your account before signing in.</p>
+    </div>
+    <footer class="_container _container-3 clearfix">
+      <p class="footer">© 2014, Feedex Pte. Ltd.</p>
+    </footer>
+  </div>
+</body>
+</html>
