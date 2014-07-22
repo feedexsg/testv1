@@ -20,10 +20,21 @@ class UsersController < ApplicationController
   end
 
   def signup_success
-
   end
 
-
+  def confirm
+    confirmation_token = params[:confirmation]
+    user = User.where(confirmation_token: confirmation_token).first
+    if user
+      user.confirmed_at = DateTime.now
+      user.save!
+      sign_in user
+      redirect_to menus_url
+    else
+      flash[:error] = "Sorry, something went wrong."
+      redirect_to root_url
+    end
+  end
 
   private
 

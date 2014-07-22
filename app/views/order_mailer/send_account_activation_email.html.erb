@@ -266,7 +266,7 @@
 										<table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="600">
 											<tbody><tr>
 												<td align="left" class="layout-block-column" width="600">
-													<div class="text" eqid="EQMST-D18433C2-3048-4505-AD42-ED51AEE0775B" style="font-size: 16px; font-family: 'Lucida Grande'; "><span style="line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Hi John,</font></span><div style="line-height: 24px; "><span style="line-height: 24px; "><font face="Helvetica"><br></font></span></div><div style="text-align: justify; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">You’re almost there! Just click on this nifty link we’ve provided to verify your email address and activate your account.</font></div></div>
+													<div class="text" eqid="EQMST-D18433C2-3048-4505-AD42-ED51AEE0775B" style="font-size: 16px; font-family: 'Lucida Grande'; "><span style="line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">Hi <%= @user.name%>,</font></span><div style="line-height: 24px; "><span style="line-height: 24px; "><font face="Helvetica"><br></font></span></div><div style="text-align: justify; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif">You’re almost there! Just click on this nifty link we’ve provided to verify your email address and activate your account.</font></div></div>
 												</td>
 											</tr>
 										</tbody></table>
@@ -302,7 +302,7 @@
 										<table cellspacing="0" cellpadding="0" class="layout-block-box-padding" width="599">
 											<tbody><tr>
 												<td align="left" class="layout-block-column" width="599">
-													<div class="text" eqid="EQMST-06AFE210-4A42-4F6D-9993-27C16D4D3529" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="line-height: 24px; "><br></span></font></div><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01"><b><u><a href="http://www.feedex.sg/auhwo37038u9weuh"><font color="#fa6e01" face="">www.feedex.sg/auhwo37038u9weuh</font></a></u></b></font></div><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="line-height: 24px; "><br></span></font></div></div>
+													<div class="text" eqid="EQMST-06AFE210-4A42-4F6D-9993-27C16D4D3529" style="font-size: 16px; font-family: 'Lucida Grande'; "><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="line-height: 24px; "><br></span></font></div><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif" color="#fa6e01"><b><u><a href=<%= @confirmation_link %>><font color="#fa6e01" face=""><%= @confirmation_link %></font></a></u></b></font></div><div style="text-align: center; line-height: 24px; "><font face="Helvetica, Arial, Roboto, Droid Sans, sans-serif"><span style="line-height: 24px; "><br></span></font></div></div>
 												</td>
 											</tr>
 										</tbody></table>

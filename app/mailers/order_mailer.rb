@@ -29,6 +29,10 @@ class OrderMailer < ActionMailer::Base
 
   def send_account_activation_email(account)
     Rails.logger.info "**** ACTIVATION EMAIL WAS SENT THROUGH ORDER MAILER ****"
-    mail(to: "gabriel@gettingrail.com", subject: "Please Confirm Your Account")
+
+    @user = account
+    token = @user.confirmation_token.to_s
+    @confirmation_link = "http://app.feedex.sg/confirm?confirmation=" + token
+    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Please Confirm Your Account")
   end
 end
