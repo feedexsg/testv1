@@ -56,9 +56,7 @@
 						<% else %>
 							<%= number_field :topupamt, nil, in: 10...9999, step: "any", name: "amount", placeholder: "$10 MINIMUM" %>
 						<% end %>
-						<%= submit_tag("Add Value") %>
-
-					<% end %>
+						
 
 					
 
@@ -80,7 +78,13 @@
 			<div id="addtocart" class="summaryatc">
 
 
-				<h1>ADD VALUE</h1>
+
+				<%= submit_tag("ADD VALUE", class: "addvaluebtn2") %>
+
+					<% end %>
+
+
+				<!--<h1>ADD VALUE</h1>-->
 
 			</div><!--add to cart end-->	
 

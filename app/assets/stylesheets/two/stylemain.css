@@ -119,8 +119,16 @@ img#plusicon{
     padding-top:12px;
 }
 
-
-
+/*.addvaluebtn2{
+  position: relative;
+color:#FFF;
+-webkit-appearance: none;
+    border-radius: 0;
+    border:none;
+    font-size:1.5em;
+    margin-top: 46%;
+    z-index:10000;
+}*/
 
 #navshow {
 display:block;
@@ -174,21 +182,21 @@ opacity:0.6;
 }
 
 #footer{
-  height:96px;
+  height:108px;
   width:100%;
 }
 
 #addtocartbg{
   opacity:0.8;
   background-color:#000;
-  height:96px;
+  height:108px;
   width:60%;
   float:left;
    z-index:40;
 }
 
 #addtocart{
-  height:96px;
+  height:108px;
   width:45%;
   float:left;
   z-index:50;
@@ -196,7 +204,7 @@ opacity:0.6;
 }
 
 #addprice{
-  height:96px;
+  height:108px;
   width:40%;
   float:right;
 }
@@ -207,6 +215,20 @@ opacity:0.6;
   vertical-align:middle;
  padding-top:18px;
   text-align:center;
+}
+
+.addvaluebtn2{
+  color:#FFFFFF;
+  font-size:2.4em;
+  vertical-align:middle;
+ padding-top:35px;
+width:100%;  
+height:auto;
+text-align:center;
+  border:none;
+  z-index:10000;
+  -webkit-appearance: none;
+    border-radius: 0;
 }
 
 #cartbutton a{
@@ -405,7 +427,7 @@ opacity:0.3;
 
 .walletvalue p {
   color:#FFFFFF;
-  font-size:5em;
+  font-size:4em;
   padding:0; 
   margin:0;
 }
@@ -709,7 +731,15 @@ width:32%;
 
 
 
+
+
 }      
+
+@media handheld and (max-width: 768x),
+       screen and (max-device-width: 768px),
+       screen and (max-width: 768px) {
+
+}
 
 
 
@@ -717,7 +747,6 @@ width:32%;
 @media handheld and (max-width: 767px),
        screen and (max-device-width: 767px),
        screen and (max-width: 767px) {
-
 
 #bt-menu ul{
   display:block;

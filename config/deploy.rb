@@ -91,7 +91,7 @@ namespace :assets do
     end
     if err_no || capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
       puts "running the assets"
-      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} RAILS_GROUPS=assets asset:clean assets:precompile}
+      run %Q{cd #{latest_release} && #{rake} RAILS_ENV=#{rails_env} RAILS_GROUPS=assets assets:precompile}
     else
       logger.info "Skipping asset pre-compilation because there were no asset changes"
     end
