@@ -6,9 +6,18 @@ class MenusController < ApplicationController
   before_action :signed_in_user, only: [:index]
 
   def index
+    @browser = Browser.new
     Rails.logger.info "******************@**@**@*  User is using...."
-    Rails.logger.info @browser
+    Rails.logger.info @browser.meta
     Rails.logger.info "*****"
+    if @browser.tablet?
+      Rails.logger.info "Browser is tablet"
+    elsif @browser.mobile?
+      Rails.logger.info "Browser is mobile"
+    else
+      Rails.logger.info "Browser is desktop"
+    end
+
   	@menu = Menu.last # Menu.current
   	@main_items = @menu.items.main
       main_items_hash = ActiveSupport::JSON.decode(@main_items.to_json)
