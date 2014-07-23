@@ -9,6 +9,7 @@
 			<th>Username</th>
 			<th>Order Description</th>
 			<th>Redeemed?</th>
+			<th>Revert</th>
 		</tr>
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
@@ -46,7 +47,7 @@
 			<% end %>
 			</td>
 			<td>YES</td>
-
+			<td><%= link_to "Revert Redeem", revert_admin_orders_path(:order_id => order.id) %></td>
 
 			</tr>
 		<% end %>
