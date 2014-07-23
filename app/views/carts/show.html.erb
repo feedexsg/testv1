@@ -82,9 +82,10 @@
 
 
 				<% if @current_user.total_credits >= @total_price %>
-				<%= button_to 'Checkout', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }} %>
+
+				<%= button_to 'Checkout', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }}, class: "checkoutbtn2" %>
 					
-						<h1>CHECKOUT</h1>
+						<!--<h1>CHECKOUT</h1>-->
 
 				<% else %>
 

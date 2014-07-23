@@ -229,6 +229,7 @@ text-align:center;
   z-index:10000;
   -webkit-appearance: none;
     border-radius: 0;
+      font-weight:700;
 }
 
 #cartbutton a{
@@ -333,6 +334,22 @@ img.summarydlt {
   float:left;
   z-index:50;
   position:absolute;
+}
+
+.checkoutbtn2{
+  height:auto;
+  width:100% !important;
+  float:left;
+    border:none;
+  z-index:10000;
+  -webkit-appearance: none;
+    border-radius: 0;
+    position: absolute;
+    color:#FFF;
+    font-size:2.5em;
+    margin-top:35px;
+    font-weight:700;
+    text-align:center;
 }
 
 .checkoutprice{
