@@ -4,7 +4,6 @@ class MenusController < ApplicationController
   include SessionsHelper
   before_action :set_cart, only: [:index]
   before_action :signed_in_user, only: [:index]
-  before_filter :detect_browser
 
   def index
     Rails.logger.info "******************@**@**@*  User is using...."
@@ -33,17 +32,6 @@ class MenusController < ApplicationController
   private
   def signed_in_user
     redirect_to signin_url, notice: "Please sign in." unless signed_in?
-  end
-
-  MOBILE_BROWSERS = ["android", "ipod", "opera mini", "blackberry", "palm","hiptop","avantgo","plucker", "xiino","blazer","elaine", "windows ce; ppc;", "windows ce; smartphone;","windows ce; iemobile", "up.browser","up.link","mmp","symbian","smartphone", "midp","wap","vodafone","o2","pocket","kindle", "mobile","pda","psp","treo"]
-
-  def detect_browser
-    @browser = "desktop"
-    agent = request.headers["HTTP_USER_AGENT"].downcase
-    MOBILE_BROWSERS.each do |m|
-      @browser =  "mobile_application" if agent.match(m)
-      return
-    end
   end
   
 end
