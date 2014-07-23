@@ -6,13 +6,12 @@ class MenusController < ApplicationController
   before_action :signed_in_user, only: [:index]
 
   def index
-    @browser = Browser.new
-    Rails.logger.info "******************@**@**@*  User is using...."
-    Rails.logger.info @browser.meta
+    Rails.logger.info "*****  User is using...."
+    Rails.logger.info browser.to_s
     Rails.logger.info "*****"
-    if @browser.tablet?
+    if browser.tablet?
       Rails.logger.info "Browser is tablet"
-    elsif @browser.mobile?
+    elsif browser.mobile?
       Rails.logger.info "Browser is mobile"
     else
       Rails.logger.info "Browser is desktop"
