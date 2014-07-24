@@ -498,6 +498,318 @@ if ( typeof define === 'function' && define.amd ) {
 	Work in Progress for Mobile
 
 <% else %>
-	Work in Progress for Desktop
+
+
+
+
+
+
+
+
+
+
+	<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Feedex Web App</title>
+		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+
+		<%= stylesheet_link_tag "two/normalize" %>
+		<%= stylesheet_link_tag "two/idangerous.swiper" %>
+		<%= stylesheet_link_tag "two/stylemainweb" %>
+
+		
+		<%= javascript_include_tag "jquery", "jquery_ujs" %>
+		<%= javascript_include_tag "two/modernizr.custom" %>
+		<%= javascript_include_tag "two/idangerous.swiper-2.1.min" %>
+
+
+
+	</head>
+	<body>
+		<div id="container">
+
+
+
+
+			
+				<div id="header"><a href="menu_web.html"><%= image_tag("logo.png", class: "weblogo") %></a>
+					<ul id="cartbutton">
+						<li><a href="settings_web.html"><%= image_tag("icon_gear.png") %></a></li>
+						<li><a href="#"><%= image_tag("icon_power.png") %></a></li>
+					</ul>
+				</div>
+
+				<div id="mainbodywebbg"></div>	
+				<div id="mainbodyweb">
+
+					<ul id="weblist">
+
+							<li class="maincolumn">
+
+								<h1 class="listtitle">TODAY'S MENU</h1>
+
+								<div id="carousel3wrapper">
+    <div id="carousel3" class="swiper-container">
+
+    	<span class="next swipeButton"></span>
+
+		<span class="prev swipeButton"></span>
+
+
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"> <%= image_tag("food1.png") %> </div>
+        <div class="swiper-slide"> <%= image_tag("food2.png") %>  </div>
+        <div class="swiper-slide"> <%= image_tag("food1.png") %>  </div>
+        
+        </div>
+      
+
+      
+    
+
+    <div class="pagination"></div>
+  </div></div>
+
+  <!--<img id="plusicon" src="images/icon_plus.png"/>-->
+
+			
+
+
+
+<div id="carousel4wrapper">
+
+<div id="carousel4" class="swiper-container">
+
+    	<span class="next swipeButton"></span>
+
+		<span class="prev swipeButton"></span>
+
+
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"> <%= image_tag("food2.png") %> </div>
+        <div class="swiper-slide"> <%= image_tag("food1.png") %> </div>
+        <div class="swiper-slide"> <%= image_tag("food2.png") %> </div>
+        
+        </div>
+      
+
+      
+    
+
+    <div class="pagination"></div>
+  </div></div>
+
+							</li>
+
+
+							<div class="submitbutton1"><span class="submittitle">ADD TO CART</span><div class="submitseparator"></div><span class="submitprice">$7.90</span></div>
+
+
+
+
+							<li class="maincolumn">
+
+								
+
+								<h1 class="listtitle">ORDER SUMMARY</h1>
+
+
+								
+								<div id="summarycontent">
+
+								<ul class="summarylist">
+				<li>1<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>
+				</li><hr />
+				<li>2<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+				<li>3<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+				<li>4<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+				<li>4<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+				<li>4<ul class="orderitems">
+					<li>Cheese Prata</li>
+					<li>Teh Tarik Ais</li>
+				</ul>
+				<p class="summaryprice">$7.90</p>
+				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+
+			</ul></div>
+
+			<!--
+			<div id="confirmcontent">
+
+			<p>Your order has been processed. Be sure to check your email for your receipt. It will be required for collection.</p>
+			<img src="images/illustration.png"/>
+
+
+
+		</div>
+
+		</li>
+
+							<div class="submitbutton2"><span class="submittitle2">AWESOME</span></div>
+
+
+
+
+		<!--end of confirm content-->
+
+			
+
+							</li>
+
+							<div class="submitbutton2"><span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitprice">$47.90</span></div>
+
+
+
+							<li class="maincolumn">
+
+								<h1 class="listtitle">MY WALLET</h1>
+
+								<div id="walletcontent">
+
+
+				<div class="walletvalue"><h3>REMAINING VALUE</h3><p>$12.00</p></div>
+
+
+
+
+				<div class="wallettopup"><h3>TOP-UP AMOUNT</h3>
+
+					<form id="walletform">
+
+
+						<input type="number" name="topupamt" placeholder="$10 MINIMUM"/> 
+
+
+
+					</form>	
+
+				</div><!--end of walletcontent-->
+
+							</li>
+
+							<div class="submitbutton3"><span class="submittitle2">ADD VALUE</span></div>
+
+
+
+
+					</ul>	
+
+
+
+				</div>	
+
+				
+
+		
+
+
+
+
+
+
+
+
+
+
+		</div><!-- /container -->
+	</body>
+
+
+
+
+
+	<script>
+  var carousel3 = new Swiper('#carousel3.swiper-container',{
+    pagination: '.pagination',
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true
+   
+  })
+
+
+  $('#carousel3 .prev').on('click', function(e){
+    e.preventDefault()
+    carousel3.swipePrev()
+  })
+  $('#carousel3 .next').on('click', function(e){
+    e.preventDefault()
+    carousel3.swipeNext()
+  })
+
+
+
+    var carousel4 = new Swiper('#carousel4.swiper-container',{
+    pagination: '.pagination',
+    loop:true,
+    grabCursor: true,
+    paginationClickable: true
+   
+  })
+
+
+  $('#carousel4 .prev').on('click', function(e){
+    e.preventDefault()
+    carousel4.swipePrev()
+  })
+  $('#carousel4 .next').on('click', function(e){
+    e.preventDefault()
+    carousel4.swipeNext()
+  })
+
+
+
+  function mediaqueryresponse(mql){
+		 if (mql.matches){ // if 900px and bigger
+		  
+			$('.bt-menu-trigger').hide();
+			
+		 }
+		 else{
+		  	
+		$('.bt-menu-trigger').show();
+
+
+		 }
+		}
+
+		var mql = window.matchMedia("(min-width: 767px)")
+		mediaqueryresponse(mql) // call listener function explicitly at run time
+		mql.addListener(mediaqueryresponse) // attach listener function to listen in on state changes
+			
+  </script>
+</html>
 
 <% end %>
