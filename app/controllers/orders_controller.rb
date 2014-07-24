@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 	layout false
 	include CurrentCart
-	before_action :set_cart, only: [:index]
+	before_action :set_cart, only: [:index, :create]
 	def index
 		
 	end
@@ -52,10 +52,7 @@ class OrdersController < ApplicationController
 	end
 
 	private
-	def set_cart
-      @cart = Cart.find(params[:id])
-    end
-    
+
 	def order_params
 		if params[:order].present?
         	params[:order].merge!({user_id: @current_user.id})
