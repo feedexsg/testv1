@@ -31,6 +31,11 @@ class OrdersController < ApplicationController
 
 				# Send email confirmation
 				OrderMailer.send_order_confirmation_email(order).deliver
+
+				# Delete current cart items
+				@cart.line_items.each do |l|
+					l.delete
+				end
 				
 				redirect_to orders_url
 			else
