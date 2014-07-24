@@ -52,6 +52,10 @@ class OrdersController < ApplicationController
 	end
 
 	private
+	def set_cart
+      @cart = Cart.find(params[:id])
+    end
+    
 	def order_params
 		if params[:order].present?
         	params[:order].merge!({user_id: @current_user.id})
