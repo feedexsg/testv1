@@ -26,8 +26,13 @@ class WalletController < ApplicationController
 		@current_user ||= User.find_by(remember_token: remember_token)
 		tp_amount = params[:amount]
 
-		puts "AMOUNT RECIEVED__ ****"
-		puts tp_amount
+		if (tp_amount.blank?)
+			redirect_to wallet_index_path and return
+		else
+			if (!tp_amount.is_number?)
+				redirect_to wallet_index_path and return
+			end
+		end 
 
 		@response = HTTParty.post("https://secure.smoovpay.com/redirecturl",#HTTParty.post("https://sandbox.smoovpay.com/redirecturl",
 			:body => { 
