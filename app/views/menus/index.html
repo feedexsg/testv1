@@ -499,6 +499,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 <% else %>
 
+<!-- DESKTOP -->
+<!-- DESKTOP -->
+
 
 
 
@@ -562,16 +565,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 		<span class="prev swipeButton"></span>
 
-
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"> <%= image_tag("food1.png") %> </div>
-        <div class="swiper-slide"> <%= image_tag("food2.png") %>  </div>
-        <div class="swiper-slide"> <%= image_tag("food1.png") %>  </div>
-        
-        </div>
-      
-
-      
+		<div class="swiper-wrapper">
+			<% @main_items.each_with_index do |main_item, index| %>
+				<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
+			<% end %>
+		</div>
     
 
     <div class="pagination"></div>
@@ -591,16 +589,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 		<span class="prev swipeButton"></span>
 
-
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"> <%= image_tag("food2.png") %> </div>
-        <div class="swiper-slide"> <%= image_tag("food1.png") %> </div>
-        <div class="swiper-slide"> <%= image_tag("food2.png") %> </div>
-        
-        </div>
-      
-
-      
+		<div class="swiper-wrapper">
+			<% @side_items.each_with_index do |main_item, index| %>
+				<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
+			<% end %>
+		</div>
     
 
     <div class="pagination"></div>
