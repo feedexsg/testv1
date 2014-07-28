@@ -518,6 +518,7 @@ if ( typeof define === 'function' && define.amd ) {
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 		<title>Feedex Web App</title>
+		<%= include_gon %>	
 		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
 		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
 		<meta name="author" content="Codrops" />
@@ -658,7 +659,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 							</li>
 
-							<div class="submitbutton2"><span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitprice">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
+							<div class="submitbutton2"><span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitcheckout">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
 
 
 
@@ -721,11 +722,28 @@ if ( typeof define === 'function' && define.amd ) {
 
 
 	<script>
+
+	window.firstSwiparIndex = 0;
+	window.secondSwiparIndex = 0;
+
+	window.cartItems = gon.cart_number;
+
+
   var carousel3 = new Swiper('#carousel3.swiper-container',{
     pagination: '.pagination',
     loop:true,
     grabCursor: true,
-    paginationClickable: true
+    paginationClickable: true,
+    onSlideChangeEnd: function(swiper) {
+    	window.firstSwiparIndex = swiper.activeLoopIndex;
+
+    	window.mainPrice = gon.main_items[window.firstSwiparIndex]["price"];
+    	window.sidePrice = gon.side_items[window.secondSwiparIndex]["price"];
+
+    	var totalPrice = Number(window.mainPrice) + Number(window.sidePrice);
+
+    	$(".submitprice").text("$" + totalPrice.toFixed(2).toString());
+    }
    
   })
 
@@ -745,9 +763,26 @@ if ( typeof define === 'function' && define.amd ) {
     pagination: '.pagination',
     loop:true,
     grabCursor: true,
-    paginationClickable: true
+    paginationClickable: true,
+    onSlideChangeEnd: function(swiper) {
+    	window.secondSwiparIndex = swiper.activeLoopIndex;
+
+    	window.mainPrice = gon.main_items[window.firstSwiparIndex]["price"];
+    	window.sidePrice = gon.side_items[window.secondSwiparIndex]["price"];
+
+    	var totalPrice = Number(window.mainPrice) + Number(window.sidePrice);
+
+    	$(".submitprice").text("$" + totalPrice.toFixed(2).toString());
+    }
    
   })
+
+    window.mainPrice = gon.main_items[window.firstSwiparIndex]["price"];
+    window.sidePrice = gon.side_items[window.secondSwiparIndex]["price"];
+
+    var totalPrice = Number(window.mainPrice) + Number(window.sidePrice);
+
+    $(".submitprice").text("$" + totalPrice.toFixed(2).toString());
 
 
   $('#carousel4 .prev').on('click', function(e){
