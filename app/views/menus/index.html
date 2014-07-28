@@ -691,14 +691,17 @@ if ( typeof define === 'function' && define.amd ) {
 
 				<div class="wallettopup"><h3>TOP-UP AMOUNT</h3>
 
-					<form id="walletform">
+					<!-- <form id="walletform"> -->
 
 
-						<input type="number" name="topupamt" placeholder="$10 MINIMUM"/> 
+						<%= form_tag("/wallet") do %>
+							<%= number_field :topupamt, nil, in: 10...9999, step: "any", name: "amount", placeholder: "$10 MINIMUM" %>
+							<%= submit_tag("ADD VALUE", class: "addvaluebtn2") %>
+						<% end %>
 
 
 
-					</form>	
+					<!-- </form>	-->
 
 				</div><!--end of walletcontent-->
 

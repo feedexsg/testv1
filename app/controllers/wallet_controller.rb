@@ -27,10 +27,12 @@ class WalletController < ApplicationController
 		tp_amount = params[:amount]
 
 		if (tp_amount.blank?)
-			redirect_to wallet_index_path and return
-		else
-			if (!tp_amount.is_number?)
+			if browser.tablet?
 				redirect_to wallet_index_path and return
+			elsif browser.mobile?
+				redirect_to wallet_index_path and return
+			else
+				redirect_to menus_url and return
 			end
 		end 
 
