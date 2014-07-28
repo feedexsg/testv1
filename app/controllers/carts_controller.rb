@@ -76,7 +76,13 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url }
+      if browser.tablet?
+        format.html { redirect_to carts_url }
+      elsif browser.mobile?
+        format.html { redirect_to carts_url }
+      else
+        format.html { redirect_to menus_url }
+      end
       format.json { head :no_content }
     end
   end

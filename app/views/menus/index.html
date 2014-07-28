@@ -523,6 +523,8 @@ if ( typeof define === 'function' && define.amd ) {
 		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
 
+		<%= csrf_meta_tag %>
+
 		<%= stylesheet_link_tag "two/normalize" %>
 		<%= stylesheet_link_tag "two/idangerous.swiper" %>
 		<%= stylesheet_link_tag "two/stylemainweb" %>
@@ -618,6 +620,19 @@ if ( typeof define === 'function' && define.amd ) {
 								<div id="summarycontent">
 
 								<ul class="summarylist">
+				<% @cart.line_items.each_with_index do |item, index| %>
+					<li><%= index + 1 %><ul class="orderitems">
+						<li><%= Item.find(item.main_id).name %></li>
+						<li><%= Item.find(item.side_id).name %></li>
+					</ul>
+					<p class="summaryprice">$AAA</p>
+					<%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to remove this from the cart?' } do %>
+						<%= image_tag("icon_dlt.png", class: "summarydlt") %>
+					<% end %>
+					</li><hr />
+				<% end %>
+
+
 				<li>1<ul class="orderitems">
 					<li>Cheese Prata</li>
 					<li>Teh Tarik Ais</li>
@@ -655,6 +670,8 @@ if ( typeof define === 'function' && define.amd ) {
 				</ul>
 				<p class="summaryprice">$7.90</p>
 				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
+
+
 
 			</ul></div>
 

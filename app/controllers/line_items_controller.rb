@@ -66,7 +66,13 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to @cart }
+      if browser.tablet?
+        format.html { redirect_to @cart }
+      elsif browser.mobile?
+        format.html { redirect_to @cart }
+      else
+        format.html { redirect_to menus_url }
+      end
       format.json { head :no_content }
     end
   end
