@@ -36,11 +36,24 @@ class MenusController < ApplicationController
       gon.side_items = @side_items
       gon.cart_number = @cart.line_items.count
 
+      # Cart for Menu Desktop
+      remember_token = User.digest(cookies[:remember_token])
+      @current_user ||= User.find_by(remember_token: remember_token)
       @total_price = 0.0
       @cart.line_items.each do |item|
         @total_price += Item.find(item.main_id).price
         @total_price += Item.find(item.side_id).price
       end
+      @item_sets = []
+      @cart.line_items.each do |i|
+        item_hash = {}
+        item_hash[:main_id] = i.main_id
+        item_hash[:side_id] = i.side_id
+        @item_sets << item_hash
+      end
+
+      # Menu for Menu Desktop
+      @credits = @current_user.total_credits
   end
 
   private
