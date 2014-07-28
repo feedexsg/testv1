@@ -625,53 +625,13 @@ if ( typeof define === 'function' && define.amd ) {
 						<li><%= Item.find(item.main_id).name %></li>
 						<li><%= Item.find(item.side_id).name %></li>
 					</ul>
-					<p class="summaryprice">$AAA</p>
+					<p class="summaryprice">
+						$<%= number_with_precision(Item.find(item.main_id).price + Item.find(item.side_id).price, precision: 2) %></p>
 					<%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to remove this from the cart?' } do %>
 						<%= image_tag("icon_dlt.png", class: "summarydlt") %>
 					<% end %>
 					</li><hr />
 				<% end %>
-
-
-				<li>1<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>
-				</li><hr />
-				<li>2<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
-				<li>3<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
-				<li>4<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
-				<li>4<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
-				<li>4<ul class="orderitems">
-					<li>Cheese Prata</li>
-					<li>Teh Tarik Ais</li>
-				</ul>
-				<p class="summaryprice">$7.90</p>
-				<a href="#"><%= image_tag("icon_dlt.png", class: "summarydlt") %></a>				</li><hr />
-
-
 
 			</ul></div>
 
@@ -698,7 +658,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 							</li>
 
-							<div class="submitbutton2"><span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitprice">$47.90</span></div>
+							<div class="submitbutton2"><span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitprice">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
 
 
 

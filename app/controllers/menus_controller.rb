@@ -35,6 +35,12 @@ class MenusController < ApplicationController
       gon.main_items = @main_items
       gon.side_items = @side_items
       gon.cart_number = @cart.line_items.count
+
+      @total_price = 0.0
+      @cart.line_items.each do |item|
+        @total_price += Item.find(item.main_id).price
+        @total_price += Item.find(item.side_id).price
+      end
   end
 
   private
