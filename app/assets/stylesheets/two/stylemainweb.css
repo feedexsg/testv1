@@ -665,6 +665,17 @@ position:absolute;
   font-size:1.5em;
 }
 
+.submitbutton2checkout {
+  position:absolute;
+  width:250px;
+  height:30px;
+  border-radius:20px;
+  color:#FFF;
+  border:3px solid #FFF;
+  margin:40px 0px 0px 440px;
+  font-size:1.5em;
+}
+
 .submitbutton3{
 position:absolute;
   width:250px;

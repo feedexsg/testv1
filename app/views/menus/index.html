@@ -548,7 +548,11 @@ if ( typeof define === 'function' && define.amd ) {
 				<div id="header"><a href="menu_web.html"><%= image_tag("logo.png", class: "weblogo") %></a>
 					<ul id="cartbutton">
 						<li><a href="settings_web.html"><%= image_tag("icon_gear.png") %></a></li>
-						<li><a href="#"><%= image_tag("icon_power.png") %></a></li>
+
+						<li><%= link_to signout_path, method: "delete" do %>
+							<%= image_tag('icon_power.png') %>
+						<% end %></li>
+						
 					</ul>
 				</div>
 
@@ -665,11 +669,14 @@ if ( typeof define === 'function' && define.amd ) {
 
 							</li>
 
-							<div class="submitbutton2">
+							
 
 							<% if @current_user.total_credits >= @total_price %>
+								<div class="submitbutton2checkout">
+								<%= button_to 'CHECKOUT', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }}, class: "checkoutbtn2" %>
 								<span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitcheckout">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
 							<% else %>
+								<div class="submitbutton2">
 								<span class="submittitle" style="color: orange; padding-left: 45px;">TOP UP</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitcheckout" style="color: orange;">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
 							<% end %>
 
@@ -819,6 +826,7 @@ if ( typeof define === 'function' && define.amd ) {
   	});
 
   });
+
 
 
 
