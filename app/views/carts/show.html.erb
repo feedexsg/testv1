@@ -49,6 +49,7 @@
 						<li><%= Item.find(item.main_id).name %></li>
 						<li><%= Item.find(item.side_id).name %></li>
 					</ul>
+					<p class="summaryprice">$<%= number_with_precision(Item.find(item.main_id).price + Item.find(item.side_id).price, precision: 2) %></p>
 					<%= link_to item, method: :delete, data: { confirm: 'Are you sure you want to remove this from the cart?' } do %>
 						<%= image_tag("icon_dlt.png", class: "summarydlt") %>
 					<% end %>
@@ -91,7 +92,7 @@
 
 					<%= link_to 'Top Up', :controller => "wallet", :topup => @total_price - @current_user.total_credits %>
 
-					<h1>Top Up</h1>
+					<h1 style="color: #FF7109;">Top Up</h1>
 				<% end %>
 
 			</div><!--add to cart end-->	
