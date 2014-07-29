@@ -464,8 +464,10 @@ if ( typeof define === 'function' && define.amd ) {
   	$.post('/line_items', { line_item : { main_id: window.firstSwiparIndex, side_id: window.secondSwiparIndex }}, function(returnedData) {
   		// Increment counter
   		window.cartItems = window.cartItems + 1;
-  		$("#cart-count").text(window.cartItems.toString());
-
+  		$("#cart-count").fadeOut(500, function(){
+  			$("#cart-count").fadeIn(500);
+  			$("#cart-count").text(window.cartItems.toString());
+  		});
   	});
 
 
