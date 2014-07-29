@@ -90,22 +90,6 @@ Feedex::Application.routes.draw do
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  root "welcome#index"
+  root "menus#index"
   
 end
