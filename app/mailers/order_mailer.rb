@@ -36,4 +36,11 @@ class OrderMailer < ActionMailer::Base
     @confirmation_link = "http://app.feedex.sg/confirm?confirmation=" + token
     mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Please Confirm Your Account")
   end
+
+  def send_top_up_confirmation_email(account)
+    Rails.logger.info "**** TOP UP EMAIL WAS SENT THROUGH ORDER MAILER ****"
+
+    mail(to: ["gabriel@gettingrail.com"], subject: "Top Up Confirmation")
+  
+  end
 end
