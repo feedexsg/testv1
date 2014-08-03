@@ -36,11 +36,12 @@ class PaymentsController < ApplicationController
 		if (params[:signature] == check_signature)
 			Rails.logger.info "DING DING DING MATCH!"
 			purchasing_user = User.find(ref_id.to_i)
+			before_credits = purchasing_user.total_credits
 			credit = Credit.new(amount: total_amount, user_id: purchasing_user.id, source: "Direct")
 			if credit.save
 				info_hash = {}
 				info_hash[:amount_added] = total_amount.to_s
-				info_hash[:current_balance] = sprintf("%.2f", purchasing_user.total_credits).to_s
+				info_hash[:current_balance] = sprintf("%.2f", before_credits + total_amount).to_s
 				info_hash[:user_name] = purchasing_user.name.to_s
 				info_hash[:user_email] = purchasing_user.email.to_s
 				info_hash[:date] = DateTime.now.to_date.to_s
