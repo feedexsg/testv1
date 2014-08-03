@@ -14,7 +14,7 @@ class PaymentsController < ApplicationController
 		Rails.logger.info "**** Signature *****"
 		Rails.logger.info params[:signature]
 
-		secret_key = "02dc8e51bd6c4af4a3f5d09237e9e3a5" #"0db5a5b4cc2840009ff2c2c98a520582"
+		secret_key = "0db5a5b4cc2840009ff2c2c98a520582"#{}"02dc8e51bd6c4af4a3f5d09237e9e3a5" #"0db5a5b4cc2840009ff2c2c98a520582"
 		merchant = params[:merchant]
 		ref_id = params[:ref_id]
 		reference_code = params[:reference_code]
@@ -38,6 +38,15 @@ class PaymentsController < ApplicationController
 			purchasing_user = User.find(ref_id.to_i)
 			credit = Credit.new(amount: total_amount, user_id: purchasing_user.id, source: "Direct")
 			if credit.save
+				info_hash = {}
+				info_hash[:amount_added] = number_with_precision(total_amount, precision: 2).to_s
+				info_hash[:current_balance] = number_with_precision(purchasing_user.total_credits, precision: 2).to_s
+				info_hash[:user_name] = purchasing_user.name.to_s
+				info_hash[:user_email] = purchasing_user.email.to_s
+				info_hash[:date] = DateTime.now.to_date.to_s
+				info_hash[:time] = DateTime.now.strftime("%I:%M%p").to_s
+
+				OrderMailer.send_top_up_confirmation_email(info_hash).deliver
 				Rails.logger.info "Credit was saved!"
 			else
 				Rails.logger.info "Something went wrong when saving the credits"
