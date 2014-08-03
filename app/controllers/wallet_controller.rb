@@ -37,7 +37,7 @@ class WalletController < ApplicationController
 		end
 
 		# Shouldn't this be from smoovpay confirmation?
-		if (tp_amount == 321)
+		if (tp_amount == "321")
 			OrderMailer.send_top_up_confirmation_email("hi").deliver
 		end
 
