@@ -39,7 +39,7 @@ class PaymentsController < ApplicationController
 			credit = Credit.new(amount: total_amount, user_id: purchasing_user.id, source: "Direct")
 			if credit.save
 				info_hash = {}
-				info_hash[:amount_added] = number_with_precision(total_amount, precision: 2).to_s
+				info_hash[:amount_added] = total_amount.to_s
 				info_hash[:current_balance] = number_with_precision(purchasing_user.total_credits, precision: 2).to_s
 				info_hash[:user_name] = purchasing_user.name.to_s
 				info_hash[:user_email] = purchasing_user.email.to_s
