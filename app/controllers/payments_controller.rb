@@ -41,7 +41,7 @@ class PaymentsController < ApplicationController
 			if credit.save
 				info_hash = {}
 				info_hash[:amount_added] = total_amount.to_s
-				info_hash[:current_balance] = sprintf("%.2f", before_credits + total_amount).to_s
+				info_hash[:current_balance] = sprintf("%.2f", before_credits.to_f + total_amount.to_f).to_s
 				info_hash[:user_name] = purchasing_user.name.to_s
 				info_hash[:user_email] = purchasing_user.email.to_s
 				info_hash[:date] = DateTime.now.to_date.to_s
