@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout false
+  include SessionsHelper
   def index
   end
 
@@ -17,6 +18,19 @@ class UsersController < ApplicationController
   		flash[:error] = @user.errors.full_messages
   		render :new
   	end
+  end
+
+  def update
+    remember_token = User.digest(cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: remember_token)
+
+    if @current_user.update_attributes(user_params)
+      flash[:notice] = "Your account settings were successfully updated."
+      redirect_to settings_url
+    else
+      flash[:error] = @current_user.errors.full_messages[0].to_s
+      redirect_to settings_url
+    end
   end
 
   def signup_success
@@ -42,6 +56,7 @@ class UsersController < ApplicationController
   	params.require(:user).permit(:name, :email, :password, :password_confirmation,
                                  :colony_id, credits_attributes: [:amount, :source])
   end
+
 
   
 end
