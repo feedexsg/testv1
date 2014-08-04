@@ -1090,7 +1090,13 @@ if ( typeof define === 'function' && define.amd ) {
 
 								<h1 class="listtitle">TODAY'S MENU</h1>
 
-								<div id="carousel3wrapper">
+								<% if @menu.status %>
+									<div id="carousel3wrapper" style="display:block;">
+								<% else %>
+									<div id="carousel3wrapper" style="display:none;">
+								<% end %>
+
+								
     <div id="carousel3" class="swiper-container">
 
     	<span class="next swipeButton"></span>
@@ -1107,13 +1113,29 @@ if ( typeof define === 'function' && define.amd ) {
     <div class="pagination"></div>
   </div></div>
 
+<% if @menu.status %>
+	<div id="carousel3wrapper-close" style="display:none;">
+ </div>
+<% else %>
+	<div id="carousel3wrapper-close" style="display:block;">
+	 </div>
+<% end %>
+
+
+
+  <div id="carousel3wrapper-close">
+ </div>
+
   <!--<img id="plusicon" src="images/icon_plus.png"/>-->
 
 			
 
 
-
-<div id="carousel4wrapper">
+<% if @menu.status %>
+<div id="carousel4wrapper" style="display:block;">
+<% else %>
+<div id="carousel4wrapper" style="display:none;">
+<% end %>
 
 <div id="carousel4" class="swiper-container">
 
@@ -1126,6 +1148,7 @@ if ( typeof define === 'function' && define.amd ) {
 				<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
 			<% end %>
 		</div>
+
     
 
     <div class="pagination"></div>
@@ -1145,6 +1168,8 @@ if ( typeof define === 'function' && define.amd ) {
 
 
 
+
+
 							<li class="maincolumn">
 
 								
@@ -1152,8 +1177,11 @@ if ( typeof define === 'function' && define.amd ) {
 								<h1 class="listtitle">ORDER SUMMARY</h1>
 
 
-								
-								<div id="summarycontent">
+								<% if @menu.status %>
+									<div id="summarycontent" style="display:block;">
+								<% else %>
+									<div id="summarycontent" style="display:none;">
+								<% end %>
 
 								<ul class="summarylist">
 				<% @cart.line_items.each_with_index do |item, index| %>
@@ -1171,6 +1199,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 			</ul></div>
 
+				<% if @menu.status %>
+					<div id="summarycontent-close" style="display:none;"></div>
+				<% else %>
+					<div id="summarycontent-close" style="display:block;"></div>
+				<% end %>
 			<!--
 			<div id="confirmcontent">
 
@@ -1193,6 +1226,8 @@ if ( typeof define === 'function' && define.amd ) {
 			
 
 							</li>
+
+							
 
 							
 
