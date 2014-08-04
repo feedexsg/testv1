@@ -9,6 +9,13 @@
   <%= stylesheet_link_tag "two/standardize.css" %>
   <%= stylesheet_link_tag "two/signup_success-grid.css" %>
   <%= stylesheet_link_tag "two/signup_success.css" %>
+
+  <script type="text/javascript">
+function delayedRedirect(){
+    window.location = "/"
+}
+</script>
+
   <style>
   .signup:hover {
   color: rgb(255,177,9);
@@ -21,7 +28,7 @@
 }
   </style>
 </head>
-<body class="body signup_success clearfix">
+<body class="body signup_success clearfix" onLoad="setTimeout('delayedRedirect()', 3000)">
   <div class="wrapper clearfix">
     <div class="blackglass clearfix">
       <header class="_container _container-1 clearfix">
