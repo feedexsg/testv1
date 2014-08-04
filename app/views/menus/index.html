@@ -1070,9 +1070,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 
 			
-				<div id="header"><a href="menu_web.html"><%= image_tag("logo.png", class: "weblogo") %></a>
+				<div id="header"><a href="/menus"><%= image_tag("logo.png", class: "weblogo") %></a>
 					<ul id="cartbutton">
-						<li><a href="settings_web.html"><%= image_tag("icon_gear.png") %></a></li>
+						<li><a href="/settings"><%= image_tag("icon_gear.png") %></a></li>
 
 						<li><%= link_to signout_path, method: "delete" do %>
 							<%= image_tag('icon_power.png') %>
