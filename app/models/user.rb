@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   #validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }
   validates :name, :presence => true
   validates_presence_of :password, :on => :create
-  validates :password, :confirmation => true, :length => {:minimum => 6 }
+  validates :password, :confirmation => true, :on => :create
+  validates :password, :length => {:minimum => 6 }
   validates :email, uniqueness: { allow_blank: false }, :presence => true
   validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: false },:presence => true
 
