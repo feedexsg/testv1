@@ -78,6 +78,7 @@ Feedex::Application.routes.draw do
   resources :menus, only: [:index]
   resources :wallet, only: [:index, :create]
   resources :orders, only: [:index, :create]
+  resources :settings, only: [:index, :create]
 
   resources :sessions, only: [:new, :create, :destroy]
   match '/confirm', to: 'users#confirm', via: 'get'
