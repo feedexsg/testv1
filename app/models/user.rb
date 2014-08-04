@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
   validates :password, :length => {:minimum => 6 }, :confirmation => true, :allow_blank => true, :on => :update
 
   validates :email, uniqueness: { allow_blank: false }, :presence => true
-  validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: false },:presence => true
+  validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: false },:presence => true, :on => :create
+  validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: true }, :on => :update
 
   ## ASSOCIATIONS ##
   has_many :credits, dependent: :destroy
