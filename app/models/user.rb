@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates_presence_of :password, :on => :create
   validates :password, :confirmation => true, :on => :create
-  validates :password, :length => {:minimum => 6 }
+  validates :password, :length => {:minimum => 6 }, :on => :create
+  validates :password, :length => {:minimum => 6 }, :confirmation => true, :allow_blank => true, :on => :update
+
   validates :email, uniqueness: { allow_blank: false }, :presence => true
   validates :mobile, format: { with: /\A[8-9]\d{7}\z/, allow_blank: false },:presence => true
 
