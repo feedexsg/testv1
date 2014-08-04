@@ -1,4 +1,5 @@
 class SettingsController < ApplicationController
+	layout false
 
 	def index
 	end
