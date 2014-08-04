@@ -17,7 +17,7 @@ class MenusController < ApplicationController
       Rails.logger.info "Browser is desktop"
     end
 
-  	@menu = Menu.last # Menu.current
+  	@menu = Menu.current # Menu.current
   	@main_items = @menu.items.main
       main_items_hash = ActiveSupport::JSON.decode(@main_items.to_json)
       main_items = main_items_hash.collect do |item_hash|
