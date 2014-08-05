@@ -776,8 +776,39 @@ font-size:0.7em;
   top:32%;
 }
 
+.addvaluebtn2 {
+   -webkit-appearance: none;
+    border-radius: 0;
+    background:none;
+    border:0px;
+    color:#FFF;
+    width: 250px;
+    margin:0 auto;
+    padding-top: 5px;
+}
 
+.checkoutbtn2 {
+   -webkit-appearance: none;
+    border-radius: 0;
+    background:none;
+    border:0px;
+    color:#FFF;
+    padding-top: 5px;
+    padding-left: 20px;
+}
 
+#separatorprice {
+  margin-top: -26px;
+}
+
+.submitseparator2 {
+  display: inline-block;
+ width:2px;
+ height:30px;
+ background-color:white;
+ position:absolute;
+ margin-left:120px;
+}
 
 
 

@@ -57,6 +57,7 @@ vertical-align: top;
     margin-top:80px;
     width:90%;
     max-width:250px;
+    margin-left: 15px;
 }
 
 /*#carousel1, #carousel2{
@@ -149,6 +150,7 @@ float:left;
  height:100%;
  position:absolute;
 height:100%;
+left: -15px;
 }
 
 #navshowbg{
@@ -292,7 +294,7 @@ ul#navshowul li {
   display:block;
 width:100%;
 float:right;
- height:786px;
+ height:766px;
  position:absolute;
  background-color: #000;
 opacity:0.3;
@@ -306,8 +308,8 @@ opacity:0.3;
   color:#FFFFFF;
   margin-top:-10px;
   position:relative;
-  height:756px;
-  overflow-y:scroll;
+  height:736px;
+  /*overflow-y:scroll;*/
 
 }
 
@@ -392,6 +394,19 @@ img.summarydlt {
   position:absolute;
   right:15%;
   margin-top:-42px;
+}
+
+.topupbtn2 {
+  color: orange;
+  text-decoration:none;
+  font-size:2.5em;
+  font-weight: 700;
+  height: 108px;
+  width: 100%;
+  margin:0 auto;
+  vertical-align: middle;
+  display: block;
+  padding: 35px 110px;
 }
 
 /*------------CONFIRMATION-------------*/
@@ -1125,6 +1140,21 @@ img.summarydlt {
   height: 348px;
  
 }
+
+.topupbtn2 {
+
+  color: orange;
+  text-decoration:none;
+  font-size:2.5em;
+  font-weight: 700;
+  width: 100px;
+  margin:0 auto;
+  vertical-align: middle;
+  margin-top: -18px;
+  height: 60px;
+  overflow-y:hidden;
+  padding:35px 0px;
+  }
 
 
        }

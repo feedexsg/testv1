@@ -771,9 +771,12 @@ if ( typeof define === 'function' && define.amd ) {
 							
 							<% if @menu.status %>
 							<% if @current_user.total_credits >= @total_price %>
+								
 								<div class="submitbutton2checkout">
 								<%= button_to 'CHECKOUT', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }}, class: "checkoutbtn2" %>
-								<span class="submittitle">CHECKOUT</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitcheckout">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
+								<!--<span class="submittitle">CHECKOUT</span>--><div id="separatorprice">&nbsp;&nbsp;&nbsp;<div class="submitseparator2"></div><span class="submitcheckout">$<%= number_with_precision(@total_price, precision: 2) %></span></div></div>
+							
+
 							<% else %>
 								<div class="submitbutton2">
 								<span class="submittitle" style="color: orange; padding-left: 45px;">TOP UP</span>&nbsp;&nbsp;&nbsp;<div class="submitseparator"></div><span class="submitcheckout" style="color: orange;">$<%= number_with_precision(@total_price, precision: 2) %></span></div>
@@ -807,8 +810,7 @@ if ( typeof define === 'function' && define.amd ) {
 
 						<%= form_tag("/wallet") do %>
 							<%= number_field :topupamt, nil, in: 10...9999, step: "any", name: "amount", placeholder: "$10 MINIMUM" %>
-							<%= submit_tag("ADD VALUE", class: "addvaluebtn2") %>
-						<% end %>
+							
 
 
 
@@ -818,7 +820,11 @@ if ( typeof define === 'function' && define.amd ) {
 
 							</li>
 
-							<div class="submitbutton3"><span class="submittitle2">ADD VALUE</span></div>
+							<div class="submitbutton3"><!--<span class="submittitle2">ADD VALUE</span>-->
+
+								<%= submit_tag("ADD VALUE", class: "addvaluebtn2") %>
+								<% end %>
+							</div>
 
 
 

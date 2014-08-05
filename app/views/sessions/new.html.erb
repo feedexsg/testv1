@@ -905,9 +905,9 @@ body {
 
       <% [:notice, :error].each do |msg| %>
         <% if flash[msg].present? %>
-          <div class="flash <%= msg.to_s %>">
+          <center><div class="flash <%= msg.to_s %>">
             <%= flash[msg] %>
-          </div>
+          </div></center>
         <% end %>
       <% end %>
 

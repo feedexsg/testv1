@@ -90,9 +90,9 @@
 
 				<% else %>
 
-					<%= link_to 'Top Up', :controller => "wallet", :topup => @total_price - @current_user.total_credits %>
+					<%= link_to 'Top Up', {:controller => "wallet", :topup => @total_price - @current_user.total_credits}, class: "topupbtn2" %>
 
-					<h1 style="color: #FF7109;">Top Up</h1>
+					<!--<h1 style="color: #FF7109;">Top Up</h1>-->
 				<% end %>
 
 			</div><!--add to cart end-->	
