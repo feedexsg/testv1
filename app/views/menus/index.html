@@ -48,11 +48,14 @@
 
 
 				</div></div>
+		<% if @menu.status %>
+			<div id="mainmenu" style="display:block;">
+		<% else %>
+			<div id="mainmenu" style="display:none;">
+		<% end %>
 
-		<div id="mainmenu">
 
 
-		
   <div id="carousel1wrapper">
     <div id="carousel1" class="swiper-container">
 
@@ -72,7 +75,11 @@
     
 
     <div class="pagination"></div>
-  </div></div>
+  </div>
+
+  </div>
+
+
 
   <%= image_tag("icon_plus.png", id: "plusicon") %>
 
@@ -103,7 +110,14 @@
     <div class="pagination"></div>
   </div></div>
 
-			</div>
+			</div><!--end of mainmenu-->
+
+			<% if @menu.status %>
+				<div id="mainmenu-close" style="display:none;"></div>
+			<% else %>
+				<div id="mainmenu-close" style="display:block;"></div>
+			<% end %>
+			
 
 
 

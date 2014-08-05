@@ -72,8 +72,20 @@ height:630px;
 
 }
 
+#carousel1wrapper-close {
+  width:100%;
+  height:422;
+  clear:both;
+  display:block;
+  max-width:1600px;
+  background-color:#000;
+  background:url('/assets/Store-Closed-Shade.png');
+  background-size: 100%;
+  display:none;
+}
+
 #carousel1, #carousel2{
-width:100%;
+width:100%; /*WHEN STORE OPENS*/
 height:auto;
 }
 
@@ -158,9 +170,21 @@ opacity:0.6;
 }
 
 #mainmenu{
-  background-color:white;
+  background-color:white; /*CHANGE THIS BACK WHEN STORE OPEN*/
   /*margin-top:-10px;*/
+  display: none;
+ 
+}
 
+#mainmenu-close{
+  /*background-color:white;*/  /*CHANGE THIS BACK WHEN STORE OPEN*/
+  /*margin-top:-10px;*/
+  background:url('/assets/Store-Closed-Shade.png');
+  background-size: 100%;
+  background-position: center;
+  height: 734px;
+  width:100%;
+ 
 }
 
 #navshow ul{
@@ -1094,6 +1118,12 @@ ul.orderitems{
 
 img.summarydlt {
   margin-right:-20px;
+}
+
+#mainmenu-close{
+  
+  height: 348px;
+ 
 }
 
 
