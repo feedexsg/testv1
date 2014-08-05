@@ -41,9 +41,13 @@
       <% end %>
 				<div id="header"><h1>LUNCH MENU</h1><div id="cartbutton">
 
+				<% if @menu.status %>
 				<%= link_to @cart do %>
 				<span id="cart-count"><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
 				<%= image_tag("icon_cart.png") %>
+				<% end %>
+				<% else %>
+					<span id="cart-count">&nbsp;&nbsp;</span><%= image_tag("icon_cart.png") %>
 				<% end %>
 
 
@@ -138,20 +142,29 @@
 
 
 
-				
+			<% if @menu.status %>	
 			<div id="xiaomao"><a href='#'>
+			<% else %>
+			<div id="xiaomao2"><a href='#'>
+			<% end %>
 			<div id="addtocartbg"></div>		
 
 			<div id="addtocart">
 
-
+				<% if @menu.status %>
 				<h1 class="addtocarttext" style="color:white;">ADD TO CART</h1>
+				<% else %>
+				<h1 class="addtocarttext" style="color:white;">STORE CLOSED</h1>
+				<% end %>
 
 			</div><!--add to cart end-->	
 
 			<div id="addprice">
-					
+					<% if @menu.status %>
 					<h1 id="money-display">$6.00</h1>
+					<% else %>
+					<h1 id="money-display2">$0.00</h1>
+					<% end %>
 
 			</div></a></div>
 
