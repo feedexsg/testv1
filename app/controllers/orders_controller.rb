@@ -13,12 +13,52 @@ class OrdersController < ApplicationController
 
 		total_amt = 0
 		item_sets = order_params[:item_sets]
+
+		main_count = []
+
 		item_sets.each do |i|
 			main_item = Item.find_by_id(i["main_id"])
 			side_item = Item.find_by_id(i["side_id"])
 			total_amt += main_item.price.to_f if main_item
           	total_amt += side_item.price.to_f if side_item
+
+          	main_count_hash = {}
+          	main_count_hash[:item_id] = main_item.id
+          	main_count_hash[:item] = main_item
+          	main_count_hash[:count] = 1
+          	main_add_to_array = true
+          	main_count.each do |check_count|
+          		if check_count[:item_id] == main_count_hash[:item_id]
+          			add_to_array = false
+          			check_count[:count] += 1
+          			break
+          		end
+          	end
+          	main_count << main_count_hash if main_add_to_array
+
+          	side_count_hash = {}
+          	side_count_hash[:item_id] = side_item.id
+          	side_count_hash[:item] = side_item
+          	side_count_hash[:count] = 1
+          	side_add_to_array = true
+          	main_count.each do |check_count|
+          		if check_count[:item_id] == side_count_hash[:item_id]
+          			add_to_array = false
+          			check_count[:count] += 1
+          			break
+          		end
+          	end
+          	main_count << side_count_hash if side_add_to_array
 		end
+
+		main_count.each do |item_hash|
+			item = item_hash[:item]
+			if item.items_menus.last.quantity < item_hash[:count]
+				redirect_to menus_url, :flash => { :error => "#{item.name} sold out!" } and return
+			end
+		end
+
+		#if main_item.items_menus.last.quantity <= 0 || side_item.items_menus.last.quantity
 
 		order.amount = total_amt
 
@@ -29,6 +69,14 @@ class OrdersController < ApplicationController
               		orderitem.save!
 				end
 
+				# Reduce quantity
+				item_sets.each do |i|
+					main_item = Item.find_by_id(i["main_id"])
+					side_item = Item.find_by_id(i["side_id"])
+					main_item.items_menus.last.decrement!(:quantity)
+					side_item.items_menus.last.decrement!(:quantity)
+				end
+
 				# Send email confirmation
 				OrderMailer.send_order_confirmation_email(order).deliver
 
@@ -37,7 +85,7 @@ class OrdersController < ApplicationController
 					l.delete
 				end
 				
-				redirect_to orders_url
+				redirect_to orders_url and return
 			else
 				# Invalid order
 				# Refer to Saleswhale for error handling
@@ -47,6 +95,7 @@ class OrdersController < ApplicationController
 			# Insufficent balance
 			# Refer to Saleswhale for error handling
 			puts "Insufficent Balance ****@***"
+			redirect_to menus_url and return
 		end
 
 	end
