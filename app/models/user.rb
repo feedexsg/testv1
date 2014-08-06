@@ -50,9 +50,9 @@ class User < ActiveRecord::Base
   end
 
   def send_password_reset
-    self.password_reset_token = loop do
+    self.reset_password_token = loop do
       token = SecureRandom.urlsafe_base64(nil, false)
-      break token unless User.exists?(password_reset_token: token)
+      break token unless User.exists?(reset_password_token: token)
     end
     self.reset_password_sent_at = Time.zone.now
     save!
