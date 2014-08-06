@@ -1,8 +1,211 @@
-<% if browser.tablet? || browser.mobile? %>
+<% if !browser.tablet? || !browser.mobile? %>
 
-<h1>Mobile Settings - Work in Progress</h1>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Feedex</title>
+		<meta name="description" content="Responsive Animated Border Menus with CSS Transitions" />
+		<meta name="keywords" content="navigation, menu, responsive, border, overlay, css transition" />
+		<meta name="author" content="Codrops" />
+		<%= favicon_link_tag 'favicon.ico' %>
+
+		<%= stylesheet_link_tag "two/normalize.css" %>
+		<%= stylesheet_link_tag "two/demo.css" %>
+		<%= stylesheet_link_tag "two/icons.css" %>
+		<%= stylesheet_link_tag "two/idangerous.swiper.css" %>
+		<%= stylesheet_link_tag "two/style5.css" %>
+		<%= stylesheet_link_tag "two/stylemain.css" %>
+
+		
+		<%= javascript_include_tag "jquery", "jquery_ujs" %>
+		<%= javascript_include_tag "two/modernizr.custom.js" %>
+		<%= javascript_include_tag "two/idangerous.swiper-2.1.min.js" %>
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+
+
+	</head>
+	<body>
+		<div id="container" class="summarycontainer">
+
+
+
+<div id="maincontent">
+				<div id="header"><h1>SETTINGS</h1><div id="cartbutton">
+				<%= link_to @cart do %><span><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
+				<%= image_tag("icon_cart.png") %>
+
+				<% end %></div></div>
+
+				
+
+		
+				<div id="settingsbg"></div>
+			<div id="settingscontent">
+
+			<%= form_for @user, html: { id: "settingform" } do |f| %>
+					<label for="email">EMAIL ADDRESS</label><br><br>
+					<%= f.email_field :email, id: "email", placeholder: "We don't send spam" %><br><br>
+					<p class="disclaimer">Changing the e-mail address you use to login will also change the e-mail address that we use to contact you.</p><br><br>
+					<label for="password">YOUR PASSWORD</label><br><br>
+					<%= f.password_field :password, id: "password", placeholder: "Our little secret" %><br><br>
+					<label for="password">YOUR PASSWORD</label><br><br>
+					<%= f.password_field :password_confirmation, id: "password", placeholder: "Once more, to be sure" %><br><br>
+					<label for="mobile">PHONE NUMBER</label><br><br>
+					<%= f.text_field :mobile, id: "mobile", placeholder: "Contact" %><br><br>
+					<div class="submitbutton4">
+					<%= f.submit %><span class="submittitle3">SAVE CHANGES</span></div>
+
+
+				<% end %>
+
+
+		</div><!--end of summary content-->
+
+
+
+					<div id="footer" class="summaryfooter">
+				<a href="#">
+
+			<div id="addtocartbg" class="summaryatcbg"></div>		
+
+			<div id="addtocart" class="summaryatc">
+
+
+				<h1>SAVE CHANGES</h1>
+
+			</div><!--add to cart end-->	
+
+			
+
+		</a>
+
+		</div><!--end of footer-->
+
+
+
+		
+
+
+	</div><!--end of maincontent-->
+
+
+
+
+
+
+			
+			<nav id="bt-menu" class="bt-menu">
+				<a href="#" class="bt-menu-trigger"><span>Menu</span></a>
+
+				<ul>
+					<li>
+					<%= image_tag("fdxlogo.png", id: "fdxlogo") %>
+
+					</li><br><br>
+					<li id="btfirstli"><a href="/menus">
+					<%= image_tag("icon_menu.png", class: "menuimg") %>
+
+					<span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
+					<li><a href="/wallet">
+					<%= image_tag("icon_money.png", class: "menuimg") %>
+
+
+					<span style="color: orange;">&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
+					<li><a href="settings.html">
+					<%= image_tag("icon_settings.png", class: "menuimg") %>
+
+					<span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
+					<li><a href="login.html">
+					<%= image_tag("icon_logout.png", class: "menuimg") %>
+
+
+					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
+				
+				</ul>
+				<!--<ul>
+					<li><a href="http://www.twitter.com/codrops" class="bt-icon icon-twitter">Twitter</a></li>
+					<li><a href="https://plus.google.com/101095823814290637419" class="bt-icon icon-gplus">Google+</a></li>
+					<li><a href="http://www.facebook.com/pages/Codrops/159107397912" class="bt-icon icon-facebook">Facebook</a></li>
+					<li><a href="https://github.com/codrops" class="bt-icon icon-github">icon-github</a></li>
+				</ul>-->
+			</nav>
+
+			<div id="navshowbg">
+			</div>	
+			<div id="navshow">
+
+				<ul id="#navshowul">
+					<li>
+
+					<%= image_tag("fdxlogo.png", id: "fdxlogo2") %>
+
+
+					</li><br><br><br><br><br>
+					<li><a href="/menus"><%= image_tag("icon_menu.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
+					<li><a href="/wallet">
+					<%= image_tag("icon_money.png", class: "menuimg") %>
+
+					<span style="color: orange;">&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
+					<li><a href="settings.html">
+					<%= image_tag("icon_settings.png", class: "menuimg") %>
+
+					<span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
+					<li><%= link_to signout_path, method: "delete" do %>
+					<%= image_tag('icon_logout.png', class: "menuimg") %>
+					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span>
+					<% end %></li>
+				
+				</ul>
+
+
+
+			</div>	
+
+
+
+		</div><!-- /container -->
+	</body>
+	<%= javascript_include_tag "two/classie.js" %>
+	<%= javascript_include_tag "two/borderMenu.js" %>
+	<script>
+  function mediaqueryresponse(mql){
+		 if (mql.matches){ // if 900px and bigger
+		  
+			$('.bt-menu-trigger').hide();
+			
+		 }
+		 else{
+		  	
+		$('.bt-menu-trigger').show();
+
+
+		 }
+		}
+
+		var mql = window.matchMedia("(min-width: 700px)")
+		mediaqueryresponse(mql) // call listener function explicitly at run time
+		mql.addListener(mediaqueryresponse) // attach listener function to listen in on state changes
+			
+  </script>
+</html>
+
 
 <% else %>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
