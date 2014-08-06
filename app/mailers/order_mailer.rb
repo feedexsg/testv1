@@ -47,4 +47,12 @@ class OrderMailer < ActionMailer::Base
     mail(to: [user_email, "gabriel@gettingrail.com"], subject: "Top Up Confirmation")
   
   end
+
+  def send_password_reset_email(user)
+    Rails.logger.info "**** PASSWORD RESET EMAIL WAS SENT THROUGH ORDER MAILER ****"
+    @user = user
+    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Password Reset Requested")
+  end
+
+
 end

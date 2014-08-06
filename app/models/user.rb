@@ -49,6 +49,16 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def send_password_reset
+    self.password_reset_token = loop do
+      token = SecureRandom.urlsafe_base64(nil, false)
+      break token unless User.exists?(password_reset_token: token)
+    end
+    self.reset_password_sent_at = Time.zone.now
+    save!
+    OrderMailer.send_password_reset_email(self).deliver
+  end
+
   ## CLASS METHODS ##
 
 

@@ -87,6 +87,8 @@ Feedex::Application.routes.draw do
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
 
+  resources :password_resets
+
   resources :payments, only: [:create]
 
 
