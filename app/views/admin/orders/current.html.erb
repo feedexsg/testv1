@@ -17,7 +17,7 @@
 			<th>Username</th>
 			<th>Order Description</th>
 			<th>Redeemed?</th>
-			<th>Holy Button</th>
+			<th>Click to Redeem</th>
 		</tr>
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
@@ -55,7 +55,7 @@
 			<% end %>
 			</td>
 			<td>NO</td>
-			<td><%= link_to "Redeem Now!", redeem_admin_orders_path(:order_id => order.id) %></td>
+			<td><%= link_to "Redeem!", redeem_admin_orders_path(:order_id => order.id) %></td>
 
 			</tr>
 
