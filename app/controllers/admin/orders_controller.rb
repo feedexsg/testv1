@@ -30,10 +30,10 @@ class Admin::OrdersController < Admin::BaseController
         # Search by id first
         @orders = Order.today.where(:redeemed => false, :id => search_query).order(id: :desc)
         if @orders.empty?
-          user_with_name = User.where{ name =~ "%#{search_query}"}.first
+          users_with_name = User.where{ name =~ "%#{search_query}%"}
 
-          if user_with_name
-            @orders = Order.today.where(:redeemed => false, :user_id => user_with_name.id).order(id: :desc)
+          if users_with_name && !users_with_name.empty?
+            @orders = Order.today.where(:redeemed => false, :user_id => users_with_name.collect(&:id)).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
@@ -103,10 +103,10 @@ class Admin::OrdersController < Admin::BaseController
         # Search by id first
         @orders = Order.today.where(:redeemed => true, :id => search_query).order(id: :desc)
         if @orders.empty?
-          user_with_name = User.where{ name =~ "%#{search_query}"}.first
+          users_with_name = User.where{ name =~ "%#{search_query}%"}
 
-          if user_with_name
-            @orders = Order.today.where(:redeemed => true, :user_id => user_with_name.id).order(id: :desc)
+          if users_with_name && !users_with_name.empty?
+            @orders = Order.today.where(:redeemed => true, :user_id => users_with_name.collect(&:id)).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
