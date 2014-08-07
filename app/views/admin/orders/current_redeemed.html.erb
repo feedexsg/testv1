@@ -16,7 +16,9 @@
 		<tr>
 			<th>Order ID</th>
 			<th>Username</th>
-			<th>Order Description</th>
+			<th>Main</th>
+			<th>Side</th>
+			<th>Qty.</th>
 			<th>Redeemed?</th>
 			<th>Click to Revert</th>
 		</tr>
@@ -25,7 +27,7 @@
 			<td><%= order.id %></td>
 			<td><%= order.user.name %></td>
 			<% item_sets_array = [] %>
-			<td><% order.order_items.each do |order_item| %>
+			<% order.order_items.each do |order_item| %>
 				<% itemset_hash = {}
 					itemset_hash["main_id"] = order_item.main_id
 				   itemset_hash["main_title"] = Item.find(order_item.main_id).name
@@ -43,16 +45,31 @@
               		item_sets_array << itemset_hash if add_to_array
 				%>
 			<% end %>
-			<% item_sets_array.each do |a| %>
-				<%= a["main_title"] %> +
-					<%= a["side_title"] %> X
-					<%= a["quantity"] %> 
-					<% if a["quantity"] == 1 %>
-						set
-					<% else %>
-						sets
-					<% end %>
-					<br>
+			<% count = item_sets_array.count %>
+			<td>
+			<% main_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[main_index]["main_title"] %>
+				<br><hr/>
+				<% main_index += 1 %>
+			<% end %>
+			</td>
+
+			<td>
+			<% side_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[side_index]["side_title"] %>
+				<br><hr/>
+				<% side_index += 1 %>
+			<% end %>
+			</td>
+
+			<td>
+			<% qty_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[qty_index]["quantity"] %>
+				<br><hr/>
+				<% qty_index += 1 %>
 			<% end %>
 			</td>
 			<td>YES</td>

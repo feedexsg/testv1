@@ -28,17 +28,17 @@ class Admin::OrdersController < Admin::BaseController
       search_query = params[:search]
       if search_query
         # Search by id first
-        @orders = Order.today.where(:redeemed => false, :id => search_query)
+        @orders = Order.today.where(:redeemed => false, :id => search_query).order(id: :desc)
         if @orders.empty?
           user_with_name = User.where{ name =~ "%#{search_query}"}.first
 
           if user_with_name
-            @orders = Order.today.where(:redeemed => false, :user_id => user_with_name.id)
+            @orders = Order.today.where(:redeemed => false, :user_id => user_with_name.id).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
             if user_with_email
-              @orders = Order.today.where(:redeemed => false, :user_id => user_with_email.id)
+              @orders = Order.today.where(:redeemed => false, :user_id => user_with_email.id).order(id: :desc)
             end
             if @orders.empty?
               @empty_order = "No Results Found!"
@@ -101,17 +101,17 @@ class Admin::OrdersController < Admin::BaseController
     search_query = params[:search]
       if search_query
         # Search by id first
-        @orders = Order.today.where(:redeemed => false, :id => search_query)
+        @orders = Order.today.where(:redeemed => true, :id => search_query).order(id: :desc)
         if @orders.empty?
           user_with_name = User.where{ name =~ "%#{search_query}"}.first
 
           if user_with_name
-            @orders = Order.today.where(:redeemed => false, :user_id => user_with_name.id)
+            @orders = Order.today.where(:redeemed => true, :user_id => user_with_name.id).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
             if user_with_email
-              @orders = Order.today.where(:redeemed => false, :user_id => user_with_email.id)
+              @orders = Order.today.where(:redeemed => true, :user_id => user_with_email.id).order(id: :desc)
             end
             if @orders.empty?
               @empty_order = "No Results Found!"
