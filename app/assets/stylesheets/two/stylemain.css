@@ -555,7 +555,7 @@ padding-top:40px;
   display:block;
 width:100%;
 float:right;
- height:786px;
+ height:1250px; /*846*/
  position:absolute;
  background-color: #000;
 opacity:1.0;
@@ -569,7 +569,7 @@ opacity:1.0;
   color:#FFFFFF;
   margin-top:-10px;
   position:relative;
-  height:746px;
+  height:1250px; /*806*/
   width:80%;
   margin:0 auto;
   text-align:center;

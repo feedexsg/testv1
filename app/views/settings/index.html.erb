@@ -1,4 +1,4 @@
-<% if browser.tablet? || browser.mobile? %>
+<% if !browser.tablet? || !browser.mobile? %>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -42,7 +42,7 @@
 				
 
 		
-				<div id="settingsbg"></div>
+				<div id="settingsbg" style="height:680px;"></div>
 			<div id="settingscontent">
 
 			<%= form_for @user, html: { id: "settingform" } do |f| %>
@@ -53,13 +53,10 @@
 					<%= f.password_field :password, id: "password", placeholder: "Our little secret" %><br><br>
 					<label for="password">YOUR PASSWORD</label><br><br>
 					<%= f.password_field :password_confirmation, id: "password", placeholder: "Once more, to be sure" %><br><br>
-					<label for="mobile">PHONE NUMBER</label><br><br>
+					<label for="mobile">PHONE NUMBER</label><br><br><br><br>
 					<%= f.text_field :mobile, id: "mobile", placeholder: "Contact" %><br><br>
 					<div class="submitbutton4">
-					<%= f.submit %><span class="submittitle3">SAVE CHANGES</span></div>
-
-
-				<% end %>
+					
 
 
 		</div><!--end of summary content-->
@@ -71,11 +68,13 @@
 
 			<div id="addtocartbg" class="summaryatcbg"></div>		
 
-			<div id="addtocart" class="summaryatc">
+			<div id="addtocart" class="summaryatc" style="width:100% !important;">
 
 
-				<h1>SAVE CHANGES</h1>
+				<%= f.submit "SAVE CHANGES", class: "update-button", style: "background:none; color:#fff; font-weight:700; border:none; margin-top:20px;" %></div>
 
+
+				<% end %>
 			</div><!--add to cart end-->	
 
 			
@@ -267,7 +266,7 @@
 					<label for="mobile">PHONE NUMBER</label><br><br>
 					<%= f.text_field :mobile, id: "mobile", placeholder: "Contact" %><br><br>
 
-					<%= f.submit "UPDATE USER", class: "update-button" %></div>
+					<%= f.submit "SAVE CHANGES", class: "update-button" %></div>
 
 
 				<% end %>
