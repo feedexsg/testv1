@@ -659,6 +659,7 @@ body {
   width: 384px;
   height: 184px;
   margin: 20px auto 0;
+  margin-bottom: 50px;
 }
 
 ._button {
@@ -894,6 +895,17 @@ body {
   color: rgb(255,177,9);
   text-shadow: 0 2px 10px rgba(0, 0, 0, 1);
 }
+
+/*CHANGES*/
+
+a#forgotpw{
+  margin-top: 50px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.69);
+  text-decoration: none;
+  color:#fff;
+  font-size: 1.231em;
+}
+
   </style>
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
@@ -918,7 +930,7 @@ body {
     <%= f.submit "Log in", class: "_button" %>
     <% end %>
 
-    <p><%= link_to "Forgotten Password?", new_password_reset_path %></p>
+    <center><p><%= link_to "Forgotten Password?", new_password_reset_path, id: "forgotpw" %></p></center>
     <a href="signup.html" class="signup">Sign Up here to join the revolution.</a>
     <a href="http://www.feedex.sg/home" class="learn">Or click here to learn more.</a>
     <footer class="_text">©2014, Feedex Pte. Ltd.</footer>
