@@ -3,9 +3,9 @@
 	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_user_path, class: 'addnew' %>
 	<%= form_tag admin_users_path, method: :get, id: 'sort_users' do %>
 		<% if params[:sort].present? %>
-			<%= select_tag "sort", options_for_select(["Name", "Email", "Colony"]), selected: params[:sort], class: "sortusersdropdown" %>
+			<%= select_tag "sort", options_for_select(["Name", "Email"]), selected: params[:sort], class: "sortusersdropdown" %>
 		<% else %>
-			<%= select_tag "sort", options_for_select(["Name", "Email", "Colony"]), prompt: "Sort By", class: "sortusersdropdown" %>
+			<%= select_tag "sort", options_for_select(["Name", "Email"]), prompt: "Sort By", class: "sortusersdropdown" %>
 		<% end %>
 	<% end %>
 
