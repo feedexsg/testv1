@@ -1,6 +1,9 @@
 class PasswordResetsController < ApplicationController
+	layout false
 	def create
-		user = User.find_by_email(params[:email])
+		Rails.logger.info params
+		user = User.find_by_email(params[:test][:email])
+		Rails.logger.info "User found!" if user
 		user.send_password_reset if user
 		redirect_to signin_path, :notice => "Email sent with password reset instructions."
 	end

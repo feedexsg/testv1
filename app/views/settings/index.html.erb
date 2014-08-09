@@ -243,8 +243,8 @@
 				
 
 		
-				<div id="settingsbg" style="height:800px;"></div>
-			<div id="settingscontent" style="height:800px;">
+				<div id="settingsbg" style="height:800px;"><!--style="height:800px;"--></div>
+			<div id="settingscontent" style="height:800px;"> <!--style="height:800px;"-->
 
 				<h1>SETTINGS</h1>
 
@@ -266,8 +266,8 @@
 					<%= f.password_field :password_confirmation, id: "password", placeholder: "Once more, to be sure" %><br><br>
 					<label for="mobile">PHONE NUMBER</label><br><br>
 					<%= f.text_field :mobile, id: "mobile", placeholder: "Contact" %><br><br>
-					<div class="submitbutton4">
-					<%= f.submit %><span class="submittitle3">SAVE CHANGES</span></div>
+
+					<%= f.submit "UPDATE USER", class: "update-button" %></div>
 
 
 				<% end %>

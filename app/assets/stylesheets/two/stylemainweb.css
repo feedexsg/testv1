@@ -261,6 +261,24 @@ ul#navshowul li {
   margin-left:-10px;
 }
 
+/*CHANGES*/
+
+.update-button {
+  color:#FFF;
+  background-color:#000;
+  width: 100%;
+  height: 80px;
+  border:none;
+  bottom:0;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 54px;
+}
+
+.update-button:focus{
+  outline:none;
+}
+
 
 
 /*------------SUMMARY/CHECKOUT-------------*/
@@ -518,7 +536,7 @@ opacity:0.8;
   margin-top:-10px;
   position:relative;
   height:676px;
-  width:80%;
+  width:100%; /*80%*/
   margin:0 auto;
   text-align:center;
 }
