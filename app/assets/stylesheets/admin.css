@@ -390,13 +390,13 @@ ul.creditboxes {
 	display:block;
 	margin:0 auto;
 	margin-top: 50px;
-	width:840px;
+	width:1100px;
 }
 
 ul.creditboxes li {
 	display:inline-block;
 	text-align: center;
-	width:200px;
+	width:300px;
 	height:180px;
 	background-color:white;
 	margin:auto 30px;
