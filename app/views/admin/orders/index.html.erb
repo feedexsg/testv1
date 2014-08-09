@@ -3,31 +3,69 @@
 	<table width="100%">
 		<tr>
 			<th>Order ID</th>
-			<th>User</th>
-			<th>Order Description</th>
+			<th>Username</th>
+			<th>Main</th>
+			<th>Side</th>
+			<th>Qty.</th>
 			<th>Amount</th>
 			<th>Date</th>
-			<th>Delivery Time</th>
 			<th>Redeemed?</th>
+			
 		</tr>
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
-				<td><%= order.id %></td>
-				<td><%= order.user.try(:name) %></td>
+			<td><%= order.id %></td>
+			<td><%= order.user.name %></td>
+			<% item_sets_array = [] %>
+			<% order.order_items.each do |order_item| %>
+				<% itemset_hash = {}
+					itemset_hash["main_id"] = order_item.main_id
+				   itemset_hash["main_title"] = Item.find(order_item.main_id).name
+				   itemset_hash["side_id"] = order_item.side_id
+				   itemset_hash["side_title"] = Item.find(order_item.side_id).name
+				   itemset_hash["quantity"] = 1
+				   add_to_array = true
+				   item_sets_array.each do |check_set|
+                		if check_set["main_id"] == itemset_hash["main_id"] && check_set["side_id"] == itemset_hash["side_id"]
+                  			add_to_array = false
+                  			check_set["quantity"] += 1
+                  			break
+                		end
+              		end # end of item_sets_array.each do 
+              		item_sets_array << itemset_hash if add_to_array
+				%>
+			<% end %>
+			<% count = item_sets_array.count %>
+			<td>
+			<% main_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[main_index]["main_title"] %>
+				<br><hr/>
+				<% main_index += 1 %>
+			<% end %>
+			</td>
 
-				<td>
-				<% order.order_items.each do |i| %>
-					<%= Item.find(i.main_id).name %> +
-					<%= Item.find(i.side_id).name %> <br>
+			<td>
+			<% side_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[side_index]["side_title"] %>
+				<br><hr/>
+				<% side_index += 1 %>
+			<% end %>
+			</td>
 
-				<% end %>
-				</td>
-
-				<td><%= number_to_currency(order.amount) %></td>
-				<td><%= order.created_at %></td>
-				<td><%= order.delivery_time %></td>
-				<td><%= order.redeemed %></td>
-			</tr>
+			<td>
+			<% qty_index = 0 %>
+			<% count.times do %>
+				<%= item_sets_array[qty_index]["quantity"] %>
+				<br><hr/>
+				<% qty_index += 1 %>
+			<% end %>
+			</td>
+			<td><%= number_to_currency(order.amount) %></td>
+			<td><%= order.created_at %></td>
+			<td><%= order.redeemed %></td>
 		<% end %>
+		
 	</table>
 </div>

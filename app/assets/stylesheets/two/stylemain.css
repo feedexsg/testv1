@@ -204,7 +204,7 @@ opacity:0.6;
 #navshow  ul:first-of-type li a:focus,
 #navshow ul li a:hover:before,
 #navshow  ul li a:focus:before{
-  color: #ff7109;
+  color: orange;
 }
 
 #footer{
