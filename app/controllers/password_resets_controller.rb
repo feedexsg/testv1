@@ -23,7 +23,7 @@ class PasswordResetsController < ApplicationController
 					redirect_to signin_path, :notice => "Please confirm your email address first"
 			else
 					# Sign in and redirect to menu
-					sign_in user
+					sign_in @user
 					redirect_to menus_url
 			end
 			# redirect_to signin_path, :notice => "Password has been reset!"
