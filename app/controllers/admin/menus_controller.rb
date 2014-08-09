@@ -10,6 +10,16 @@ class Admin::MenusController < Admin::BaseController
   end
 
   def update
+    status = menu_params[:status]
+    if status == "0"
+      # Clear all carts
+      LineItem.all.each do |x|
+        x.delete
+      end
+      Cart.all.each do |x|
+        x.delete
+      end
+    end
     save_menu
   end
 
