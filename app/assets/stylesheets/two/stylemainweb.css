@@ -301,7 +301,7 @@ opacity:0.3;
   margin-top:0px;
   position:relative;
   height:422px;
-  overflow-y:scroll;
+  overflow-y:auto;
 display:none;
 }
 
