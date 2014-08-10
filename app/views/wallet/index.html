@@ -33,10 +33,17 @@
 
 				<div id="maincontent">
 				<div id="header"><h1>MY WALLET</h1><div id="cartbutton">
-				<%= link_to @cart do %><span><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
-				<%= image_tag("icon_cart.png") %>
 
-				<% end %></div></div>
+				<% if @menu.status %>
+				<%= link_to @cart do %>
+				<span id="cart-count"><%= @cart.line_items.count %>&nbsp;&nbsp;</span>
+				<%= image_tag("icon_cart.png") %>
+				<% end %>
+				<% else %>
+					<span id="cart-count">&nbsp;&nbsp;</span><%= image_tag("icon_cart.png") %>
+				<% end %>
+
+				</div></div>
 
 				
 
