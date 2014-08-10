@@ -699,12 +699,21 @@ if ( typeof define === 'function' && define.amd ) {
 
 							
 
+							<% if @menu.status %>
+								<div class="submitbutton1" style="cursor: pointer;"><span class="submittitle">
 
-							<div class="submitbutton1" style="cursor: pointer;"><span class="submittitle">
+								ADD TO CART
 
-							ADD TO CART
+								</span><div class="submitseparator"></div><span class="submitprice">$7.90</span></div>
+							<% else %>
+								<div class="submitbutton10" style="cursor: pointer;"><span class="submittitle">
 
-							</span><div class="submitseparator"></div><span class="submitprice">$7.90</span></div>
+								ADD TO CART
+
+								</span><div class="submitseparator"></div><span class="submitprice10">$0.00</span></div>
+
+
+							<% end %>
 
 
 
