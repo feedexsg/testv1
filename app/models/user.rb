@@ -36,6 +36,11 @@ class User < ActiveRecord::Base
   ## CALLBACKS ##
   #after_create :send_welcome_notification
 
+  def send_beta_mailer
+    # Send email confirmation
+    OrderMailer.send_beta_welcome_email(self).deliver
+  end
+
   ## INSTANCE METHODS ##
   def available_credits
     credits.collect(&:amount).sum - orders.collect(&:amount).sum

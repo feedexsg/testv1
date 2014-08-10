@@ -54,5 +54,12 @@ class OrderMailer < ActionMailer::Base
     mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Password Reset Requested")
   end
 
+  def send_beta_welcome_email(user)
+    Rails.logger.info "**** PASSWORD RESET EMAIL WAS SENT THROUGH ORDER MAILER ****"
+    @user = user
+    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Beta Welcome - Your Free Lunch Is Here!")
+
+  end
+
 
 end
