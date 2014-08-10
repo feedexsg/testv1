@@ -43,11 +43,11 @@ class WalletController < ApplicationController
 		#	OrderMailer.send_top_up_confirmation_email("hi").deliver
 		#end
 
-		@response = HTTParty.post("https://sandbox.smoovpay.com/redirecturl", #HTTParty.post("https://secure.smoovpay.com/redirecturl",#
+		@response = HTTParty.post("https://secure.smoovpay.com/redirecturl",#HTTParty.post("https://sandbox.smoovpay.com/redirecturl", #
 			:body => { 
 				:version => "2.0",
 				:action => "pay",
-				:merchant => "gab.on.rails@gmail.com",#{}"ivan@feedex.sg", #"gab.on.rails@gmail.com",
+				:merchant => "ivan@feedex.sg",#{}"ivan@feedex.sg", #"gab.on.rails@gmail.com",
 				:ref_id => @current_user.id.to_s,
 				:item_name_1 => "Feedex Wallet Top Up",
 				:item_description_1 => "Feedex Top Up",
