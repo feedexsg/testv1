@@ -134,11 +134,11 @@
 					<%= image_tag("icon_settings.png", class: "menuimg") %>
 
 					<span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
-					<li><a href="login.html">
+					<li><%= link_to signout_path, method: "delete" do %>
 					<%= image_tag("icon_logout.png", class: "menuimg") %>
 
 
-					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
+					<span>&nbsp;&nbsp;&nbsp;	LOGOUT</span><% end %></li>
 				
 				</ul>
 				<!--<ul>

@@ -95,7 +95,7 @@
 					<li id="btfirstli"><a href="/menus"><%= image_tag("icon_menu.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
 					<li><a href="/wallet"><%= image_tag("icon_money.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
 					<li><a href="/settings"><%= image_tag("icon_settings.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
-					<li><a href="login.html"><%= image_tag("icon_logout.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
+					<li><%= link_to signout_path, method: "delete" do %><%= image_tag("icon_logout.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	LOGOUT</span><% end %></li>
 				
 				</ul>
 				<!--<ul>
@@ -115,7 +115,7 @@
 					<li><a href="/menus"><%= image_tag("icon_menu.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;TODAY'S MENU</span></a></li>
 					<li><a href="/wallet"><%= image_tag("icon_money.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	MY WALLET</span></a></li>
 					<li><a href="settings.html"><%= image_tag("icon_settings.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	SETTINGS</span></a></li>
-					<li><a href="login.html"><%= image_tag("icon_logout.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	LOGOUT</span></a></li>
+					<li><%= link_to signout_path, method: "delete" do %><%= image_tag("icon_logout.png", class: "menuimg") %><span>&nbsp;&nbsp;&nbsp;	LOGOUT</span><% end %></li>
 				
 				</ul>
 
