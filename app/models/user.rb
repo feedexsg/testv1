@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
   #after_create :send_welcome_notification
 
   def send_beta_mailer
+    # Create reset token
+    self.reset_password_token = loop do
+      token = SecureRandom.urlsafe_base64(nil, false)
+      break token unless User.exists?(reset_password_token: token)
+    end
+    self.reset_password_sent_at = Time.zone.now
+    save!
+
     # Send email confirmation
     OrderMailer.send_beta_welcome_email(self).deliver
   end
