@@ -660,7 +660,13 @@ body {
   width: 384px;
   height: 184px;
   margin: 20px auto 0;
-  margin-bottom: 50px;
+  <% if browser.mobile? %>
+    margin-bottom: 20px;
+  <% else %>
+    margin-bottom: 50px;
+
+  <% end %>
+  
 }
 
 ._button {
@@ -916,7 +922,12 @@ a#forgotpw{
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 <body class="body login clearfix">
-  <div class="wrapper clearfix">
+  <% if browser.mobile? %>
+    <div class="wrapper clearfix" style="height: auto;">
+  <% else %>
+    <div class="wrapper clearfix">
+  <% end %>
+
     <a href="http://www.feedex.sg/home" class="_container clearfix">
       <%= image_tag("logo.png", class: "logo") %>
     </a>
@@ -936,7 +947,14 @@ a#forgotpw{
     <%= f.submit "Log in", class: "_button" %>
     <% end %>
 
-    <center><p><%= link_to "Forgotten Password?", new_password_reset_path, id: "forgotpw" %></p></center>
+    <center><% if browser.mobile? %>
+    <p style="margin-top: -0px;">
+    <%= link_to "Forgotten Password?", new_password_reset_path, id: "forgotpw" %>
+    <% else %>
+    <p>
+    <%= link_to "Forgotten Password?", new_password_reset_path, id: "forgotpw" %>
+    <% end %>
+    </p></center>
     <a href="signup.html" class="signup">Sign Up here to join the revolution.</a>
     <a href="http://www.feedex.sg/home" class="learn">Or click here to learn more.</a>
     <footer class="_text">©2014, Feedex Pte. Ltd.</footer>
