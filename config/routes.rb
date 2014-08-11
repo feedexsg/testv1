@@ -46,6 +46,7 @@ Feedex::Application.routes.draw do
     get 'dashboard' => 'pages#index'
 
     resources :items
+    resources :sold_outs
     resources :users do
       member do
         get :credits

@@ -1,0 +1,11 @@
+<div>
+	<%= f.label :item %>
+	<%= f.select :item_id, Item.all.collect{|c| [c.name, c.id]}, :id => "itemcategory" %>
+	<%= inline_errors(sold_out, :item) %>
+</div><br><br>
+<div>
+	<%= f.label :image %>
+	<%= f.file_field :image %>
+	<%= inline_errors(sold_out, :image) %>
+</div><br><br>
+

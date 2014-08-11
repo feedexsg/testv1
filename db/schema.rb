@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717095451) do
+ActiveRecord::Schema.define(version: 20140811163401) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -115,6 +115,18 @@ ActiveRecord::Schema.define(version: 20140717095451) do
     t.string   "items"
     t.boolean  "redeemed",                               default: false
   end
+
+  create_table "sold_outs", force: true do |t|
+    t.integer  "item_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "sold_outs", ["item_id"], name: "index_sold_outs_on_item_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

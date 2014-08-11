@@ -36,6 +36,18 @@ class MenusController < ApplicationController
       gon.side_items = @side_items
       gon.cart_number = @cart.line_items.count
 
+      main_items_qty = []
+      @main_items.each do |m|
+        main_items_qty << m.items_menus.last.quantity
+      end
+      gon.main_items_qty = main_items_qty
+
+      side_items_qty = []
+      @side_items.each do |s|
+        side_items_qty << s.items_menus.last.quantity
+      end
+      gon.side_items_qty = side_items_qty
+
       # Cart for Menu Desktop
       remember_token = User.digest(cookies[:remember_token])
       @current_user ||= User.find_by(remember_token: remember_token)

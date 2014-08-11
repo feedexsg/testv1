@@ -2,6 +2,10 @@ class Item < ActiveRecord::Base
 
   attr_accessor :vendor_name
 
+  has_many :sold_outs, :dependent => :destroy
+
+  accepts_nested_attributes_for :sold_outs, :reject_if => lambda { |t| t['image'].nil? }
+
   ## CONSTANTS ##
   scope :main, -> { where(category_id: Category.main_id) }
   scope :side, -> { where(category_id: Category.side_id) }

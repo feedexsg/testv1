@@ -1,0 +1,20 @@
+<div id="allitems">
+	<h1>Sold Out Images</h1><hr />
+	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_sold_out_path, class: 'addnew' %>
+	<table width="100%">
+		<tr>
+			<th>Image</th>
+			<th>Belongs To</th>	
+			<th>Dlt</th>
+		</tr>
+		<% @soldouts.each do |item| %>
+			<tr class="<%= cycle('oddrow', 'evenrow') %>">
+				<td class='itemimg'><%= image_tag(item.image, :class => 'itemthumbnail') %></td>
+				<td><%= item.item.name %></td>
+				<td><%= link_to raw(image_tag('dltbutton.png')), [:admin, item], method: :delete, confirm: "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+

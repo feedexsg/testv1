@@ -84,7 +84,11 @@
       		<% if main_item.items_menus.last.quantity > 0 %>
       			<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
       		<% else %>
-      			<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+      			<% if main_item.sold_outs.last %>
+					<div class="swiper-slide"><%= image_tag main_item.sold_outs.last.image.url %></div>
+				<% else %>
+					<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+				<% end %>
       		<% end %>
 		<% end %>
       </div>
@@ -120,7 +124,11 @@
         	<% if side_item.items_menus.last.quantity > 0 %>
       			<div class="swiper-slide"><%= image_tag side_item.image.url %></div>
       		<% else %>
-      			<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+      			<% if side_item.sold_outs.last %>
+						<div class="swiper-slide"><%= image_tag side_item.sold_outs.last.image.url %></div>
+					<% else %>
+						<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+					<% end %>
       		<% end %>
 		<% end %>
         
@@ -449,6 +457,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 	window.cartItems = gon.cart_number;
 
+	window.mainQtyArray = gon.main_items_qty;
+	window.sideQtyArray = gon.side_items_qty; 
+
   var carousel1 = new Swiper('#carousel1.swiper-container',{
     pagination: '.pagination',
     loop:true,
@@ -517,19 +528,24 @@ if ( typeof define === 'function' && define.amd ) {
 
   	e.preventDefault();
 
-  	$('.addtocarttext').css('color', 'orange');
-  	setTimeout(function() {
-  		$('.addtocarttext').css('color', 'white');
-  	}, 250);
+  	if (window.mainQtyArray[window.firstSwiparIndex] < 1 || window.sideQtyArray[window.secondSwiparIndex] < 1) {
 
-  	$.post('/line_items', { line_item : { main_id: window.firstSwiparIndex, side_id: window.secondSwiparIndex }}, function(returnedData) {
-  		// Increment counter
-  		window.cartItems = window.cartItems + 1;
-  		$("#cart-count").fadeOut(500, function(){
-  			$("#cart-count").fadeIn(500);
-  			$("#cart-count").text(window.cartItems.toString());
-  		});
-  	});
+  	} else {
+  		$('.addtocarttext').css('color', 'orange');
+	  	setTimeout(function() {
+	  		$('.addtocarttext').css('color', 'white');
+	  	}, 250);
+
+	  	$.post('/line_items', { line_item : { main_id: window.firstSwiparIndex, side_id: window.secondSwiparIndex }}, function(returnedData) {
+	  		// Increment counter
+	  		window.cartItems = window.cartItems + 1;
+	  		$("#cart-count").fadeOut(500, function(){
+	  			$("#cart-count").fadeIn(500);
+	  			$("#cart-count").text(window.cartItems.toString());
+	  		});
+	  	});
+
+  	}
 
 
   });
@@ -663,7 +679,11 @@ if ( typeof define === 'function' && define.amd ) {
 				<% if main_item.items_menus.last.quantity > 0 %>
 				<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
 				<% else %>
-				<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+					<% if main_item.sold_outs.last %>
+						<div class="swiper-slide"><%= image_tag main_item.sold_outs.last.image.url %></div>
+					<% else %>
+						<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+					<% end %>
 				<% end %>
 			<% end %>
 		</div>
@@ -707,7 +727,11 @@ if ( typeof define === 'function' && define.amd ) {
 				<% if main_item.items_menus.last.quantity > 0 %>
 				<div class="swiper-slide"><%= image_tag main_item.image.url %></div>
 				<% else %>
-				<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+					<% if main_item.sold_outs.last %>
+						<div class="swiper-slide"><%= image_tag main_item.sold_outs.last.image.url %></div>
+					<% else %>
+						<div class="swiper-slide"><%= image_tag("Out-Of-Stock-Shade.png") %></div>
+					<% end %>
 				<% end %>
 			<% end %>
 		</div>
@@ -895,6 +919,9 @@ if ( typeof define === 'function' && define.amd ) {
 
 	window.cartItems = gon.cart_number;
 
+	window.mainQtyArray = gon.main_items_qty;
+	window.sideQtyArray = gon.side_items_qty; 
+
 
   var carousel3 = new Swiper('#carousel3.swiper-container',{
     pagination: '.pagination',
@@ -962,11 +989,16 @@ if ( typeof define === 'function' && define.amd ) {
   })
 
   $('.submitbutton1').on('click', function(e){
-
-  	e.preventDefault();
-  	$.post('/line_items', { line_item : { main_id: window.firstSwiparIndex, side_id: window.secondSwiparIndex }}, function(returnedData) {
+	e.preventDefault();
+  	if (window.mainQtyArray[window.firstSwiparIndex] < 1 || window.sideQtyArray[window.secondSwiparIndex] < 1) {
+  		console.log("Item sold out!")
+  	} else {
+  		$.post('/line_items', { line_item : { main_id: window.firstSwiparIndex, side_id: window.secondSwiparIndex }}, function(returnedData) {
   		window.location.reload();
   	});
+
+  	}
+
 
   });
 
