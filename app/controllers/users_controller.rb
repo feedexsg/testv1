@@ -15,7 +15,12 @@ class UsersController < ApplicationController
       OrderMailer.send_account_activation_email(@user).deliver
   		redirect_to signup_success_url
   	else
-  		flash[:error] = @user.errors.full_messages
+      if @user.errors
+        gon.errorz = @user.errors.full_messages[0]
+      else
+
+      end
+  		
   		render :new
   	end
   end
