@@ -43,7 +43,7 @@ class Admin::ItemsController < Admin::BaseController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :vendor_name, :sku, :category_id, :image, :sold_out_image)
+    params.require(:item).permit(:name, :price, :vendor_name, :sku, :category_id, :image)
   end
 
   def load_item

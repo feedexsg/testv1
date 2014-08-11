@@ -5,7 +5,6 @@
 		<tr>
 			<th>Item Name</th>
 			<th>Image</th>
-			<th>Sold Out Image</th>
 			<th>Vendor</th>	
 			<th>Price</th>
 			<th>Category</th>
@@ -15,7 +14,6 @@
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
 				<td class='itemtitle'><%= link_to item.name, edit_admin_item_path(item) %></td>
 				<td class='itemimg'><%= image_tag(item.image, :class => 'itemthumbnail') %></td>
-				<td class='itemimg'><% if item.sold_out_image.url %><%= image_tag(item.sold_out_image, :class => 'itemthumbnail') %><% end %></td>
 				<td class='itemdescription'><%= item.vendor.name %></td>
 				<td><%= number_to_currency(item.price) %></td>
 				<td><%= item.category_name %></td>
