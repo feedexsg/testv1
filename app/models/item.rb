@@ -25,6 +25,18 @@ class Item < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => %w(image/jpeg image/jpg image/png)
 
+  has_attached_file :sold_out_image,
+        :storage => :s3,
+        :s3_credentials => {
+          :bucket => "feedex",
+          :access_key_id => 'AKIAJMUB6BJTAHZBBSEQ',
+          :secret_access_key => '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'
+        }
+
+  validates_attachment_content_type :sold_out_image, :content_type => %w(image/jpeg image/jpg image/png image/JPEG)
+
+
+
   delegate :name, to: :category, prefix: true
 
   ## CALLBACKS ##
