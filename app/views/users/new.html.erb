@@ -1297,8 +1297,12 @@ $.noty.defaults = {
     buttons: false // an array of buttons
 };
 var error_message = gon.errorz
+
+if (error_message) {
+  var n = noty({text: error_message});
+}
 //for (var i = 0; error_messages.length; i++) {
-    var n = noty({text: error_message});
+// var n = noty({text: error_message});
 //}
 
 </script>
