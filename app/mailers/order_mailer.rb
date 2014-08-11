@@ -25,7 +25,7 @@ class OrderMailer < ActionMailer::Base
 
   	Rails.logger.info "******* EMAIL WAS SENT THRU ORDER MAILER *******"
     subject_title = "Show This to the Feedex Crew! [##{@order.id}]"
-  	mail(to: [@user.email, "gabriel@gettingrail.com"], subject: subject_title)
+  	mail(to: @user.email, bcc: "gabriel@gettingrail.com", subject: subject_title)
   end
 
   def send_account_activation_email(account)
@@ -34,7 +34,7 @@ class OrderMailer < ActionMailer::Base
     @user = account
     token = @user.confirmation_token.to_s
     @confirmation_link = "http://app.feedex.sg/confirm?confirmation=" + token
-    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Please Confirm Your Account")
+    mail(to: @user.email, bcc: "gabriel@gettingrail.com", subject: "Please Confirm Your Account")
   end
 
   def send_top_up_confirmation_email(info_hash)
@@ -44,20 +44,20 @@ class OrderMailer < ActionMailer::Base
 
     user_email = info_hash[:user_email]
 
-    mail(to: [user_email, "gabriel@gettingrail.com"], subject: "Top Up Confirmation")
+    mail(to: user_email, bcc: "gabriel@gettingrail.com", subject: "Top Up Confirmation")
   
   end
 
   def send_password_reset_email(user)
     Rails.logger.info "**** PASSWORD RESET EMAIL WAS SENT THROUGH ORDER MAILER ****"
     @user = user
-    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Password Reset Requested")
+    mail(to: user.email, bcc: "gabriel@gettingrail.com", subject: "Password Reset Requested")
   end
 
   def send_beta_welcome_email(user)
     Rails.logger.info "**** BETA WELCOME EMAIL WAS SENT THROUGH ORDER MAILER ****"
     @user = user
-    mail(to: [@user.email, "gabriel@gettingrail.com"], subject: "Welcome to Feedex")
+    mail(to: @user.email, bcc: "gabriel@gettingrail.com", subject: "Welcome to Feedex")
 
   end
 
