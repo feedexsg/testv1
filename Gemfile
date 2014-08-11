@@ -51,6 +51,8 @@ gem 'bcrypt-ruby'
 
 gem "squeel"
 
+gem 'email_validator'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

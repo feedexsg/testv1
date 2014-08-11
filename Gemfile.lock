@@ -67,6 +67,8 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
+    email_validator (1.4.0)
+      activemodel
     erubis (2.7.0)
     execjs (2.0.2)
     flexslider (2.2.0)
@@ -186,6 +188,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   dotenv-rails
+  email_validator
   flexslider
   gon
   httparty
