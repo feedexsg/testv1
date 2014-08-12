@@ -38,6 +38,19 @@ class WalletController < ApplicationController
 			end
 		end
 
+		if (tp_amount.to_f < 10.0)
+			if browser.tablet?
+				flash[:error] = "Amount must be more than $10"
+				redirect_to wallet_index_path and return
+			elsif browser.mobile?
+				flash[:error] = "Amount must be more than $10"
+				redirect_to wallet_index_path and return
+			else
+				flash[:error] = "Amount must be more than $10"
+				redirect_to menus_url and return
+			end
+		end
+
 		# Shouldn't this be from smoovpay confirmation?
 		#if (tp_amount == "321")
 		#	OrderMailer.send_top_up_confirmation_email("hi").deliver
