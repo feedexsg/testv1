@@ -28,17 +28,18 @@ class Admin::OrdersController < Admin::BaseController
       search_query = params[:search]
       if search_query
         # Search by id first
-        @orders = Order.today.where(:redeemed => false, :id => search_query).order(id: :desc)
+        @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => false, :id => search_query).order(id: :desc)
+        # @orders = Order.today.where(:redeemed => false, :id => search_query).order(id: :desc)
         if @orders.empty?
           users_with_name = User.where{ name =~ "%#{search_query}%"}
 
           if users_with_name && !users_with_name.empty?
-            @orders = Order.today.where(:redeemed => false, :user_id => users_with_name.collect(&:id)).order(id: :desc)
+            @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => false, :user_id => users_with_name.collect(&:id)).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
             if user_with_email
-              @orders = Order.today.where(:redeemed => false, :user_id => user_with_email.id).order(id: :desc)
+              @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => false, :user_id => user_with_email.id).order(id: :desc)
             end
             if @orders.empty?
               @empty_order = "No Results Found!"
@@ -50,7 +51,7 @@ class Admin::OrdersController < Admin::BaseController
         end
 
       else
-        @orders = Order.today.where(:redeemed => false).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
+        @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => false).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
 
         @sorted_orders = @orders.group_by do |order|
           order.user_id
@@ -101,17 +102,17 @@ class Admin::OrdersController < Admin::BaseController
     search_query = params[:search]
       if search_query
         # Search by id first
-        @orders = Order.today.where(:redeemed => true, :id => search_query).order(id: :desc)
+        @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => true, :id => search_query).order(id: :desc)
         if @orders.empty?
           users_with_name = User.where{ name =~ "%#{search_query}%"}
 
           if users_with_name && !users_with_name.empty?
-            @orders = Order.today.where(:redeemed => true, :user_id => users_with_name.collect(&:id)).order(id: :desc)
+            @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => true, :user_id => users_with_name.collect(&:id)).order(id: :desc)
           end
           if @orders.empty?
             user_with_email = User.find_by_email(search_query)
             if user_with_email
-              @orders = Order.today.where(:redeemed => true, :user_id => user_with_email.id).order(id: :desc)
+              @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => true, :user_id => user_with_email.id).order(id: :desc)
             end
             if @orders.empty?
               @empty_order = "No Results Found!"
@@ -123,7 +124,7 @@ class Admin::OrdersController < Admin::BaseController
         end
 
       else
-        @orders = Order.today.where(:redeemed => true).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
+        @orders = Order.where(:created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where(:redeemed => true).order(id: :desc) #Order.where('delivery_time BETWEEN ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day).where(:user_id => @current_user.id, :redeemed => false)
       
         @sorted_orders = @orders.group_by do |order|
           order.user_id

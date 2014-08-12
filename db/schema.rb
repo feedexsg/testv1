@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140811163401) do
+ActiveRecord::Schema.define(version: 20140812084708) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20140811163401) do
     t.string   "items"
     t.boolean  "redeemed",                               default: false
   end
+
+  add_index "orders", ["created_at"], name: "index_orders_on_created_at"
 
   create_table "sold_outs", force: true do |t|
     t.integer  "item_id"
