@@ -12,6 +12,7 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     @user = User.new(user_params)
+    @user.confirmed_at = DateTime.now
     if @user.save
       flash[:notice] = "User has been saved successfully"
       redirect_to admin_users_path
@@ -64,7 +65,7 @@ class Admin::UsersController < Admin::BaseController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :mobile,
-                                 :colony_id, credits_attributes: [:amount, :source])
+                                 :colony_id, :confirmed_at, credits_attributes: [:amount, :source])
   end
 
   def load_user
