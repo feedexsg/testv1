@@ -830,7 +830,7 @@ if ( typeof define === 'function' && define.amd ) {
 							<% if @current_user.total_credits >= @total_price %>
 								
 								<div class="submitbutton2checkout">
-								<%= button_to 'CHECKOUT', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }}, class: "checkoutbtn2" %>
+								<%= button_to 'CHECKOUT', {:controller => "orders", :action => "create", :order => { delivery_time: DateTime.now, item_sets: @item_sets }}, class: "checkoutbtn2",:confirm => "Are you sure you want to checkout?" %>
 								<!--<span class="submittitle">CHECKOUT</span>--><div id="separatorprice">&nbsp;&nbsp;&nbsp;<div class="submitseparator2"></div><span class="submitcheckout">$<%= number_with_precision(@total_price, precision: 2) %></span></div></div>
 							
 
