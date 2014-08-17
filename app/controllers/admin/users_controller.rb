@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::BaseController
   before_filter :load_user, :except => [:index, :new, :create, :sort]
 
   def index
-    @users = params[:sort].present? ? User.order(params[:sort].downcase) : User.all
+    @users = params[:sort].present? ? User.order(params[:sort].downcase) : User.all.order(created_at: :desc)
   end
 
   def new
