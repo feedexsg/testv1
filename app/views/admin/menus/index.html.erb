@@ -2,7 +2,7 @@
 	<%= nested_form_for [:admin, @menu] do |f| %>
 
 		<h1>Today's Menu</h1><hr /><br>
-		Date: <%= @menu.available_on.strftime("%d %B %Y") %><br/><br>
+		Date: <%= Date.today.strftime("%d %B %Y") #@menu.available_on.strftime("%d %B %Y") %><br/><br>
 		Operation: <%= f.select :status, options_for_select([["Open", 1],["Closed", 0]], 
 
 		if @menu.status

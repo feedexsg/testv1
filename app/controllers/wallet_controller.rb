@@ -9,7 +9,7 @@ class WalletController < ApplicationController
 		@current_user ||= User.find_by(remember_token: remember_token)
 		@credits = @current_user.total_credits
 
-		@menu = Menu.current
+		@menu = Menu.last
 
 		@topup = nil
 

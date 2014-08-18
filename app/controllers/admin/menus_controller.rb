@@ -32,7 +32,7 @@ class Admin::MenusController < Admin::BaseController
   end
 
   def load_current_menu
-    @menu = Menu.current
+    @menu = Menu.last #Menu.current
     @main_items = Item.main
     @side_items = Item.side
   end
