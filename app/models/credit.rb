@@ -6,6 +6,7 @@ class Credit < ActiveRecord::Base
   Sources = {:admin => "Admin", :direct => "Direct"}
 
   scope :manual, -> {where(source: Sources[:admin])}
+  scope :direct, -> {where(source: Sources[:direct])}
 
   ## VALIDATIONS ##
   validates :source, :amount, :user, presence: true
