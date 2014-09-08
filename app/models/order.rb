@@ -1,5 +1,7 @@
 class Order < ActiveRecord::Base
 
+  paginates_per 10
+
   ## CONSTANTS ##
   scope :today, -> {where("created_at > date(?)", Date.today)}
   serialize :items, Array

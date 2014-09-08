@@ -12,6 +12,9 @@
 			<th>Redeemed?</th>
 			
 		</tr>
+
+		<%= paginate @orders %>
+
 		<% @orders.each do |order| %>
 			<tr class="<%= cycle('oddrow', 'evenrow') %>">
 			<td><%= order.id %></td>
@@ -68,4 +71,5 @@
 		<% end %>
 		
 	</table>
+	<%= paginate @orders %>
 </div>

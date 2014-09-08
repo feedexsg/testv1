@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
+  paginates_per 10
+
   before_create :create_remember_token
   before_create :generate_confirmation_token
   before_save { self.email = email.downcase }

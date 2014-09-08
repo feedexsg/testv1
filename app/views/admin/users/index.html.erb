@@ -9,7 +9,9 @@
 		<% end %>
 	<% end %>
 
+	<%= paginate @users %>
 	<table width="100%">
+	
 		<tr>
 			<th>User Name</th>
 			<th>Email</th>
@@ -27,7 +29,10 @@
 			</tr>
 		<% end %>
 	</table>
+	<br><br>
+	<%= paginate @users %>
 </div>
+
 <script>
 	$('select#sort').change(function(){
 		$('form#sort_users').submit();

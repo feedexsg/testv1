@@ -1,5 +1,7 @@
 class Credit < ActiveRecord::Base
 
+  paginates_per 10
+
   ## CONSTANTS ##
   Sources = {:admin => "Admin", :direct => "Direct"}
 
