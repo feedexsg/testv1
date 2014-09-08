@@ -1,6 +1,7 @@
 class Admin::MenusController < Admin::BaseController
 
   before_filter :load_current_menu, only: [:index, :create, :update]
+  before_filter :require_super
 
   def index
   end
@@ -45,6 +46,13 @@ class Admin::MenusController < Admin::BaseController
     else
       flash[:error] = "Please fix the errors below"
       render :index
+    end
+  end
+
+  def require_super
+    unless @current_admin.role == "super"
+      flash[:error] = "Sorry, you are not authorized to access this resource. Off back to Orders you go!"
+      redirect_to current_admin_orders_path and return
     end
   end
 

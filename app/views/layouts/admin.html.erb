@@ -39,7 +39,8 @@
 			<% [:notice, :error].each do |msg| %>
 				<% if flash[msg].present? %>
 					<div class="flash <%= msg.to_s %>">
-						<%= flash[msg] %>
+					<br><br>
+						<p style="font-size: 18px;" ><%= flash[msg] %></p>
 					</div>
 				<% end %>
 			<% end %>

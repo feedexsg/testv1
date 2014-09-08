@@ -1,6 +1,7 @@
 class Admin::ItemsController < Admin::BaseController
 
   before_filter :load_item, :except => [:index, :new, :create]
+  before_filter :require_super
 
   def index
     @items = Item.all
@@ -51,6 +52,13 @@ class Admin::ItemsController < Admin::BaseController
     unless @item
       flash[:error] = "Item not found"
       redirect_to admin_items_path and return
+    end
+  end
+
+  def require_super
+    unless @current_admin.role == "super"
+      flash[:error] = "Sorry, you are not authorized to access this resource. Off back to Orders you go!"
+      redirect_to current_admin_orders_path and return
     end
   end
 

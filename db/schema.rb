@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812084708) do
+ActiveRecord::Schema.define(version: 20140908152141) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -156,6 +156,7 @@ ActiveRecord::Schema.define(version: 20140812084708) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.string   "remember_token"
+    t.string   "role"
   end
 
   add_index "users", ["colony_id"], name: "index_users_on_colony_id"

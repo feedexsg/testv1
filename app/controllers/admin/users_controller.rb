@@ -1,6 +1,8 @@
 class Admin::UsersController < Admin::BaseController
 
   before_filter :load_user, :except => [:index, :new, :create, :sort]
+  before_filter :require_super
+
 
   def index
     @users = params[:sort].present? ? User.order(params[:sort].downcase).page(params[:page]) : User.all.order(created_at: :desc).page(params[:page])
@@ -62,6 +64,13 @@ class Admin::UsersController < Admin::BaseController
   end
 
   private
+
+  def require_super
+    unless @current_admin.role == "super"
+      flash[:error] = "Sorry, you are not authorized to access this resource. Off back to Orders you go!"
+      redirect_to current_admin_orders_path and return
+    end
+  end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :mobile,

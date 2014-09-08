@@ -2,6 +2,8 @@ class Admin::ColoniesController < Admin::BaseController
 
   before_filter :load_colony, :except => [:index, :new, :create]
 
+  before_filter :require_super
+
   def index
     @colonies = Colony.all
   end
@@ -41,6 +43,13 @@ class Admin::ColoniesController < Admin::BaseController
   end
 
   private
+
+  def require_super
+    unless @current_admin.role == "super"
+      flash[:error] = "Please Login"
+      redirect_to current_admin_orders_path and return
+    end
+  end
 
   def colony_params
     params.require(:colony).permit(:name)
