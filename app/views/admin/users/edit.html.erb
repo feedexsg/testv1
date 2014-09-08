@@ -16,6 +16,22 @@
 	</div>
 <% end %>
 
+<br><br>
+<h3>Order Transaction History</h3>
+<h3>(Work in Progress)</h3>
+<table>
+			<tr>
+				<th>Order Date</th>
+				<th>Amount</th>
+			</tr>
+			<% @orders.each do |order| %>
+				<tr>
+					<td><%= order.created_at.strftime("%d %b, %Y") %></td>
+					<td><%= number_to_currency(order.amount) %></td>
+				</tr>
+				<% end %>
+		</table>
+
 </div><!--end of newitembox-->
 
 

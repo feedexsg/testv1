@@ -25,6 +25,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit
+    @orders = Order.where("user_id = ?", params[:id])
   end
 
   def update
