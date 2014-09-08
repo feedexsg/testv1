@@ -171,11 +171,71 @@ class Admin::OrdersController < Admin::BaseController
 
       end
 
-
-
+      respond_to do |format|
+        format.html
+        format.csv do
+          response.headers['Content-Type'] ||= 'text/csv'
+          response.headers['Content-Disposition'] = "attachment; filename=dailyreport.csv"
+          send_data csviy(@orders), :filename => "DailyReport.csv"
+        end
+      end
     
   end
 
+  def csviy(orders)
+    CSV.generate do |csv|
+      column_headers = ["Order ID", "Customer Name", "Main", "Side", "Qty", "Amount", "Trx Time", "Redemption Time"]
+      csv << column_headers
+      orders.each do |order|
+        
+        item_sets_array = []
+        order.order_items.each do |order_item|
+          itemset_hash = {}
+          itemset_hash["main_id"] = order_item.main_id
+          itemset_hash["main_title"] = Item.find(order_item.main_id).name
+          itemset_hash["side_id"] = order_item.side_id
+          itemset_hash["side_title"] = Item.find(order_item.side_id).name
+          itemset_hash["quantity"] = 1
+          add_to_array = true
+          item_sets_array.each do |check_set|
+              if check_set["main_id"] == itemset_hash["main_id"] && check_set["side_id"] == itemset_hash["side_id"]
+                  add_to_array = false
+                  check_set["quantity"] += 1
+                  break
+              end
+          end # end of item_sets_array.each do
+          item_sets_array << itemset_hash if add_to_array
+        end
+
+        first_time = true
+        item_sets_array.each do |set| 
+          loaded_array = []
+          if first_time
+            loaded_array << order.id
+            loaded_array << order.user.name
+          else
+            loaded_array << " "
+            loaded_array << " "
+          end
+          loaded_array << set["main_title"]
+          loaded_array << set["side_title"]
+          loaded_array << set["quantity"]
+          if first_time
+            loaded_array << ActionController::Base.helpers.number_to_currency(order.amount)
+            loaded_array << order.created_at 
+            loaded_array << order.updated_at
+          else
+
+          end
+          csv << loaded_array
+          first_time = false
+        end
+
+        # csv << loaded_array
+      end
+
+    end
+  end
 
 
 end

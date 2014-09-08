@@ -1,6 +1,7 @@
 <div id="allitems">
 	<h1>Today's Orders</h1>
 	<h3>Showing <b>Redeemed</b> Orders only   <%= link_to "See Unredeemed Orders", current_admin_orders_path %></h3></h3>
+	<h3><%= link_to "Export CSV", current_redeemed_admin_orders_path(format: "csv") %></h3>
 	<br>
 	<%= form_tag current_redeemed_admin_orders_path, :method => 'get' do %>
 		<%= text_field_tag :search, params[:search], placeholder: "Enter Order ID Here" %>
