@@ -320,7 +320,7 @@ opacity:0.3;
   margin-top:-10px;
   position:relative;
   height:736px;
-  /*overflow-y:scroll;*/
+  overflow-y:scroll;
 
 }
 
@@ -384,7 +384,7 @@ img.summarydlt {
     position: absolute;
     color:#FFF;
     font-size:2.5em;
-    margin-top:35px;
+    margin-top:18px;
     font-weight:700;
     text-align:center;
 }
@@ -1141,6 +1141,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="num
 
 #summarycontent {
   height:426px;
+  margin-top: 0px;
 }
 img.summarydlt{
   margin-top:-40px;
