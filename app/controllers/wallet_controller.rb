@@ -51,10 +51,6 @@ class WalletController < ApplicationController
 			end
 		end
 
-		# Shouldn't this be from smoovpay confirmation?
-		#if (tp_amount == "321")
-		#	OrderMailer.send_top_up_confirmation_email("hi").deliver
-		#end
 
 		@response = HTTParty.post("https://secure.smoovpay.com/redirecturl",#HTTParty.post("https://sandbox.smoovpay.com/redirecturl", #
 			:body => { 

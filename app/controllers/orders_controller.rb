@@ -58,8 +58,6 @@ class OrdersController < ApplicationController
 			end
 		end
 
-		#if main_item.items_menus.last.quantity <= 0 || side_item.items_menus.last.quantity
-
 		order.amount = total_amt
 
 		if @current_user.total_credits >= total_amt
@@ -89,12 +87,12 @@ class OrdersController < ApplicationController
 			else
 				# Invalid order
 				# Refer to Saleswhale for error handling
-				puts "Invalid ORDER ***@*@"
+				puts "Invalid Order"
 			end
 		else
 			# Insufficent balance
 			# Refer to Saleswhale for error handling
-			puts "Insufficent Balance ****@***"
+			puts "Insufficent Balance "
 			redirect_to menus_url and return
 		end
 

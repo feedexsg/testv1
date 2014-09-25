@@ -26,7 +26,6 @@ class PasswordResetsController < ApplicationController
 					sign_in @user
 					redirect_to menus_url
 			end
-			# redirect_to signin_path, :notice => "Password has been reset!"
 		else
 			render :edit
 		end
