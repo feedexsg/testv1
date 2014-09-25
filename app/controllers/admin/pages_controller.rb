@@ -7,6 +7,30 @@ class Admin::PagesController < Admin::BaseController
     @manual_credits = Credit.manual.collect(&:amount).sum.to_f
     
     @credits = Credit.all.order(created_at: :desc).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        creditz = Credit.all.order(created_at: :desc)
+        response.headers['Content-Type'] ||= 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=credits.csv"
+        send_data csviy(creditz), :filename => "Credits.csv"
+      end
+    end
+  end
+
+  def csviy(credits)
+    CSV.generate do |csv|
+      column_headers = ["User", "Amount", "Date"]
+      csv << column_headers
+      credits.each do |credit|
+        loaded_array = []
+        loaded_array << credit.user.name
+        loaded_array << credit.amount
+        loaded_array << credit.created_at.strftime("%d %B, %Y %H : %M")
+        csv << loaded_array
+      end
+    end
   end
 
   private

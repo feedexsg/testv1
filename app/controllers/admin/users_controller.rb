@@ -14,6 +14,30 @@ class Admin::UsersController < Admin::BaseController
     else
       @users = params[:sort].present? ? User.order(params[:sort].downcase).page(params[:page]) : User.all.order(created_at: :desc).page(params[:page])
     end
+
+    respond_to do |format|
+      format.html
+      format.csv do
+        userz = User.all.order(created_at: :desc)
+        response.headers['Content-Type'] ||= 'text/csv'
+        response.headers['Content-Disposition'] = "attachment; filename=users.csv"
+        send_data csviy(userz), :filename => "Users.csv"
+      end
+    end
+  end
+
+  def csviy(users)
+    CSV.generate do |csv|
+      column_headers = ["User Name", "Email", "Current Credits"]
+      csv << column_headers
+      users.each do |user|
+        loaded_array = []
+        loaded_array << user.name
+        loaded_array << user.email
+        loaded_array << user.total_credits
+        csv << loaded_array
+      end
+    end
   end
 
   def new

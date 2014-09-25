@@ -1,5 +1,7 @@
 <div id="allitems">
 	<h1>All Users</h1><hr />
+	<h3><%= link_to "Export CSV", admin_users_path(format: "csv") %></h3>
+	
 	<%= link_to raw(image_tag('addnewbutton.png')), new_admin_user_path, class: 'addnew' %>
 
 	<%= form_tag admin_users_path, method: :get do %>
