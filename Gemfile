@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use mysql as the database for Active Record
-gem 'mysql2'
+# gem 'mysql2'
+gem 'sqlite3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -51,7 +52,7 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby'
 
-gem "squeel"
+#gem "squeel"
 
 gem 'email_validator'
 
@@ -71,5 +72,5 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
-  gem 'debugger'
+  # gem 'debugger'
 end
