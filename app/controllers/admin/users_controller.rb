@@ -5,7 +5,15 @@ class Admin::UsersController < Admin::BaseController
 
 
   def index
-    @users = params[:sort].present? ? User.order(params[:sort].downcase).page(params[:page]) : User.all.order(created_at: :desc).page(params[:page])
+    search_query = params[:search]
+    if search_query
+      @users = User.where(:email => search_query).page(params[:page])
+      if @users.empty?
+        @users = User.where{ name =~ "%#{search_query}%"}.page(params[:page])
+      end
+    else
+      @users = params[:sort].present? ? User.order(params[:sort].downcase).page(params[:page]) : User.all.order(created_at: :desc).page(params[:page])
+    end
   end
 
   def new
