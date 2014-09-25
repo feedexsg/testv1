@@ -1,7 +1,7 @@
 <div id="allitems">
 	<%= nested_form_for [:admin, @menu] do |f| %>
 
-		<h1>Today's Menu</h1><hr /><br>
+		<h1>CHARLTON'S Menu</h1><hr /><br>
 		Date: <%= Date.today.strftime("%d %B %Y") %><br/><br>
 		Operation: <%= f.select :status, options_for_select([["Open", 1],["Closed", 0]], 
 
