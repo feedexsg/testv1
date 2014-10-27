@@ -18,8 +18,8 @@ class CartsController < ApplicationController
     @current_user ||= User.find_by(remember_token: remember_token)
     @total_price = 0.0
     @cart.line_items.each do |item|
-      @total_price += Item.find(item.main_id).price
-      @total_price += Item.find(item.side_id).price
+      @total_price += Item.find(item.main_id).price * 0.9
+      @total_price += Item.find(item.side_id).price * 0.9
     end
 
     @item_sets = []
