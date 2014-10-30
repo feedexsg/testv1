@@ -59,6 +59,7 @@ class MenusController < ApplicationController
         @total_price += 0.9 * Item.find(item.main_id).price 
         @total_price += 0.9 * Item.find(item.side_id).price
       end
+      end
 
       @item_sets = []
       @cart.line_items.each do |i|
