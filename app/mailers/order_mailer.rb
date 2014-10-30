@@ -22,7 +22,7 @@ class OrderMailer < ActionMailer::Base
       @total_price += main.price.to_f + side.price.to_f
     else 
       @total_price += 0.9 * (main.price.to_f + side.price.to_f)
-
+end
 
   		@order_items_array << packed_hash
   	end
