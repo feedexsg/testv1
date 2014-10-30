@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 		item_sets.each do |i|
 			main_item = Item.find_by_id(i["main_id"])
 			side_item = Item.find_by_id(i["side_id"])
-			if side_item == 0  #change here 
+			if side_item.price.to_f == 0  #change here 
 			total_amt += main_item.price.to_f if main_item
 			total_amt += side_item.price.to_f if side_item
 		else 
