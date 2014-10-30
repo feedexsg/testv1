@@ -20,7 +20,7 @@ module Api
         item_hash.slice!("image_file_name", "image_content_type", "image_file_size", "image_updated_at").merge!({"original_url" => item.image}) if item
       end.compact
 
-      respond_with(menu: @menu, main_items: main_items, side_items: side_items)
+      respond_with(menu_status: @menu.status, menu: @menu, main_items: main_items, side_items: side_items)
     end
   end
     
