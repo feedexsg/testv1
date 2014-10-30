@@ -18,11 +18,9 @@ class OrderMailer < ActionMailer::Base
   		packed_hash[:side] = side.name
   		packed_hash[:subprice] = main.price.to_f + side.price.to_f
 
-  		if Item.find(item.side_id).price == 0
-      @total_price += main.price.to_f + side.price.to_f
-    else 
-      @total_price += 0.9 * (main.price.to_f + side.price.to_f)
-end
+      @total_price += main.price.to_f
+  
+      @total_price += side.price.to_f
 
   		@order_items_array << packed_hash
   	end
