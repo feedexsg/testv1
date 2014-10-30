@@ -53,7 +53,7 @@ class MenusController < ApplicationController
       @current_user ||= User.find_by(remember_token: remember_token)
       @total_price = 0.0
       @cart.line_items.each do |item|
-        if Item.find(item.side_id).price == 0 
+        if Item.find(item.side_id).price == 0.0 
           @total_price += Item.find(item.main_id).price
         else 
         @total_price += 0.9 * Item.find(item.main_id).price 
