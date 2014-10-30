@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 			if side_item == 0  #change here 
 			total_amt = main_item.price.to_f if main_item
 		else 
-			total_amt = 0.9 * (main_item.price.to_f if main_item + side_item.price.to_f if side_item)
+			total_amt = 0.9 * (main_item.price.to_f + side_item.price.to_f)
           	#total_amt += 0.9 * side_item.price.to_f if side_item
           end
 
