@@ -19,8 +19,12 @@ class OrdersController < ApplicationController
 		item_sets.each do |i|
 			main_item = Item.find_by_id(i["main_id"])
 			side_item = Item.find_by_id(i["side_id"])
-			total_amt += main_item.price.to_f if main_item
-          	total_amt += side_item.price.to_f if side_item
+			if Item.find(item.side_id).price == 0  #change here 
+			total_amt = main_item.price.to_f if main_item
+		else 
+			total_amt += 0.9 * main_item.price.to_f if main_item
+          	total_amt += 0.9 * side_item.price.to_f if side_item
+          end
 
           	main_count_hash = {}
           	main_count_hash[:item_id] = main_item.id
