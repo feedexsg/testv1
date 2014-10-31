@@ -23,8 +23,8 @@ class OrdersController < ApplicationController
 			total_amt += main_item.price.to_f if main_item
           	total_amt += side_item.price.to_f if side_item
           else 
-          	total_amt += main_item.price.to_f if main_item
-          	total_amt += side_item.price.to_f if side_item
+          	total_amt += 0.9 * main_item.price.to_f if main_item
+          	total_amt += 0.9 * side_item.price.to_f if side_item
           end
           	main_count_hash = {}
           	main_count_hash[:item_id] = main_item.id
