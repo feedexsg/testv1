@@ -2,7 +2,9 @@ class Item < ActiveRecord::Base
 
   attr_accessor :vendor_name
 
-  has_many :sold_outs, :dependent => :destroy
+  has_many :sold_outs #, :dependent => :destroy
+
+  acts_as_paranoid
 
   accepts_nested_attributes_for :sold_outs, :reject_if => lambda { |t| t['image'].nil? }
 

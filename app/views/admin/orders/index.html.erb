@@ -23,9 +23,22 @@
 			<% order.order_items.each do |order_item| %>
 				<% itemset_hash = {}
 					itemset_hash["main_id"] = order_item.main_id
-				   itemset_hash["main_title"] = Item.find(order_item.main_id).name
+
+					main_item = Item.with_deleted.find_by_id(order_item.main_id)
+					side_item = Item.with_deleted.find_by_id(order_item.side_id)
+
+					if main_item.nil?
+						itemset_hash["main_title"] = "Not available"
+					else
+						itemset_hash["main_title"] = Item.with_deleted.find_by_id(order_item.main_id).name
+					end
+
+					if side_item.nil?
+						itemset_hash["side_title"] = "Not available"
+					else
+						itemset_hash["side_title"] = Item.with_deleted.find_by_id(order_item.side_id).name
+					end
 				   itemset_hash["side_id"] = order_item.side_id
-				   itemset_hash["side_title"] = Item.find(order_item.side_id).name
 				   itemset_hash["quantity"] = 1
 				   add_to_array = true
 				   item_sets_array.each do |check_set|
