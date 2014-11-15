@@ -69,9 +69,9 @@ class Admin::OrdersController < Admin::BaseController
               order.order_items.each do |order_item|
                 itemset_hash = {}
                 itemset_hash["main_id"] = order_item.main_id
-                itemset_hash["main_title"] = Item.find(order_item.main_id).name
+                itemset_hash["main_title"] = Item.with_deleted.find(order_item.main_id).name
                 itemset_hash["side_id"] = order_item.side_id
-                    itemset_hash["side_title"] = Item.find(order_item.side_id).name
+                    itemset_hash["side_title"] = Item.with_deleted.find(order_item.side_id).name
                     itemset_hash["quantity"] = 1
 
                   add_to_array = true
@@ -142,9 +142,9 @@ class Admin::OrdersController < Admin::BaseController
               order.order_items.each do |order_item|
                 itemset_hash = {}
                 itemset_hash["main_id"] = order_item.main_id
-                itemset_hash["main_title"] = Item.find(order_item.main_id).name
+                itemset_hash["main_title"] = Item.with_deleted.find(order_item.main_id).name
                 itemset_hash["side_id"] = order_item.side_id
-                    itemset_hash["side_title"] = Item.find(order_item.side_id).name
+                    itemset_hash["side_title"] = Item.with_deleted.find(order_item.side_id).name
                     itemset_hash["quantity"] = 1
 
                   add_to_array = true
@@ -192,9 +192,9 @@ class Admin::OrdersController < Admin::BaseController
         order.order_items.each do |order_item|
           itemset_hash = {}
           itemset_hash["main_id"] = order_item.main_id
-          itemset_hash["main_title"] = Item.find(order_item.main_id).name
+          itemset_hash["main_title"] = Item.with_deleted.find(order_item.main_id).name
           itemset_hash["side_id"] = order_item.side_id
-          itemset_hash["side_title"] = Item.find(order_item.side_id).name
+          itemset_hash["side_title"] = Item.with_deleted.find(order_item.side_id).name
           itemset_hash["quantity"] = 1
           add_to_array = true
           item_sets_array.each do |check_set|

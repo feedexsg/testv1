@@ -28,7 +28,9 @@ gem "paperclip", "~> 4.1"
 gem 'nested_form'
 gem 'aws-sdk'
 
-#gem 'tlsmail'
+gem "paranoia", "~> 2.0"
+
+gem 'tlsmail'
 
 gem 'flexslider'
 gem 'gon'
